@@ -51,11 +51,14 @@
             width: 1520px;
             height: 790px;
             object-fit: cover;
+            position: relative; /* .hero-content を前面にするため */
+            z-index: 0;
         }
         .hero-content {
-            position: absolute;
-            bottom: 12px;
-            left: 53%;
+            display: flex;
+            position: relative; 
+            bottom: 340px; 
+            left: 55%;
             transform: translateX(-50%);
             text-align: center;
             width: 100%;
@@ -81,7 +84,7 @@
             margin-bottom: 3px;
         }
         .btn {
-            background: goldenrod;
+            background: rgba(0, 0, 0, 0.1); /* 半透明の背景を追加 */
             color: white;
             padding: 10px 20px;
             text-decoration: none;
@@ -96,8 +99,6 @@
     <div class="logo">Aileen's Secret</div>
     <div class="nav">
         <a href="#">News</a>
-        <a href="#">Info</a>
-        <a href="#">FAQ</a>
         <a href="#">Languages</a>
         <a href="#">Contact</a>
     </div>
@@ -106,7 +107,7 @@
     </a>   
     </div>
     <div class="hero">
-        <img src="https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/2d5ba9c9382b941dad4c867db953a06efacfc3f9/AIBeauty1.png" alt="Aileen">
+        <img src="img/AIBeauty1.png" alt="Aileen">
     </div>
     <div class="hero-content">
         <h2>SPECIAL OFFER FOR SUMMER</h2>
@@ -120,11 +121,11 @@
 <title>ecommers site-secial offers</title>
 <style>
     body {
-        font-family: Arial, sans-serif;
+        font-family: Poppins, sans-serif;
         width: 1520px;
         height: 2584px;
         margin: 0;
-        padding: 20px;
+        padding: 10px;
         background-color: #f8f8f8;
     }
     .container {
@@ -261,7 +262,7 @@
         </div>
         <div class="product">
           <div class="image-placeholder">
-          <img src="https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/2d5ba9c9382b941dad4c867db953a06efacfc3f9/AIBeauty1.png" alt="Aileen">
+          <img src="img/AIBeauty1.png" alt="Aileen">
           </div>
           <p><strong>Best Selling V-Necked Knit Top</strong></p>
           <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
@@ -278,22 +279,8 @@
   <style>
       body {
           margin: 0 auto;
-          font-family: Arial, sans-serif;
+          font-family: Poppins, sans-serif;
       }
-      /.info {
-          width: 1520px;
-          height: 406px;
-          background: url('img/beach1.png') no-repeat center/cover;
-          <img src="img/beach1.png" alt="Beach1">
-          display: flex;
-          align-items: left;
-          justify-content: left;
-          padding-top:  45px;
-          padding-left: 2020px;
-          color: white;
-          font-size: 20px;
-          font-weight: bold;
-      /}
       .info {
           width: 1520px;
           height: 406px;
