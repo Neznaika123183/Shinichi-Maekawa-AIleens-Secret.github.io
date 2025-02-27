@@ -3,157 +3,581 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ecommers site-secial offers</title>
+    <title>Aileen's Secret - Special Offer</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            width: 1440px;
-            height: 2584px;
             margin: 0;
-            padding: 20px;
-            background-color: #f8f8f8;
-        }
-        .container {
-            max-width: 1200px;
-            margin: auto;
-        }
-        h2 {
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-        }
-        .product {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-family: poppins, sans-serif;
             text-align: center;
         }
-        .image-placeholder {
-            width: 550px;
-            height: 550px;
-            background: #ccc;
-            border-radius: 8px;
+        .header {
+            background: white;
+            width: 1520px;
+            height: 60px;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .image-placeholder img {
-            width: 550px;
-            height: 550px;
+        .logo {
+            font-weight: bold;
+            font-size: 30px;
+            position: relative;
+            left: 20px;
+        }
+        .nav {
+            display: flex;
+            gap: 20px;
+            position: relative;
+            left: 400px;
+            align-items: center; /* 要素を中央揃えに */
+        }
+        .contact-btn {
+            background: black;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-size: 25px;
+            text-decoration: none;
+            opacity: 1;
+        }
+        .hero {
+            background: lightgray;
+            width: 1520px;
+            height: 790px;
+            padding: 0px 0px;
+            position: relative;
+        }
+        .hero img {
+            width: 1520px;
+            height: 890px;
             object-fit: cover;
+            position: relative; /* .hero-content を前面にするため */
+            z-index: 0;
         }
-        .discount {
-            background: yellow;
-            color: black;
+        .hero-content {
+            display: flex;
+            position: relative; 
+            bottom: 340px; 
+            left: 53%;
+            transform: translateX(-50%);
+            text-align: center;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        .hero-content h2 {
+            color: white;
+            font-size: 35px;
+            margin-bottom: 2px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        .hero-content p {
+            color: gold;
+            font-size: 33px;
             font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 50px;
+            margin: 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        .hero-content p:nth-of-type(1) {
+            margin-bottom: 3px;
+        }
+        .btn {
+            background: rgba(0, 0, 0, 0.1); /* 半透明の背景を追加 */
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
             display: inline-block;
-            margin-top: 10px;
+            margin-bottom: 0px; /* 下の要素との間隔を確保 */   
         }
-        .price {
-            color: red;
-            font-size: 27px;
-            font-weight: bold;
+        .sign-in {
+            width: 1520px;
+            height: 300px;
+            margin: 10px auto;
+            padding: 50px;
+            background: #f5f5f5;
+            text-align: center;
+            transform: translateX(0%); /* 左へ0%移動 */
+            border-radius: 10px;
         }
-        .regular-price {
-            text-decoration: line-through;
-            color: gray;
+        .sign-in input {
+            width: 300px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
-        .shop-now {
-            background: red;
+        .sign-in a {
+            display: block;
+            margin: 10px 0;
+            color: blue;
+            text-decoration: none;
+        }
+        .sign-in button {
+            background: black;
             color: white;
             padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin-top: 10px;
-        }
-        p strong {
-            font-size: 25px;
+            bottom: 0px; 
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>NEWS</h2>
+  <div class="header">
+    <div class="logo">Aileen's Secret</div>
+    <div class="nav">
+        <a href="#container" class="container">News</a>
+        <a href="#faq" class="faq">FAQ</a>
+        <a href="#info" class="contact">Contact</a>
+    </div>
+    <a href="#cart" class="cart-btn">
+        <img src="https://github.com/Neznaika123183/neznaika123183.github.io/blob/main/cart4.png" alt="Cart">
+    </a>   
+    </div>
+    <div class="hero">
+        <img src="https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/AIBeauty1.png" alt="Aileen">
+    </div>
+    <div class="hero-content">
+        <h2>SPECIAL OFFER FOR SUMMER</h2>
+        <p>Sign up and enjoy 45% OFF</p>
+        <a href="#sign-in" class="btn">CREATE ACCOUNT / SHOP NOW</a>
+    </div>
+  </div>
+    <div id="sign-in" class="sign-in">
+         <h3>Creat Account / Sign In</h3>
+         <input type="email" placeholder="Email">
+         <input type="password" placeholder="Password">
+         <a href="#">Forget Password?</a>
+         <button>Secure Sign In</button>
+    </div>
+</body>
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ecommers site-secial offers</title>
+<style>
+    body {
+        font-family: poppins, sans-serif;
+        width: 1520px;
+        height: 2584px;
+        margin: 0;
+        padding: 10px;
+        background-color: #f8f8f8;
+    }
+    .container {
+        max-width: 1520px;
+        margin: auto;
+        padding: 10px 0px;
+    }
+    h2 {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: left; /* テキストの左寄せ */
+        align-items: flex-start; /* 左端に寄せる */
+    }
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    .product {
+        background: white;
+        color: black;
+        font-size: 28px;
+        padding: 42px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    .image-placeholder {
+        width: 650px;
+        height: 650px;
+        background: #ccc;
+        border-radius: 8px;
+    }
+    .image-placeholder img {
+        width: 650px;
+        height: 650px;
+        object-fit: cover;
+    }
+    .discount {
+        background: gold;
+        color: black;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 50px;
+        display: inline-block;
+        margin-top: 10px;
+    }
+    .price {
+        color: red;
+        font-size: 30px;
+        font-weight: bold;
+    }
+    .regular-price {
+        text-decoration: line-through;
+        font-size: 25px;
+        color: gray;
+    }
+    .shop-now {
+        background: red;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+    p strong {
+        font-size: 25px;
+    }
+</style>
+
+</head>
+<body>
+        <div class="container">
+           <h2 id="container">NEWS</h2>
         <div class="grid">
-                <div class="product">
-                <div class="image-placeholder">
-                <img src="img/AIBeauty6.png" alt="Cindy">
-                </div>
-                <p><strong>Best Selling Tank Top</strong></p>
-                <p class="price">$29.95 <span class="regular-price">(Regular Price $55)</span></p>
-                <span class="discount">SAVE 46%</span>
-                <button class="shop-now">SHOP NOW</button>
-            </div>
             <div class="product">
-                <div class="image-placeholder">
-                <img src="img/AIBeauty2.png" alt="Diana">
-                </div>
-                <p><strong>Best Selling Tank Top</strong></p>
-                <p class="price">$29.95 <span class="regular-price">(Regular Price $55)</span></p>
-                <span class="discount">SAVE 46%</span>
-                <button class="shop-now">SHOP NOW</button>
+            <div class="image-placeholder">
+            <img src="https://github.com/Neznaika123183/neznaika123183.github.io/blob/main/AIBeauty6.png" alt="Cindy">
             </div>
-            <div class="product">
-                <div class="image-placeholder">
-                <img src="img/AIBeauty3.png" alt="Betty">
-                </div>
-                <p><strong>Best Selling Evening Dress Top</strong></p>
-                <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
-                <span class="discount">SAVE 47%</span>
-                <button class="shop-now">SHOP NOW</button>
+            <p><strong>Best Selling Tank Top</strong></p>
+            <p class="price">$29.95 <span class="regular-price">(Regular Price $55)</span></p>
+            <span class="discount">SAVE 46%</span>
+            <button class="shop-now">SHOP NOW</button>
+        </div>
+        <div class="product">
+            <div class="image-placeholder">
+            <img src="https://github.com/Neznaika123183/neznaika123183.github.io/blob/main/AIBeauty2.png" alt="Diana">
             </div>
-            <div class="product">
-                <div class="image-placeholder">
-                <img src="img/AIBeauty5.png" alt="Aileen">
-                </div>
-                <p><strong>Best Selling V-Necked Top</strong></p>
-                <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
-                <span class="discount">SAVE 47%</span>
-                <button class="shop-now">SHOP NOW</button>
+            <p><strong>Best Selling Tank Top</strong></p>
+            <p class="price">$29.95 <span class="regular-price">(Regular Price $55)</span></p>
+            <span class="discount">SAVE 46%</span>
+            <button class="shop-now">SHOP NOW</button>
+        </div>
+        <div class="product">
+            <div class="image-placeholder">
+            <img src="https://github.com/Neznaika123183/neznaika123183.github.io/blob/main/AIBeauty3.png" alt="Betty">
             </div>
-            <div class="product">
-              <div class="image-placeholder">
-              <img src="img/AIBeauty8.png" alt="Cindy">
-              </div>
-              <p><strong>Best Selling Tank Top</strong></p>
-              <p class="price">$29.95 <span class="regular-price">(Regular Price $55)</span></p>
-              <span class="discount">SAVE 46%</span>
-              <button class="shop-now">SHOP NOW</button>
+            <p><strong>Best Selling Evening Dress Top</strong></p>
+            <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
+            <span class="discount">SAVE 47%</span>
+            <button class="shop-now">SHOP NOW</button>
+        </div>
+        <div class="product">
+            <div class="image-placeholder">
+            <img src="https://github.com/Neznaika123183/neznaika123183.github.io/blob/main/AIBeauty5.png" alt="Aileen">
+            </div>
+            <p><strong>Best Selling V-Necked Top</strong></p>
+            <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
+            <span class="discount">SAVE 47%</span>
+            <button class="shop-now">SHOP NOW</button>
+        </div>
+        <div class="product">
+          <div class="image-placeholder">
+          <img src="https://github.com/Neznaika123183/neznaika123183.github.io/blob/main/AIBeauty8.png" alt="Cindy">
           </div>
-          <div class="product">
-              <div class="image-placeholder">
-              <img src="img/AIBeauty7.png" alt="Diana">
-              </div>
-              <p><strong>Best Selling V-Necked Knit Top</strong></p>
-              <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
-              <span class="discount">SAVE 47%</span>
-              <button class="shop-now">SHOP NOW</button>
+          <p><strong>Best Selling Tank Top</strong></p>
+          <p class="price">$29.95 <span class="regular-price">(Regular Price $55)</span></p>
+          <span class="discount">SAVE 46%</span>
+          <button class="shop-now">SHOP NOW</button>
+        </div>
+        <div class="product">
+          <div class="image-placeholder">
+          <img src="https://github.com/Neznaika123183/neznaika123183.github.io/blob/main/AIBeauty7.png" alt="Diana">
           </div>
-          <div class="product">
-              <div class="image-placeholder">
-              <img src="img/AIBeauty4.png" alt="Betty">
-              </div>
-              <p><strong>Best Selling Evening Dress Top</strong></p>
-              <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
-              <span class="discount">SAVE 47%</span>
-              <button class="shop-now">SHOP NOW</button>
+          <p><strong>Best Selling V-Necked Knit Top</strong></p>
+          <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
+          <span class="discount">SAVE 47%</span>
+          <button class="shop-now">SHOP NOW</button>
+        </div>
+        <div class="product">
+          <div class="image-placeholder">
+          <img src="https://github.com/Neznaika123183/neznaika123183.github.io/blob/main/AIBeauty4.png" alt="Betty">
           </div>
-          <div class="product">
-              <div class="image-placeholder">
-              <img src="img/AIBeauty1.png" alt="Aileen">
-              </div>
-              <p><strong>Best Selling V-Necked Knit Top</strong></p>
-              <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
-              <span class="discount">SAVE 47%</span>
-              <button class="shop-now">SHOP NOW</button>
+          <p><strong>Best Selling Evening Dress Top</strong></p>
+          <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
+          <span class="discount">SAVE 47%</span>
+          <button class="shop-now">SHOP NOW</button>
+        </div>
+        <div class="product">
+          <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/AIBeauty1.png" alt="Aileen">
           </div>
+          <p><strong>Best Selling V-Necked Knit Top</strong></p>
+          <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
+          <span class="discount">SAVE 47%</span>
+          <button class="shop-now">SHOP NOW</button>
         </div>
     </div>
+</div>
+</body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+      .cart-container {
+          width: 1520px;
+          height: 500px; 
+          background-color: white;
+          padding: 20px;
+          box-sizing: border-box;
+      }
+      .cart-grid {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px;
+      }
+      .cart-item {
+          width: 150px;
+          height: 200px;
+          background: #ccc;
+          border-radius: 8px;
+          padding: 10px;
+      }
+      .cart-item img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+      }
+  </style>
+</head>
+<body>
+  <div class="cart-container" id="cart">
+      <h2 class="cart-title">🛒 Your Cart</h2>
+      <div class="cart-grid">
+          <div class="cart-item">
+              <img src="https://github.com/Neznaika123183/neznaika123183.github.io/blob/main/AIBeauty9.png" alt="AIBeauty 9" class="cart-image">
+              <h3 class="cart-item-name">Best Selling V-Necked Knit</h3>
+              <p class="cart-item-price">$49.95</p>
+              <button class="remove-btn">🗑 Remove</button>
+          </div>
+          <div class="cart-item">
+              <img src="https://github.com/Neznaika123183/neznaika123183.github.io/blob/main/AIBeauty11.png" alt="AIBeauty 11" class="cart-image">
+              <h3 class="cart-item-name">Best Selling Bikini Top</h3>
+              <p class="cart-item-price">$29.95</p>
+              <button class="remove-btn">🗑 Remove</button>
+          </div>
+      </div>
+      <div class="checkout-container" style="margin-top: 170px;">
+          <button class="checkout-btn">Proceed to Checkout</button>
+      </div>
+  </div>
+</body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Section - E-commerce</title>
+    <style>
+        body {
+            font-family: Poppins, sans-serif;
+            width: 1520px;
+            height: 2584px;
+            margin: 0 ;
+            padding: 0 ;
+            background-color: #f8f8f8;
+            * {
+              box-sizing: border-box;
+        }
+
+        .faq-section {
+            max-width: 1520px;
+            margin: 0 ;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-section h2 {
+            font-size: 26px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .faq {
+            border-bottom: 1px solid #ddd;
+            padding: 20px 0;
+        }
+
+        .faq:last-child {
+            border-bottom: none;
+        }
+
+        .question {
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+            padding-right: 30px;
+            transition: color 0.3s ease;
+        }
+
+        .question:hover {
+            color: #e63946;
+        }
+
+        .answer {
+            font-size: 18px;
+            margin-top: 10px;
+            display: none;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .toggle-icon {
+            position: absolute;
+            right: 10px;
+            top: 5px;
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .active .toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .active .answer {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="faq-section">
+        <h2 id="faq">Frequently Asked Questions</h2>
+        
+        <div class="faq">
+            <div class="question">
+                What payment methods do you accept?
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="answer">
+                We accept credit cards, PayPal, Apple Pay, and Google Pay for a seamless checkout experience.
+            </div>
+        </div>
+
+        <div class="faq">
+            <div class="question">
+                How long does shipping take?
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="answer">
+                Standard shipping takes 5-7 business days, while express shipping takes 2-3 business days.
+            </div>
+        </div>
+
+        <div class="faq">
+            <div class="question">
+                Can I return or exchange an item?
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="answer">
+                Yes, we offer a 30-day return and exchange policy for unused items in their original packaging.
+            </div>
+        </div>
+
+        <div class="faq">
+            <div class="question">
+                Do you offer international shipping?
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="answer">
+                Yes, we ship internationally. Shipping fees and delivery times vary depending on your location.
+            </div>
+        </div>
+
+        <div class="faq">
+            <div class="question">
+                How can I track my order?
+                <span class="toggle-icon">▼</span>
+            </div>
+            <div class="answer">
+                Once your order is shipped, we will send you a tracking link via email.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll(".question").forEach((question) => {
+            question.addEventListener("click", () => {
+                question.parentNode.classList.toggle("active");
+            });
+        });
+    </script>
+
 </body>
 </html>
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>INFO & FOOTER</title>
+  <style>
+      body {
+          margin: 0 auto;
+          font-family: Poppins, sans-serif;
+      }
+      .info {
+          width: 1520px;
+          height: 406px;
+          background: url('img/beach1.png') no-repeat center/cover;
+          display: flex;
+          flex-direction: column; /* コンテンツを縦方向に配置 */
+          align-items: flex-start; /* 左端に寄せる */
+          justify-content: flex-start; /* 上端に寄せる */
+          padding-top:  50px;
+          padding-left: 15px;
+          color: white;
+          font-size: 20px;
+          font-weight: bold;
+          text-align: left; /* テキストの左寄せ */
+      }
+      .footer {
+          width: 1520px;
+          height: 70px;
+          background: white;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: black;
+          font-size: 16px;
+      }
+      * {
+          box-sizing: border-box;
+      }
+  </style>
+</head>
+<body>
+  <div class="info">
+      <div>
+          <h4 id="info">CONTACT</h4>
+          <p>987 Somewhere St.</p>
+          <p>Overtherainbow, Neverneverland</p>
+          <p>+123-456-7890</p>
+          <p>info@aileenssecret</p>
+      </div>
+  </div>
+  <div class="footer">
+      <p>&copy; Aileen's Secret</p>
+  </div>
+</body>
+</html>
