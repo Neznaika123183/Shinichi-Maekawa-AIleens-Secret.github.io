@@ -315,7 +315,7 @@
         </div>
         <div class="product">
           <div class="image-placeholder">
-          <img src="https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/AIBeauty1.png" alt="Aileen">
+          <img src="ihttps://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/AIBeauty1.png" alt="Aileen">
           </div>
           <p><strong>Best Selling V-Necked Knit Top</strong></p>
           <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
@@ -360,28 +360,10 @@
 </head>
 <body>
   <div class="cart-container" id="cart">
-      <h2 class="cart-title">🛒 Your Cart on Other Recommendations</h2>
-      <div class="cart-grid">
-          <div class="cart-item">
-              <img src="https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/AIBeauty9.png" alt="AIBeauty 9" class="cart-image">
-              <h3 class="cart-item-name">Best Selling V-Necked Knit</h3>
-              <p class="cart-item-price">$39.95</p>
-              <button class="remove-btn">🗑 Remove</button>
-          </div>
-          <div class="cart-item">
-              <img src="https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/AIBeauty11.png" alt="AIBeauty 11" class="cart-image">
-              <h3 class="cart-item-name">Best Selling Bikini Top</h3>
-              <p class="cart-item-price">$19.95</p>
-              <button class="remove-btn">🗑 Remove</button>
-          </div>
-           <div class="cart-item">
-              <img src="https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/AIBeauty12.png" alt="AIBeauty 12" class="cart-image">
-              <h3 class="cart-item-name">Best Selling Bra Top</h3>
-              <p class="cart-item-price">$19.95</p>
-              <button class="remove-btn">🗑 Remove</button>
-          </div>
+      <h2 class="cart-title">🛒 Your Cart</h2>
+      <div class="cart-grid">       
       </div>
-      <div class="checkout-container" style="margin-top: 170px;">
+      <div class="checkout-container" style="margin-top: 220px;">
           <button class="checkout-btn">Proceed to Checkout</button>
       </div>
   </div>
@@ -529,9 +511,41 @@
             });
         });
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const buttons = document.querySelectorAll(".shop-now");
+            const cartGrid = document.querySelector(".cart-grid");
+    
+        buttons.forEach(button => {
+            button.addEventListener("click", function() {
+            const product = this.closest(".product");
+            const imgSrc = product.querySelector(".image-placeholder img").src;
+            const name = product.querySelector("p strong").textContent;
+            const price = product.querySelector(".price").textContent;
+            
+            const cartItem = document.createElement("div");
+            cartItem.classList.add("cart-item");
+            cartItem.innerHTML = `
+                <img src="${imgSrc}" alt="${name}" class="cart-image">
+                <h3 class="cart-item-name">${name}</h3>
+                <p class="cart-item-price">${price}</p>
+                <button class="remove-btn">🗑 Remove</button>
+            `;
+            
+            cartGrid.appendChild(cartItem);
+            
+            cartItem.querySelector(".remove-btn").addEventListener("click", function() {
+                cartItem.remove();
+                      });
+                   });
+                });
+            });
+
+    </script>
 
 </body>
 </html>
+
 
 <head>
   <meta charset="UTF-8">
