@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Aileen's Secret</title>
+    <style>
+        /* 基本スタイル */
+        body {
+            font-family: Poppins, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f8f8;
+        }
+
+        /* ヘッダー部分 */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* メインコンテンツ */
+        main {
+            display: flex;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* カートセクション */
+        .cart {
+            flex: 2;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 20px;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .details {
+            flex: 1;
+        }
+
+        .details p strong {
+            font-size: 18px;
+            display: block;
+            margin-bottom: 1px;
+        }
+
+        .details .price {
+            color: red;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .size {
+            display: flex;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .size-btn {
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            background: none;
+            cursor: pointer;
+        }
+
+        .size-btn.selected {
+            background: #333;
+            color: white;
+        }
+
+        .quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .quantity button {
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            background: none;
+            cursor: pointer;
+        }
+
+        .edit-order {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        /* サマリーセクション */
+        .summary {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            height: fit-content;
+        }
+
+        .summary h2 {
+            margin-top: 0;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .summary-item span {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .promo {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .promo input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .promo button {
+            padding: 10px 20px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .total {
+            border-top: 2px solid #eee;
+            margin-top: 20px;
+            padding-top: 20px;
+        }
+
+        .total .summary-item {
+            font-weight: bold;
+        }
+
+        /* 支払いセクション */
+        .pay {
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            width: 100%;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 20px 0;
+        }
+
+        .giftcard {
+            background: #f8f8f8;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 100%;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        /* レスポンシブデザイン */
+        @media (max-width: 900px) {
+            main {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .cart, .summary {
+                width: 100%;
+            }
+
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .cart-item img {
+                margin-bottom: 10px;
+                width: 100%;
+                max-width: 120px;
+            }
+
+            .details {
+                width: 100%;
+            }
+
+            .summary {
+                margin-top: 30px;
+            }
+
+            .promo {
+                flex-direction: column;
+            }
+
+            .promo input {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .promo button {
+                width: 100%;
+            }
+
+            .pay, .giftcard {
+                font-size: 16px;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px 10px 0 0;
+            }
+
+            .icons {
+                margin-top: 10px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .pay, .giftcard {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            .cart-item {
+                padding: 10px;
+            }
+
+            .summary {
+                padding: 15px;
+            }
+
+            .promo button {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header>
+        <div class="logo">Aileen's Secret</div>
+        <nav>
+            <a href="#">News</a>
+            <a href="#">FAQ</a>
+            <a href="#">Contact</a>
+        </nav>
+        <div class="icons">
+            <span>🔍</span>
+            <span>👤</span>
+            <span>🛒</span>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main>
+        <!-- カートセクション -->
+        <section class="cart">
+            <h2>Your Cart</h2>
+            <div id="checkout-items">
+                <!-- カートアイテムはJavaScriptで動的に追加 -->
+            </div>
+        </section>
+
+        <!-- サマリーセクション -->
+        <section class="summary">
+            <h2>Order Summary</h2>
+            <div class="summary-item">
+                <span>Subtotal</span>
+                <span id="subtotal">$0.00</span>
+            </div>
+            <div class="summary-item">
+                <span>Shipping</span>
+                <span>$15.00</span>
+            </div>
+            <div class="summary-item">
+                <span>Tax</span>
+                <span id="tax">$0.00</span>
+            </div>
+
+            <!-- プロモーションコード -->
+            <div class="promo">
+                <input type="text" placeholder="Enter promo code">
+                <button>Apply</button>
+            </div>
+
+            <!-- 合計 -->
+            <div class="total">
+                <div class="summary-item">
+                    <span>Total</span>
+                    <span id="total-cost">$0.00</span>
+                </div>
+            </div>
+
+            <!-- 支払いボタン -->
+            <button class="pay">Pay Now</button>
+            <button class="giftcard">Pay with Gift Card</button>
+        </section>
+    </main>
+
+    <script>
+        // sessionStorageから最新のカート内容を読み込む
+        const items = JSON.parse(sessionStorage.getItem("selectedItems")) || [];
+        const checkoutItems = document.getElementById("checkout-items");
+        const shippingCost = 15.00;
+
+        // チェックアウトアイテムの表示を更新する関数
+        function updateCheckoutItems() {
+            // チェックアウトアイテムをクリア
+            checkoutItems.innerHTML = '';
+            
+            // 最新のカート内容を取得
+            const currentItems = JSON.parse(sessionStorage.getItem("selectedItems")) || [];
+            
+            // カートが空の場合
+            if (currentItems.length === 0) {
+                checkoutItems.innerHTML = '<p>Your cart is empty</p>';
+                document.getElementById("subtotal").textContent = "$0.00";
+                document.getElementById("total-cost").textContent = "$0.00";
+                return;
+            }
+            
+            // アイテムを表示
+            currentItems.forEach((item, index) => {
+                const itemDiv = document.createElement("div");
+                itemDiv.classList.add("cart-item");
+                itemDiv.innerHTML = `
+                    <img src="${item.imgSrc}" alt="${item.name}">
+                    <div class="details">
+                        <p><strong>${item.name}</strong></p>
+                        <div class="price">${item.price}</div>
+                        <div class="size">
+                            <button class="size-btn" data-size="S">S</button>
+                            <button class="size-btn" data-size="M">M</button>
+                            <button class="size-btn" data-size="L">L</button>
+                        </div>
+                        <div class="quantity">
+                            <button class="decrease">-</button>
+                            <span class="count">1</span>
+                            <button class="increase">+</button>
+                        </div>
+                        <a href="#" class="edit-order">Edit order</a>
+                    </div>
+                `;
+                checkoutItems.appendChild(itemDiv);
+
+                // サイズボタンのイベントリスナー
+                const sizeButtons = itemDiv.querySelectorAll(".size-btn");
+                sizeButtons.forEach(button => {
+                    button.addEventListener("click", () => {
+                        sizeButtons.forEach(btn => btn.classList.remove("selected"));
+                        button.classList.add("selected");
+                    });
+                });
+
+                // 数量調整のイベントリスナー
+                const quantityContainer = itemDiv.querySelector(".quantity");
+                const decreaseBtn = quantityContainer.querySelector(".decrease");
+                const increaseBtn = quantityContainer.querySelector(".increase");
+                const countSpan = quantityContainer.querySelector(".count");
+
+                decreaseBtn.addEventListener("click", function() {
+                    let currentCount = parseInt(countSpan.textContent, 10);
+                    if (currentCount > 1) {
+                        countSpan.textContent = currentCount - 1;
+                        updateTotal();
+                    }
+                });
+
+                increaseBtn.addEventListener("click", function() {
+                    let currentCount = parseInt(countSpan.textContent, 10);
+                    countSpan.textContent = currentCount + 1;
+                    updateTotal();
+                });
+            });
+            
+            updateTotal();
+        }
+
+        // 合計金額を更新する関数
+        function updateTotal() {
+            let subtotal = 0;
+            document.querySelectorAll(".cart-item").forEach(item => {
+                const price = parseFloat(item.querySelector(".price").textContent.replace(/[^0-9.]/g, ""));
+                const quantity = parseInt(item.querySelector(".count").textContent);
+                if (!isNaN(price) && !isNaN(quantity)) {
+                    subtotal += price * quantity;
+                }
+            });
+            
+            const shipping = 15.00;
+            const tax = (subtotal + shipping) * 0.1; // 小計と送料の合計の10%
+            const total = subtotal + shipping + tax;
+
+            document.getElementById("subtotal").textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById("tax").textContent = `$${tax.toFixed(2)}`;
+            document.getElementById("total-cost").textContent = `$${total.toFixed(2)}`;
+        }
+
+        // 初期表示
+        updateCheckoutItems();
+
+        // カートの更新を監視
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'selectedItems' || e.key === 'cartStatus') {
+                // 少し遅延を入れて確実に同期させる
+                setTimeout(() => {
+                    updateCheckoutItems();
+                }, 100);
+            }
+        });
+
+        // カート更新イベントの監視
+        window.addEventListener('cartUpdated', function() {
+            updateCheckoutItems();
+        });
+
+        // カートが空になった時のイベントリスナー
+        window.addEventListener('cartEmpty', function() {
+            updateCheckoutItems();
+        });
+
+        // 定期的にカートの状態をチェック
+        setInterval(() => {
+            const currentItems = JSON.parse(sessionStorage.getItem("selectedItems")) || [];
+            if (currentItems.length === 0 && checkoutItems.children.length > 0) {
+                updateCheckoutItems();
+            }
+        }, 1000);
+    </script>
+</body>
+</html> 
