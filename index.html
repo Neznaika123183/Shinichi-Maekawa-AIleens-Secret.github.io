@@ -2,424 +2,131 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aileen's Secret - Special Offer</title>
-    
     <style>
-        :root {
-            --primary: #1a1a1a;
-            --secondary: #ff4d4d;
-            --accent: #ffd700;
-            --text: #333333;
-            --light: #ffffff;
-            --gray: #f5f5f5;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--text);
-            line-height: 1.6;
-            background: var(--light);
+            margin: 0;
+            font-family: poppins, sans-serif;
+            text-align: center;
         }
-
         .header {
-            background: rgba(255, 255, 255, 0.95);
+            background: white;
             width: 1520px;
-            height: 80px;
-            padding: 0 40px;
+            height: 60px;
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: fixed;
-            top: 0;
-            z-index: 1000;
-            box-shadow: var(--shadow);
-            backdrop-filter: blur(10px);
         }
-
         .logo {
-            font-weight: 700;
-            font-size: 28px;
-            color: var(--primary);
-            letter-spacing: 1px;
+            font-weight: bold;
+            font-size: 30px;
+            position: relative;
+            left: 20px;
         }
-
         .nav {
             display: flex;
-            gap: 40px;
+            gap: 20px;
             position: relative;
             left: 400px;
-            align-items: center;
+            align-items: center; /* 要素を中央揃えに */
         }
-
-        .nav a {
-            color: var(--text);
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 500;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--secondary);
-            transition: var(--transition);
-        }
-
-        .nav a:hover::after {
-            width: 100%;
-        }
-
         .contact-btn {
-            background: var(--primary);
-            color: var(--light);
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-size: 16px;
+            background: black;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-size: 25px;
             text-decoration: none;
-            transition: var(--transition);
-            font-weight: 500;
+            opacity: 1;
         }
-
-        .contact-btn:hover {
-            background: var(--secondary);
-            transform: translateY(-2px);
-        }
-
         .hero {
-            margin-top: 80px;
+            background: lightgray;
             width: 1520px;
             height: 790px;
+            padding: 0px 0px;
             position: relative;
-            overflow: hidden;
         }
-
         .hero img {
             width: 1520px;
             height: 890px;
             object-fit: cover;
-            filter: brightness(0.8);
+            position: relative; /* .hero-content を前面にするため */
+            z-index: 0;
         }
-
         .hero-content {
-            position: absolute;
-            top: calc(50% + 225px);
-            left: calc(50% + 50px);
-            transform: translate(-50%, -50%);
+            display: flex;
+            position: relative; 
+            bottom: 340px; 
+            left: 53%;
+            transform: translateX(-50%);
             text-align: center;
-            color: var(--light);
-            z-index: 2;
-            width: 80%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
         }
-
         .hero-content h2 {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
-            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
-            margin-left: 255px;
+            color: white;
+            font-size: 35px;
+            margin-bottom: 2px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
         }
-
         .hero-content p {
-            color: var(--accent);
-            font-size: 28px;
-            font-weight: 600;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            color: gold;
+            font-size: 33px;
+            font-weight: bold;
+            margin: 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
         }
-
+        .hero-content p:nth-of-type(1) {
+            margin-bottom: 3px;
+        }
         .btn {
-            background: rgba(255, 255, 255, 0.2);
-            color: var(--light);
-            padding: 15px 40px;
+            background: rgba(0, 0, 0, 0.1); /* 半透明の背景を追加 */
+            color: white;
+            padding: 10px 20px;
             text-decoration: none;
-            border-radius: 25px;
-            font-size: 18px;
-            font-weight: 500;
-            transition: var(--transition);
-            border: 2px solid var(--light);
+            border-radius: 5px;
             display: inline-block;
+            margin-bottom: 0px; /* 下の要素との間隔を確保 */   
         }
-
-        .btn:hover {
-            background: var(--light);
-            color: var(--primary);
-            transform: translateY(-2px);
-        }
-
         .sign-in {
             width: 1520px;
             height: 300px;
             margin: 10px auto;
             padding: 50px;
-            background: var(--gray);
+            background: #f5f5f5;
             text-align: center;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
+            transform: translateX(0%); /* 左へ0%移動 */
+            border-radius: 10px;
         }
-
         .sign-in input {
             width: 300px;
-            padding: 12px 20px;
+            padding: 10px;
             margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 25px;
-            font-size: 16px;
-            transition: var(--transition);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
-
-        .sign-in input:focus {
-            outline: none;
-            border-color: var(--secondary);
-            box-shadow: 0 0 0 2px rgba(255, 77, 77, 0.1);
-        }
-
         .sign-in a {
             display: block;
             margin: 10px 0;
-            color: var(--secondary);
+            color: blue;
             text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
         }
-
-        .sign-in a:hover {
-            color: var(--primary);
-        }
-
         .sign-in button {
-            background: var(--primary);
-            color: var(--light);
-            padding: 12px 30px;
+            background: black;
+            color: white;
+            padding: 10px 20px;
             border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: 500;
+            border-radius: 5px;
             cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .sign-in button:hover {
-            background: var(--secondary);
-            transform: translateY(-2px);
-        }
-
-        .shop-now {
-            background: var(--secondary);
-            color: var(--light);
-            padding: 12px 30px;
-            border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
-            width: 100%;
-            margin-top: 15px;
-        }
-
-        .shop-now:hover {
-            background: #ff3333;
-            transform: translateY(-2px);
-        }
-
-        .remove-btn {
-            background: var(--gray);
-            color: var(--text);
-            padding: 8px 20px;
-            border: 1px solid #ddd;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .remove-btn:hover {
-            background: var(--secondary);
-            color: var(--light);
-            border-color: var(--secondary);
-        }
-
-        .checkout-btn {
-            background: var(--primary);
-            color: var(--light);
-            padding: 15px 40px;
-            border: none;
-            border-radius: 25px;
-            font-size: 18px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
-            display: block;
-            margin: 30px auto 0;
-            width: fit-content;
-        }
-
-        .checkout-btn:hover {
-            background: var(--secondary);
-            transform: translateY(-2px);
-        }
-
-        .product {
-            background: var(--light);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            text-align: center;
-        }
-
-        .product:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .image-placeholder {
-            width: 650px;
-            height: 650px;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .image-placeholder img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .product:hover .image-placeholder img {
-            transform: scale(1.05);
-        }
-
-        .discount {
-            background: var(--accent);
-            color: var(--primary);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 16px;
-            font-weight: 500;
-            display: inline-block;
-            margin: 10px 0;
-        }
-
-        .price {
-            color: var(--secondary);
-            font-size: 28px;
-            font-weight: 600;
-            margin: 15px 0;
-        }
-
-        .regular-price {
-            color: #999;
-            font-size: 18px;
-            text-decoration: line-through;
-            margin-left: 10px;
-        }
-
-        @media (max-width: 768px) {
-            .header {
-                padding: 0 20px;
-            }
-
-            .nav {
-                gap: 20px;
-            }
-
-            .hero {
-                width: 100%;
-                height: auto;
-            }
-
-            .hero img {
-                width: 100%;
-                height: auto;
-            }
-
-            .hero-content {
-                position: absolute;
-                top: calc(50% + 225px);
-                left: 50%;
-                transform: translateX(-50%);
-                width: 90%;
-            }
-
-            .hero-content h2 {
-                font-size: 32px;
-                margin-left: 0;
-                white-space: nowrap;
-            }
-
-            .hero-content p {
-                font-size: 20px;
-                white-space: nowrap;
-            }
-
-            .hero-content .btn {
-                padding: 12px 25px;
-                font-size: 16px;
-                white-space: nowrap;
-            }
-
-            .product-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                padding: 40px 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-content {
-                position: absolute;
-                top: calc(50% + 225px);
-                left: 50%;
-                transform: translateX(-50%);
-                width: 95%;
-            }
-
-            .hero-content h2 {
-                font-size: 28px;
-                margin-left: 0;
-                white-space: nowrap;
-            }
-
-            .hero-content p {
-                font-size: 18px;
-                white-space: nowrap;
-            }
-        }
-
-        /* モバイルデバイス用のスケーリング制御 */
-        @media screen and (max-width: 768px) {
-            body {
-                transform-origin: top left;
-                transform: scale(0.5);
-                width: 200%;
-                height: 200%;
-            }
-        }
-
-        @media screen and (max-width: 480px) {
-            body {
-                transform: scale(0.3);
-                width: 333.33%;
-                height: 333.33%;
-            }
+            bottom: 0px; 
         }
     </style>
 </head>
@@ -532,10 +239,6 @@
         border-radius: 5px;
         cursor: pointer;
         margin-top: 10px;
-        transition: background-color 0.3s ease;
-    }
-    .shop-now:hover {
-        background: #cc0000; /* より暗い赤色 */
     }
     p strong {
         font-size: 25px;
@@ -599,7 +302,7 @@
           <p><strong>Best Selling V-Necked Knit Top F</strong></p>
           <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
           <span class="discount">SAVE 47%</span>
-            <button class="shop-now">SHOP NOW</button>
+          <button class="shop-now">SHOP NOW</button>
         </div>
         <div class="product">
           <div class="image-placeholder">
@@ -608,7 +311,7 @@
           <p><strong>Best Selling Evening Dress Top G</strong></p>
           <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
           <span class="discount">SAVE 47%</span>
-            <button class="shop-now">SHOP NOW</button>
+          <button class="shop-now">SHOP NOW</button>
         </div>
         <div class="product">
           <div class="image-placeholder">
@@ -617,7 +320,7 @@
           <p><strong>Best Selling V-Necked Knit Top H</strong></p>
           <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
           <span class="discount">SAVE 47%</span>
-            <button class="shop-now">SHOP NOW</button>
+          <button class="shop-now">SHOP NOW</button>
         </div>
     </div>
 </div>
@@ -635,7 +338,6 @@
           background-color: white;
           padding: 20px;
           box-sizing: border-box;
-          margin-bottom: 100px; /* 下部のマージンを追加 */
       }
       .cart-grid {
           display: flex;
@@ -769,7 +471,7 @@
 
         .faq-section {
             max-width: 1520px;
-            margin: 100px 0 0 0; /* 上部のマージンを追加 */
+            margin: 0 ;
             padding: 40px;
             background: white;
             border-radius: 12px;
@@ -983,19 +685,20 @@
                 if (selectedItems.length === 0 || isCartEmpty) {
                     if (confirm("Your cart is empty!")) {
                         resetCart();
-                        // カートが空の状態を確認してからcheckout0_4.htmlを開く
-                        window.open("checkout0_4.html", "_blank", "width=800,height=600");
+                        // カートが空の状態を確認してからcheckout0_2.htmlを開く
+                        window.open("checkout0_2.html", "_blank", "width=800,height=600");
                     }
                     return;
                 }
                 sessionStorage.setItem("selectedItems", JSON.stringify(selectedItems));
-                window.open("checkout0_4.html", "_blank", "width=800,height=600");
+                window.open("checkout0_2.html", "_blank", "width=800,height=600");
             });
         });
     </script>
 
 </body>
 </html>
+
 
 <head>
   <meta charset="UTF-8">
@@ -1047,7 +750,7 @@
       </div>
   </div>
   <div class="footer">
-      <p>&copy; 2025 Aileen's Secret.All rights reserved.</p>
+      <p>&copy; Aileen's Secret</p>
   </div>
   <script>
   document.addEventListener("DOMContentLoaded", function () {
@@ -1073,7 +776,7 @@
       }
 
       sessionStorage.setItem("selectedItems", JSON.stringify(selectedItems));
-      window.open("checkout0_4.html", "_blank", "width=800,height=600");
+      window.open("checkout0_1.html", "_blank", "width=800,height=600");
     });
   });
 </script>
