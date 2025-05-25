@@ -101,11 +101,11 @@
         }
 
         .hero {
-            margin-top: 80px;  
+           margin-top: 80px;  
             background: white;
             width: 1520px;
             height: 790px;
-            overflow: hidden;
+            padding: 0px 0px;
             position: relative;
         }
 
@@ -114,6 +114,8 @@
             height: 890px;
             object-fit: cover;
             position: relative; /* .hero-content を前面にするため */
+            z-index: 0;
+            /*filter: brightness(0.8);*/
         }
 
         .hero-content {
