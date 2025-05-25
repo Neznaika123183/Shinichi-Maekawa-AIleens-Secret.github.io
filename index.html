@@ -360,11 +360,10 @@
             }
 
             .hero-content {
-                position: absolute;
-                top: calc(50% + 225px);
+                position: relative;
+                bottom: 840px; /* モバイル表示時に500px上に移動 */
                 left: 50%;
                 transform: translateX(-50%);
-                width: 90%;
             }
 
             .hero-content h2 {
@@ -392,11 +391,10 @@
 
         @media (max-width: 480px) {
             .hero-content {
-                position: absolute;
-                top: calc(50% + 225px);
+                position: relative;
+                bottom: 840px; /* モバイル表示時に500px上に移動 */
                 left: 50%;
                 transform: translateX(-50%);
-                width: 95%;
             }
 
             .hero-content h2 {
