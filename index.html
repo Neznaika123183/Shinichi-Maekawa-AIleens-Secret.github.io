@@ -342,10 +342,22 @@
                 gap: 20px;
             }
 
+            .hero {
+                width: 100%;
+                height: auto;
+            }
+
+            .hero img {
+                width: 100%;
+                height: auto;
+            }
+
             .hero-content {
+                position: absolute;
                 top: calc(50% + 225px);
                 left: calc(50% + 50px);
-                width: 90%;
+                transform: translate(-50%, -50%);
+                width: 80%;
             }
 
             .hero-content h2 {
@@ -370,9 +382,11 @@
 
         @media (max-width: 480px) {
             .hero-content {
+                position: absolute;
                 top: calc(50% + 225px);
                 left: calc(50% + 50px);
-                width: 95%;
+                transform: translate(-50%, -50%);
+                width: 80%;
             }
 
             .hero-content h2 {
