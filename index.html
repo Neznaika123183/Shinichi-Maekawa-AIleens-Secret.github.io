@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Aileen's Secret - Special Offer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --primary: #1a1a1a;
@@ -401,6 +401,24 @@
             .hero-content p {
                 font-size: 18px;
                 white-space: nowrap;
+            }
+        }
+
+        /* モバイルデバイス用のスケーリング制御 */
+        @media screen and (max-width: 768px) {
+            body {
+                transform-origin: top left;
+                transform: scale(0.5);
+                width: 200%;
+                height: 200%;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            body {
+                transform: scale(0.3);
+                width: 333.33%;
+                height: 333.33%;
             }
         }
     </style>
@@ -1029,7 +1047,7 @@
       </div>
   </div>
   <div class="footer">
-      <p>&copy; Aileen's Secret</p>
+      <p>&copy; 2025 Aileen's Secret.All rights reserved.</p>
   </div>
   <script>
   document.addEventListener("DOMContentLoaded", function () {
