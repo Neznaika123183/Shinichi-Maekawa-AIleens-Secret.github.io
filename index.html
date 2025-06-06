@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Aileen's Secret - Special Offer</title>
     
     <style>
@@ -101,38 +101,45 @@
         }
 
         .hero {
-            margin-top: 80px;
+           margin-top: 80px;  
+            background: white;
             width: 1520px;
             height: 790px;
+            padding: 0px 0px;
             position: relative;
-            overflow: hidden;
         }
 
         .hero img {
             width: 1520px;
             height: 890px;
             object-fit: cover;
+            position: relative; /* .hero-content を前面にするため */
+            z-index: 0;
             /*filter: brightness(0.8);*/
         }
 
         .hero-content {
-            position: absolute;
-            top: calc(50% + 225px);
-            left: calc(50% + 50px);
-            transform: translate(-50%, -50%);
+            display: flex;
+            position: relative; 
+            bottom: 340px; 
+            left: 53%;
+            transform: translateX(-50%);
             text-align: center;
-            color: var(--light);
-            z-index: 2;
-            width: 80%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
         }
 
         .hero-content h2 {
+            color: white;
             font-size: 48px;
             font-weight: 700;
             margin-bottom: 20px;
             letter-spacing: 2px;
             text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
-            margin-left: 255px;
+            margin-left: 25px;
         }
 
         .hero-content p {
@@ -353,11 +360,10 @@
             }
 
             .hero-content {
-                position: absolute;
-                top: calc(50% + 225px);
-                left: 50%;
+                position: relative;
+                bottom: 770px; /* モバイル表示時に430px上に移動 */
+                left: calc(53% + 30px); /* 右方に30px移動 */
                 transform: translateX(-50%);
-                width: 90%;
             }
 
             .hero-content h2 {
@@ -385,11 +391,10 @@
 
         @media (max-width: 480px) {
             .hero-content {
-                position: absolute;
-                top: calc(50% + 225px);
-                left: 50%;
+                position: relative;
+                bottom: 770px; /* モバイル表示時に430px上に移動 */
+                left: calc(53% + 30px); /* 右方に30px移動 */
                 transform: translateX(-50%);
-                width: 95%;
             }
 
             .hero-content h2 {
@@ -401,6 +406,24 @@
             .hero-content p {
                 font-size: 18px;
                 white-space: nowrap;
+            }
+        }
+
+        /* モバイルデバイス用のスケーリング制御 */
+        @media screen and (max-width: 768px) {
+            body {
+                transform-origin: top left;
+                transform: scale(0.5);
+                width: 200%;
+                height: 200%;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            body {
+                transform: scale(0.3);
+                width: 333.33%;
+                height: 333.33%;
             }
         }
     </style>
@@ -418,7 +441,7 @@
     </a>   
     </div>
     <div class="hero">
-      <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty22.png" alt="New Aileen">
+         <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty22.png" alt="Aileen">
     </div>
     <div class="hero-content">
         <h2>SPECIAL OFFER FOR SUMMER</h2>
@@ -531,7 +554,7 @@
         <div class="grid">
             <div class="product">
             <div class="image-placeholder">
-            <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty20.png" alt="New Cindy>
+            <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty20.png" alt="Cindy">
             </div>
             <p><strong>Best Selling Tank Top A</strong></p>
             <p class="price">$29.95 <span class="regular-price">(Regular Price $55)</span></p>
