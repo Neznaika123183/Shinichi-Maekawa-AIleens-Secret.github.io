@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カート | Aileen's Secret</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f6f6f6;
+      color: #222;
+      margin: 0;
+    }
+    header {
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      padding: 1.2rem 2rem 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .logo {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #222;
+      letter-spacing: 1px;
+      margin-right: 0;
+    }
+    nav {
+      display: flex;
+      gap: 1.2rem;
+      margin-right: 75px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: #e67e22;
+    }
+    .cart-container {
+      max-width: 900px;
+      margin: 120px auto 0 auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      padding: 2rem 2.5rem 2rem 2.5rem;
+      min-height: 300px;
+    }
+    .cart-title {
+      font-size: 2rem;
+      color: #888;
+      margin-bottom: 1.2rem;
+      font-weight: 500;
+    }
+    .cart-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .cart-item {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 1rem;
+    }
+    .cart-image {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 10px;
+      background: #f6f6f6;
+    }
+    .cart-item-name {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #222;
+    }
+    .cart-item-price {
+      color: #888;
+      font-size: 1rem;
+      margin-left: auto;
+    }
+    .remove-btn {
+      background: #eee;
+      color: #888;
+      border: none;
+      border-radius: 18px;
+      padding: 0.3rem 1rem;
+      font-size: 0.95rem;
+      cursor: pointer;
+      margin-left: 1rem;
+      transition: background 0.2s;
+    }
+    .remove-btn:hover {
+      background: #e67e22;
+      color: #fff;
+    }
+    .checkout-btn {
+      background: #222;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 0.7rem 2.2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 1.5rem;
+      float: right;
+    }
+    .checkout-btn:hover {
+      background: #e67e22;
+    }
+    @media (max-width: 900px) {
+      .cart-container { margin-top: 100px; padding: 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      .cart-container { margin-top: 80px; padding: 0.7rem; }
+      .cart-item { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+      .cart-item-price { margin-left: 0; }
+    }
+    .site-footer {
+      background: #ececec;
+      padding: 2.5rem 0 1.5rem 0;
+      margin-top: 0;
+    }
+    .footer-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .footer-title {
+      font-size: 1.5rem;
+      color: #888;
+      font-weight: bold;
+      margin-bottom: 1.2rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      font-size: 1rem;
+      color: #444;
+    }
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0 0;
+    }
+    .footer-links li {
+      margin-bottom: 0.3rem;
+    }
+    .footer-links a {
+      color: #444;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: #e67e22;
+      text-decoration: underline;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.7rem;
+    }
+    .newsletter-form input[type="email"] {
+      border: 1.5px solid #bbb;
+      border-radius: 24px;
+      padding: 0.5rem 1.2rem;
+      font-size: 1rem;
+      font-family: inherit;
+      background: #fff;
+      outline: none;
+      transition: border 0.2s;
+    }
+    .newsletter-form input[type="email"]:focus {
+      border: 1.5px solid #e67e22;
+    }
+    .newsletter-form button {
+      background: #6d625c;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 0.5rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .newsletter-form button:hover {
+      background: #e67e22;
+    }
+    @media (max-width: 900px) {
+      .footer-links { flex-direction: column; gap: 1.2rem; }
+    }
+    body { padding-top: 100px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo"><a href="new site project11.html" style="text-decoration: none; color: inherit;">Aileen's Secret</a></div>
+    <nav>
+      <a href="shop1.html">ショップ</a>
+      <a href="Service1.html">サービス</a>
+      <a href="faq1.html">FAQ</a>
+      <a href="About1.html">About</a>
+      <a href="contact1.html">お問い合わせ</a>
+      <a href="#" id="login-link">ログイン</a>
+      <a href="#">カート</a>
+    </nav>
+  </header>
+  <div class="cart-container">
+    <h2 class="cart-title">🛒 カート</h2>
+    <div class="cart-list" id="cart-list"></div>
+    <button class="checkout-btn" id="checkout-btn">Checkout</button>
+  </div>
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-title">Aileen's Secret</div>
+      <div class="footer-links">
+        <div>さらに見る
+          <ul>
+            <li><a href="#">会社情報</a></li>
+            <li><a href="#">お問い合わせ</a></li>
+            <li><a href="#">ショップ</a></li>
+            <li><a href="#">サービス</a></li>
+          </ul>
+        </div>
+        <div>SNSでフォロー
+          <div class="sns-icons">
+            <a href="https://www.facebook.com" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://x.com" target="_blank">
+              <i class="fab fa-x-twitter"></i>
+            </a>
+          </div>
+        </div>
+        <div>ニュースや最新情報を受け取るには、メールアドレスでサインアップしてください。
+          <form class="newsletter-form">
+            <input type="email" placeholder="メールアドレス">
+            <button type="submit">サインアップ</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- サインインモーダル -->
+  <div id="signin-modal" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.35);align-items:center;justify-content:center;">
+    <div style="background:#fff;border-radius:10px;box-shadow:0 2px 16px rgba(0,0,0,0.18);padding:0;max-width:420px;width:90vw;max-height:95vh;display:flex;flex-direction:column;position:relative;">
+      <button id="close-signin-modal" style="position:absolute;top:8px;right:12px;font-size:1.5rem;background:none;border:none;cursor:pointer;color:#888;">&times;</button>
+      <iframe src="signIn.html" style="border:none;width:100%;height:480px;border-radius:10px;"></iframe>
+    </div>
+  </div>
+  <script>
+    // カート内容表示
+    function renderCart() {
+      const cartList = document.getElementById('cart-list');
+      let cart = JSON.parse(localStorage.getItem('cartItems') || '[]');
+      cartList.innerHTML = '';
+      if(cart.length === 0) {
+        cartList.innerHTML = '<p>カートに商品がありません。</p>';
+        document.getElementById('checkout-btn').style.display = 'none';
+        return;
+      }
+      cart.forEach((item, idx) => {
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+          <img src="${item.img}" class="cart-image" alt="${item.name}">
+          <span class="cart-item-name">${item.name}</span>
+          <span class="cart-item-price">${item.price}</span>
+          <button class="remove-btn" data-idx="${idx}">削除</button>
+        `;
+        cartList.appendChild(div);
+      });
+      // 削除ボタン
+      document.querySelectorAll('.remove-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          let cart = JSON.parse(localStorage.getItem('cartItems') || '[]');
+          cart.splice(btn.dataset.idx, 1);
+          localStorage.setItem('cartItems', JSON.stringify(cart));
+          renderCart();
+        });
+      });
+    }
+    renderCart();
+    // Checkoutボタン
+    document.getElementById('checkout-btn').onclick = function() {
+      window.location.href = 'checkout0_7.html';
+    };
+    // カートリンク
+    document.querySelectorAll('nav a').forEach(a => {
+      if(a.textContent.includes('カート')){
+        a.addEventListener('click', function(e){
+          e.preventDefault();
+          window.location.href = 'Cart2.html';
+        });
+      }
+    });
+    // サインインモーダル表示
+    const loginLink = document.getElementById('login-link');
+    const signinModal = document.getElementById('signin-modal');
+    const closeSigninModal = document.getElementById('close-signin-modal');
+    if(loginLink && signinModal && closeSigninModal){
+      loginLink.addEventListener('click', function(e){
+        e.preventDefault();
+        signinModal.style.display = 'flex';
+      });
+      closeSigninModal.addEventListener('click', function(){
+        signinModal.style.display = 'none';
+      });
+      // モーダル外クリックで閉じる
+      signinModal.addEventListener('click', function(e){
+        if(e.target === signinModal){
+          signinModal.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html> 
