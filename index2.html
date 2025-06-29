@@ -1,677 +1,962 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aileen's Secret - Special Offer</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: poppins, sans-serif;
-            text-align: center;
-        }
-        .header {
-            background: white;
-            width: 1520px;
-            height: 60px;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-weight: bold;
-            font-size: 30px;
-            position: relative;
-            left: 20px;
-        }
-        .nav {
-            display: flex;
-            gap: 20px;
-            position: relative;
-            left: 400px;
-            align-items: center; /* 要素を中央揃えに */
-        }
-        .contact-btn {
-            background: black;
-            color: white;
-            padding: 3px 10px;
-            border-radius: 5px;
-            font-size: 25px;
-            text-decoration: none;
-            opacity: 1;
-        }
-        .hero {
-            background: lightgray;
-            width: 1520px;
-            height: 790px;
-            padding: 0px 0px;
-            position: relative;
-        }
-        .hero img {
-            width: 1520px;
-            height: 890px;
-            object-fit: cover;
-            position: relative; /* .hero-content を前面にするため */
-            z-index: 0;
-        }
-        .hero-content {
-            display: flex;
-            position: relative; 
-            bottom: 340px; 
-            left: 53%;
-            transform: translateX(-50%);
-            text-align: center;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-        .hero-content h2 {
-            color: white;
-            font-size: 35px;
-            margin-bottom: 2px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-        }
-        .hero-content p {
-            color: gold;
-            font-size: 33px;
-            font-weight: bold;
-            margin: 0;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-        }
-        .hero-content p:nth-of-type(1) {
-            margin-bottom: 3px;
-        }
-        .btn {
-            background: rgba(0, 0, 0, 0.1); /* 半透明の背景を追加 */
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            display: inline-block;
-            margin-bottom: 0px; /* 下の要素との間隔を確保 */   
-        }
-        .sign-in {
-            width: 1520px;
-            height: 300px;
-            margin: 10px auto;
-            padding: 50px;
-            background: #f5f5f5;
-            text-align: center;
-            transform: translateX(0%); /* 左へ0%移動 */
-            border-radius: 10px;
-        }
-        .sign-in input {
-            width: 300px;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .sign-in a {
-            display: block;
-            margin: 10px 0;
-            color: blue;
-            text-decoration: none;
-        }
-        .sign-in button {
-            background: black;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            bottom: 0px; 
-        }
-    </style>
-</head>
-<body>
-  <div class="header">
-    <div class="logo">Aileen's Secret</div>
-    <div class="nav">
-        <a href="#container" class="container">News</a>
-        <a href="#faq" class="faq">FAQ</a>
-        <a href="#info" class="contact">Contact</a>
-    </div>
-    <a href="#cart" class="cart-btn">
-        <img src="https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/cart4.png" alt="Cart">
-    </a>   
-    </div>
-    <div class="hero">
-        <img src="https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/AIBeauty1.png" alt="Aileen">
-    </div>
-    <div class="hero-content">
-        <h2>SPECIAL OFFER FOR SUMMER</h2>
-        <p>Sign up and enjoy 45% OFF</p>
-        <a href="#sign-in" class="btn">CREATE ACCOUNT / SHOP NOW</a>
-    </div>
-  </div>
-    <div id="sign-in" class="sign-in">
-         <h3>Create Account / Sign In</h3>
-         <input type="email" placeholder="Email">
-         <input type="password" placeholder="Password">
-         <a href="#">Forget Password?</a>
-         <button>Secure Sign In</button>
-    </div>
-</body>
-
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>e-commerce site-special offers</title>
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aileen's Secret</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
     body {
-        font-family: poppins, sans-serif;
-        width: 1520px;
-        height: 2584px;
-        margin: 0;
-        padding: 10px;
-        background-color: #f8f8f8;
+      font-family: 'Poppins', sans-serif;
+      background: #f6f6f6;
+      color: #222;
+      margin: 0;
     }
-    .container {
-        max-width: 1520px;
-        margin: auto;
-        padding: 10px 0px;
+    header {
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      padding: 1.2rem 2rem 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    h2 {
-        font-size: 24px;
-        font-weight: bold;
-        text-align: left; /* テキストの左寄せ */
-        align-items: flex-start; /* 左端に寄せる */
+    .logo {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #222;
+      letter-spacing: 1px;
     }
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+    nav {
+      display: flex;
+      gap: 1.2rem;
     }
-    .product {
-        background: white;
-        color: black;
-        font-size: 28px;
-        padding: 42px;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        text-align: center;
+    nav a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.2s;
     }
-    .image-placeholder {
-        width: 650px;
-        height: 650px;
-        background: #ccc;
-        border-radius: 8px;
+    nav a:hover {
+      color: #e67e22;
     }
-    .image-placeholder img {
-        width: 650px;
-        height: 650px;
-        object-fit: cover;
+    .hero-section {
+      background: #ececec;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 0 2.5rem 0;
     }
-    .discount {
-        background: gold;
-        color: black;
-        font-size: 20px;
-        font-weight: bold;
-        padding: 5px 10px;
-        border-radius: 50px;
-        display: inline-block;
-        margin-top: 10px;
+    .hero-left {
+      flex: 1 1 320px;
+      min-width: 300px;
+      max-width: 500px;
+      padding: 2rem 2rem 2rem 4rem;
     }
-    .price {
-        color: red;
-        font-size: 30px;
-        font-weight: bold;
+    .hero-left h1 {
+      font-size: 2.2rem;
+      font-weight: bold;
+      margin-bottom: 1.2rem;
+      color: #444;
     }
-    .regular-price {
-        text-decoration: line-through;
-        font-size: 25px;
-        color: gray;
+    .hero-left p {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      color: #444;
+      line-height: 1.7;
     }
-    .shop-now {
-        background: red;
-        color: white;
-        font-size: 20px;
-        font-weight: bold;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-top: 10px;
+    .hero-left button {
+      background: #222;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 0.8rem 2.2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
     }
-    p strong {
-        font-size: 25px;
+    .hero-left button:hover {
+      background: #e67e22;
     }
-</style>
-
-</head>
-<body>
-        <div class="container">
-           <h2 id="container">NEWS</h2>
-        <div class="grid">
-            <div class="product">
-            <div class="image-placeholder">
-            <img src="https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/AIBeauty6.png" alt="Cindy">
-            </div>
-            <p><strong>Best Selling Tank Top</strong></p>
-            <p class="price">$29.95 <span class="regular-price">(Regular Price $55)</span></p>
-            <span class="discount">SAVE 46%</span>
-            <button class="shop-now">SHOP NOW</button>
-        </div>
-        <div class="product">
-            <div class="image-placeholder">
-            <img src="https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/AIBeauty2.png" alt="Diana">
-            </div>
-            <p><strong>Best Selling Tank Top</strong></p>
-            <p class="price">$29.95 <span class="regular-price">(Regular Price $55)</span></p>
-            <span class="discount">SAVE 46%</span>
-            <button class="shop-now">SHOP NOW</button>
-        </div>
-        <div class="product">
-            <div class="image-placeholder">
-            <img src="https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/AIBeauty3.png" alt="Betty">
-            </div>
-            <p><strong>Best Selling Evening Dress Top</strong></p>
-            <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
-            <span class="discount">SAVE 47%</span>
-            <button class="shop-now">SHOP NOW</button>
-        </div>
-        <div class="product">
-            <div class="image-placeholder">
-            <img src="https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/AIBeauty5.png" alt="Aileen">
-            </div>
-            <p><strong>Best Selling V-Necked Top</strong></p>
-            <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
-            <span class="discount">SAVE 47%</span>
-            <button class="shop-now">SHOP NOW</button>
-        </div>
-        <div class="product">
-          <div class="image-placeholder">
-          <img src="https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/AIBeauty14.png" alt="Cindy">
-          </div>
-          <p><strong>Best Selling V-Necked Knit Top</strong></p>
-          <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
-          <span class="discount">SAVE 46%</span>
-          <button class="shop-now">SHOP NOW</button>
-        </div>
-        <div class="product">
-          <div class="image-placeholder">
-          <img src="https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/AIBeauty7.png" alt="Diana">
-          </div>
-          <p><strong>Best Selling V-Necked Knit Top</strong></p>
-          <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
-          <span class="discount">SAVE 47%</span>
-          <button class="shop-now">SHOP NOW</button>
-        </div>
-        <div class="product">
-          <div class="image-placeholder">
-          <img src="https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/AIBeauty4.png" alt="Betty">
-          </div>
-          <p><strong>Best Selling Evening Dress Top</strong></p>
-          <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
-          <span class="discount">SAVE 47%</span>
-          <button class="shop-now">SHOP NOW</button>
-        </div>
-        <div class="product">
-          <div class="image-placeholder">
-          <img src="https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/AIBeauty1.png" alt="Aileen">
-          </div>
-          <p><strong>Best Selling V-Necked Knit Top</strong></p>
-          <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
-          <span class="discount">SAVE 47%</span>
-          <button class="shop-now">SHOP NOW</button>
-        </div>
-    </div>
-</div>
-</body>
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shopping Cart</title>
-  <link rel="stylesheet" href="styles.css">
-  <style>
-      .cart-container {
-          width: 1520px;
-          height: 500px; 
-          background-color: white;
-          padding: 20px;
-          box-sizing: border-box;
-      }
-      .cart-grid {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 20px;
-      }
-      .cart-item {
-          width: 150px;
-          height: 200px;
-          background: #ccc;
-          border-radius: 8px;
-          padding: 10px;
-      }
-      .cart-item img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-      }
-    </style>
-</head>
-<body>
-  <div class="cart-container" id="cart">
-      <h2 class="cart-title">🛒 Your Cart</h2>
-      <div class="cart-grid">       
-      </div>
-      <div class="checkout-container" style="margin-top: 220px;">
-          <button class="checkout-btn">Proceed to Checkout</button>
-      </div>
-  </div>
-</body>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ Section - E-commerce</title>
-    <style>
-        body {
-            font-family: Poppins, sans-serif;
-            width: 1520px;
-            height: 2584px;
-            margin: 0 ;
-            padding: 0 ;
-            background-color: #f8f8f8;
-            * {
-              box-sizing: border-box;
-        }
-
-        .faq-section {
-            max-width: 1520px;
-            margin: 0 ;
-            padding: 40px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .faq-section h2 {
-            font-size: 26px;
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .faq {
-            border-bottom: 1px solid #ddd;
-            padding: 20px 0;
-        }
-
-        .faq:last-child {
-            border-bottom: none;
-        }
-
-        .question {
-            font-size: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            position: relative;
-            padding-right: 30px;
-            transition: color 0.3s ease;
-        }
-
-        .question:hover {
-            color: #e63946;
-        }
-
-        .answer {
-            font-size: 18px;
-            margin-top: 10px;
-            display: none;
-            color: #555;
-            line-height: 1.6;
-        }
-
-        .toggle-icon {
-            position: absolute;
-            right: 10px;
-            top: 5px;
-            font-size: 24px;
-            transition: transform 0.3s ease;
-        }
-
-        .active .toggle-icon {
-            transform: rotate(180deg);
-        }
-
-        .active .answer {
-            display: block;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="faq-section">
-        <h2 id="faq">Frequently Asked Questions</h2>
-        
-        <div class="faq">
-            <div class="question">
-                What payment methods do you accept?
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="answer">
-                We accept credit cards, PayPal, Apple Pay, and Google Pay for a seamless checkout experience.
-            </div>
-        </div>
-
-        <div class="faq">
-            <div class="question">
-                How long does shipping take?
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="answer">
-                Standard shipping takes 5-7 business days, while express shipping takes 2-3 business days.
-            </div>
-        </div>
-
-        <div class="faq">
-            <div class="question">
-                Can I return or exchange an item?
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="answer">
-                Yes, we offer a 30-day return and exchange policy for unused items in their original packaging.
-            </div>
-        </div>
-
-        <div class="faq">
-            <div class="question">
-                Do you offer international shipping?
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="answer">
-                Yes, we ship internationally. Shipping fees and delivery times vary depending on your location.
-            </div>
-        </div>
-
-        <div class="faq">
-            <div class="question">
-                How can I track my order?
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="answer">
-                Once your order is shipped, we will send you a tracking link via email.
-            </div>
-        </div>
-    </div>
-
-    <script>
-        document.querySelectorAll(".question").forEach((question) => {
-            question.addEventListener("click", () => {
-                question.parentNode.classList.toggle("active");
-            });
-        });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const buttons = document.querySelectorAll(".shop-now");
-            const cartGrid = document.querySelector(".cart-grid");
-    
-        buttons.forEach(button => {
-            button.addEventListener("click", function() {
-            const product = this.closest(".product");
-            const imgSrc = product.querySelector(".image-placeholder img").src;
-            const name = product.querySelector("p strong").textContent;
-            const price = product.querySelector(".price").textContent;
-            
-            const cartItem = document.createElement("div");
-            cartItem.classList.add("cart-item");
-            cartItem.innerHTML = `
-                <img src="${imgSrc}" alt="${name}" class="cart-image">
-                <h3 class="cart-item-name">${name}</h3>
-                <p class="cart-item-price">${price}</p>
-                <button class="remove-btn">🗑 Remove</button>
-            `;
-            
-            cartGrid.appendChild(cartItem);
-            
-            cartItem.querySelector(".remove-btn").addEventListener("click", function() {
-                cartItem.remove();
-                      });
-                   });
-                });
-            });
-
-    </script>
-
-</body>
-</html>
-
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>INFO & FOOTER</title>
-  <style>
-      body {
-          margin: 0 auto;
-          font-family: Poppins, sans-serif;
-      }
-      .info {
-          width: 1520px;
-          height: 406px;
-          background: url('https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/beach1.png') no-repeat center/cover;
-          display: flex;
-          flex-direction: column; /* コンテンツを縦方向に配置 */
-          align-items: flex-start; /* 左端に寄せる */
-          justify-content: flex-start; /* 上端に寄せる */
-          padding-top:  50px;
-          padding-left: 15px;
-          color: white;
-          font-size: 20px;
-          font-weight: bold;
-          text-align: left; /* テキストの左寄せ */
-      }
-      .footer {
-          width: 1520px;
-          height: 70px;
-          background: white;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: black;
-          font-size: 16px;
-      }
-      * {
-          box-sizing: border-box;
-      }
+    .hero-right {
+      flex: 1 1 320px;
+      min-width: 300px;
+      max-width: 600px;
+      padding: 2rem 4rem 2rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .hero-img-box {
+      width: 100%;
+      max-width: 500px;
+      position: relative;
+    }
+    .hero-img-box img {
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+    }
+    .hero-img-title {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 20px;
+      color: #fff;
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      letter-spacing: 1px;
+      background: rgba(0,0,0,0.18);
+      padding: 0.5rem 0;
+      border-radius: 0 0 10px 10px;
+    }
+    .section-title-bar {
+      background: #e0e0e0;
+      padding: 1.2rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #888;
+      letter-spacing: 1px;
+    }
+    .view-all-btn {
+      background: #fff;
+      border: 1px solid #bbb;
+      border-radius: 24px;
+      color: #888;
+      font-size: 1rem;
+      padding: 0.5rem 1.5rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .view-all-btn:hover {
+      background: #e67e22;
+      color: #fff;
+      border-color: #e67e22;
+    }
+    .products-section {
+      background: #f6f6f6;
+      padding: 2rem 0 3rem 0;
+    }
+    .products-grid {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .product-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      width: 270px;
+      padding: 0 0 1.2rem 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .product-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+      transform: translateY(-6px) scale(1.03);
+    }
+    .product-card img {
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+      object-fit: cover;
+      height: 220px;
+    }
+    .product-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 1rem 0 0.3rem 0;
+      color: #222;
+    }
+    .product-price {
+      color: #888;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    @media (max-width: 900px) {
+      .hero-section { flex-direction: column; padding: 1.5rem 0; }
+      .hero-left, .hero-right { max-width: 100%; padding: 1.5rem 1rem; }
+      .products-grid { gap: 1rem; }
+      .product-card { width: 90vw; max-width: 350px; }
+    }
+    @media (max-width: 600px) {
+      .section-title-bar { flex-direction: column; gap: 1rem; align-items: flex-start; }
+      .products-grid { flex-direction: column; align-items: center; }
+      .hero-img-title { font-size: 1.2rem; }
+    }
+    .service-section {
+      background: #ececec;
+      padding: 3rem 0 2rem 0;
+      text-align: center;
+    }
+    .service-title {
+      font-size: 2.2rem;
+      color: #888;
+      margin-bottom: 2.5rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+    }
+    .service-icons {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .service-icon img.circle {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .service-icon img.flower {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      clip-path: path('M60,0 C93,0 120,27 120,60 C120,93 93,120 60,120 C27,120 0,93 0,60 C0,27 27,0 60,0 Z M60,20 C44,20 32,32 32,48 C32,64 44,76 60,76 C76,76 88,64 88,48 C88,32 76,20 60,20 Z');
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .service-details {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .service-detail {
+      width: 220px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .service-detail-link {
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      transition: color 0.2s;
+    }
+    .service-detail-link:hover .service-detail-title {
+      color: #e67e22;
+      text-decoration: underline;
+    }
+    .service-detail-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 0.2rem;
+      border-bottom: 1px solid #bbb;
+      display: inline-block;
+      padding-bottom: 2px;
+      margin-top: 0.7rem;
+    }
+    .service-detail-price {
+      color: #888;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .service-detail-desc {
+      font-size: 0.98rem;
+      color: #555;
+      line-height: 1.7;
+    }
+    @media (max-width: 900px) {
+      .service-details { gap: 1.2rem; }
+      .service-detail { width: 90vw; max-width: 300px; }
+    }
+    @media (max-width: 600px) {
+      .service-details { flex-direction: column; align-items: center; }
+      .service-title { font-size: 1.3rem; }
+    }
+    .subscription-section {
+      background: #ececec;
+      padding: 3rem 0 2rem 0;
+      display: flex;
+      justify-content: center;
+    }
+    .subscription-cards {
+      display: flex;
+      gap: 2.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      width: 100%;
+      max-width: 900px;
+    }
+    .subscription-card {
+      background: #f6f6f6;
+      border: 1.5px solid #e0bfbf;
+      border-radius: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      width: 340px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2.2rem 1.2rem 1.5rem 1.2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    .subscription-img-box {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 1.2rem auto;
+      border: 2px solid #e0bfbf;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .subscription-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+    }
+    .subscription-content {
+      text-align: center;
+      width: 100%;
+    }
+    .subscription-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      border: 1px solid #e0bfbf;
+      border-radius: 8px;
+      padding: 0.5rem 0.7rem;
+      display: inline-block;
+      background: #fff;
+      position: relative;
+    }
+    .subscription-badge {
+      color: #e07a7a;
+      font-size: 1rem;
+      margin-left: 0.3rem;
+      vertical-align: middle;
+    }
+    .subscription-desc {
+      font-size: 0.98rem;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+      margin-top: 0.5rem;
+    }
+    .subscription-btn {
+      background: #444;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 0.7rem 2.2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      letter-spacing: 1px;
+    }
+    .subscription-btn:hover {
+      background: #e67e22;
+    }
+    @media (max-width: 900px) {
+      .subscription-cards { gap: 1.2rem; }
+      .subscription-card { width: 90vw; max-width: 350px; }
+    }
+    @media (max-width: 600px) {
+      .subscription-cards { flex-direction: column; align-items: center; }
+      .subscription-section { padding: 2rem 0 1rem 0; }
+    }
+    .brand-detail-section {
+      background: #ececec;
+      padding: 3rem 0 2rem 0;
+      margin-top: 0;
+    }
+    .brand-detail-header {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 2.5rem;
+      padding: 0 2rem;
+      max-width: 1100px;
+      margin: 0 auto 1.5rem auto;
+    }
+    .brand-detail-title {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #444;
+      letter-spacing: 2px;
+      min-width: 200px;
+    }
+    .brand-detail-desc {
+      font-size: 1rem;
+      color: #444;
+      line-height: 1.7;
+      margin-top: 0.2rem;
+      flex: 1;
+    }
+    .brand-detail-link {
+      color: #888;
+      font-size: 0.98rem;
+      margin-left: 1.2rem;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+    .brand-detail-mainimg {
+      width: 100%;
+      max-width: 900px;
+      margin: 1.5rem auto 2.5rem auto;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      background: #f6f6f6;
+    }
+    .brand-detail-mainimg img {
+      width: 100%;
+      display: block;
+      border-radius: 18px;
+      object-fit: cover;
+    }
+    .brand-follow-banner {
+      width: 100%;
+      background: #ececec;
+      text-align: center;
+      margin: 2.5rem 0 1.5rem 0;
+      overflow: hidden;
+      position: relative;
+      min-height: 5.5rem;
+    }
+    .follow-anim-scroll {
+      display: inline-block;
+      font-size: 4.2rem;
+      color: #b0a9a9;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      font-family: 'Poppins', 'Noto Sans JP', sans-serif;
+      white-space: nowrap;
+      animation: followScroll 35s linear infinite;
+      position: absolute;
+      left: 0;
+    }
+    .follow-anim-scroll:nth-child(2) {
+      left: 35%;
+    }
+    .follow-anim-scroll:nth-child(3) {
+      left: 70%;
+    }
+    @keyframes followScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+    .brand-social-btn {
+      position: absolute;
+      left: 50%;
+      top: 60%;
+      transform: translate(-50%, -50%);
+      background: #444;
+      color: #fff;
+      border: none;
+      border-radius: 18px;
+      padding: 0.5rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      z-index: 2;
+    }
+    .brand-detail-gallery {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      align-items: flex-start;
+      margin: 2.5rem auto 0 auto;
+      max-width: 1100px;
+      flex-wrap: wrap;
+    }
+    .brand-gallery-item {
+      width: 220px;
+      height: 220px;
+      background: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .brand-gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    @media (max-width: 900px) {
+      .brand-detail-header { flex-direction: column; gap: 1rem; }
+      .brand-detail-mainimg { max-width: 98vw; }
+      .brand-detail-gallery { gap: 1rem; }
+      .brand-gallery-item { width: 45vw; max-width: 220px; height: 45vw; max-height: 220px; }
+      .brand-follow-banner { min-height: 3.5rem; }
+      .follow-anim-scroll { font-size: 2.2rem; }
+    }
+    @media (max-width: 600px) {
+      .brand-detail-title { font-size: 1.2rem; }
+      .brand-detail-header { padding: 0 0.5rem; }
+      .brand-follow-banner { margin: 1.2rem 0 1rem 0; }
+      .brand-detail-gallery { flex-direction: column; align-items: center; }
+      .brand-gallery-item { width: 90vw; max-width: 220px; height: 90vw; max-height: 220px; }
+    }
+    .contact-section {
+      background: #f6f6f6;
+      padding: 2.5rem 0 0 0;
+    }
+    .contact-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+    .contact-form {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      padding: 2rem 2.5rem 2rem 2.5rem;
+      min-width: 320px;
+      max-width: 420px;
+      flex: 1 1 320px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .contact-title {
+      font-size: 2rem;
+      color: #888;
+      margin-bottom: 1.2rem;
+      font-weight: 500;
+    }
+    .contact-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      margin-bottom: 0.7rem;
+    }
+    .contact-form input,
+    .contact-form textarea {
+      border: 1.5px solid #bbb;
+      border-radius: 24px;
+      padding: 0.7rem 1.2rem;
+      font-size: 1rem;
+      font-family: inherit;
+      margin-bottom: 0.2rem;
+      background: #f6f6f6;
+      outline: none;
+      transition: border 0.2s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border: 1.5px solid #e67e22;
+    }
+    .contact-form textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    .contact-submit {
+      background: #6d625c;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 0.7rem 2.2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      align-self: flex-start;
+      transition: background 0.2s;
+    }
+    .contact-submit:hover {
+      background: #e67e22;
+    }
+    .contact-image {
+      flex: 1 1 320px;
+      min-width: 300px;
+      max-width: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f6f6f6;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      padding: 1.5rem;
+    }
+    .contact-image img {
+      width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+    @media (max-width: 900px) {
+      .contact-container { flex-direction: column; align-items: stretch; gap: 1.2rem; }
+      .contact-form, .contact-image { max-width: 100%; min-width: 0; }
+    }
+    .site-footer {
+      background: #ececec;
+      padding: 2.5rem 0 1.5rem 0;
+      margin-top: 0;
+    }
+    .footer-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .footer-title {
+      font-size: 1.5rem;
+      color: #888;
+      font-weight: bold;
+      margin-bottom: 1.2rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      font-size: 1rem;
+      color: #444;
+    }
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0 0;
+    }
+    .footer-links li {
+      margin-bottom: 0.3rem;
+    }
+    .footer-links a {
+      color: #444;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: #e67e22;
+      text-decoration: underline;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.7rem;
+    }
+    .newsletter-form input[type="email"] {
+      border: 1.5px solid #bbb;
+      border-radius: 24px;
+      padding: 0.5rem 1.2rem;
+      font-size: 1rem;
+      font-family: inherit;
+      background: #fff;
+      outline: none;
+      transition: border 0.2s;
+    }
+    .newsletter-form input[type="email"]:focus {
+      border: 1.5px solid #e67e22;
+    }
+    .newsletter-form button {
+      background: #6d625c;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 0.5rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .newsletter-form button:hover {
+      background: #e67e22;
+    }
+    @media (max-width: 900px) {
+      .footer-links { flex-direction: column; gap: 1.2rem; }
+    }
   </style>
 </head>
 <body>
-  <div class="info">
-      <div>
-          <h4 id="info">CONTACT</h4>
-          <p>987 Somewhere St.</p>
-          <p>Overtherainbow, Neverneverland</p>
-          <p>+123-456-7890</p>
-          <p>info@aileenssecret</p>
+  <header>
+    <div class="logo">Aileen's Secret</div>
+    <nav>
+      <a href="shop1.html">ショップ</a>
+      <a href="Service1.html">サービス</a>
+      <a href="faq1.html">FAQ</a>
+      <a href="About1.html">About</a>
+      <a href="contact1.html">お問い合わせ</a>
+      <a href="#" id="login-link">ログイン</a>
+      <a href="Cart2.html">カート</a>
+    </nav>
+  </header>
+  <section class="hero-section">
+    <div class="hero-left">
+      <h1>Aileen's Secret</h1>
+      <p>こんにちは、冒険への扉を開けましょう！このウェブサイトでは、楽しいアイデアと元気いっぱいのヒントを集めて、あなたの自信をもっとエキサイティングにします！</p>
+      <button onclick="window.location.href='About1.html'">詳細を確認</button>
+    </div>
+    <div class="hero-right">
+      <div class="hero-img-box">
+        <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty22.png" alt="Aileen">
+        <div class="hero-img-title">Aileen's Secret</div>
       </div>
+    </div>
+  </section>
+  <div class="section-title-bar">
+    <div class="section-title">注目の商品</div>
+    <button class="view-all-btn" onclick="window.location.href='shop1.html'">すべての商品を見る</button>
   </div>
-  <div class="footer">
-      <p>&copy; Aileen's Secret</p>
+  <section class="products-section">
+    <div class="products-grid">
+      <div class="product-card" onclick="window.location.href='wakuwakushopping1.html'" style="cursor: pointer;">
+        <div class="brand-gallery-item"><img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty26.png" alt="Cindy 新着＆おすすめアイテム"></div>
+        <div class="product-title">新着＆おすすめアイテム</div>
+        <div class="product-price">¥2,500</div>
+      </div>
+      <div class="product-card" onclick="window.location.href='premiumpack1.html'" style="cursor: pointer;">
+        <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty27.png" alt="Diana プレミアムパック">
+        <div class="product-title">プレミアムパック</div>
+        <div class="product-price">¥2,500</div>
+      </div>
+      <div class="product-card">
+        <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty21.png" alt="Betty ウルトラスマイルセール">
+        <div class="product-title">ウルトラスマイルセール</div>
+        <div class="product-price">¥2,500</div>
+      </div>
+    </div>
+  </section>
+  <!-- サービス内容セクション追加 -->
+  <section class="service-section">
+    <h2 class="service-title">サービス内容</h2>
+    <div class="service-details">
+      <div class="service-detail">
+        <a href="shopadventure3.html" class="service-detail-link">
+          <div class="service-icon"><img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty33.png" class="circle" alt="ショップアドベンチャー"></div>
+          <div class="service-detail-title">ショップアドベンチャー</div>
+        </a>
+        <div class="service-detail-price">¥9,900</div>
+        <div class="service-detail-desc">楽しい製品がいっぱいのショップにぜひ遊びに来てください！新しいトレンドを発見するワクワクの時間が待っています。</div>
+      </div>
+      <div class="service-detail">
+        <a href="smile.html" class="service-detail-link">
+          <div class="service-icon"><img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty29.png" class="circle" alt="スマイルセール"></div>
+          <div class="service-detail-title">スマイルセール</div>
+        </a>
+        <div class="service-detail-price">¥14,900</div>
+        <div class="service-detail-desc">幸せいっぱいのお買い物体験をどうぞ！限定オファーで心が踊るお買い物の旅をお楽しみください。</div>
+      </div>
+      <div class="service-detail">
+        <a href="happiibox.html" class="service-detail-link">
+          <div class="service-icon"><img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty32.png" class="circle" alt="サプライズBOX"></div>
+          <div class="service-detail-title">サプライズBOX</div>
+        </a>
+        <div class="service-detail-price">¥19,900</div>
+        <div class="service-detail-desc">お楽しみが詰まったサプライズBOXで、毎日をもっとワクワクに！新しい驚きと楽しさがあなたを待っています。</div>
+      </div>
+      <div class="service-detail">
+        <a href="joyfulshopping3.html" class="service-detail-link">
+          <div class="service-icon"><img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty31.png" class="circle" alt="わくわくショッピング"></div>
+          <div class="service-detail-title">わくわくショッピング</div>
+        </a>
+        <div class="service-detail-price">¥24,900</div>
+        <div class="service-detail-desc">新しい日常を見つける冒険に出かけよう！おしゃれでユニークなアイテムを手に入れて、自分だけのスタイルを楽しんでください。</div>
+      </div>
+    </div>
+  </section>
+  <!-- サブスクリプション紹介セクション追加 -->
+  <section class="subscription-section">
+    <div class="subscription-cards">
+      <div class="subscription-card">
+        <div class="subscription-img-box">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty23.png" alt="Aileen ビーチリゾート・トータルコーデ サブスク">
+        </div>
+        <div class="subscription-content">
+          <div class="subscription-title">トータルコーデ・サブスク</div>
+          <div class="subscription-desc">次々と追加されるクラス、ワークショップ、限定コンテンツのコレクションに、いつでもアクセスできます。毎月、新しいアイテムが追加されます。</div>
+          <button class="subscription-btn" onclick="window.location.href='subscription1.html'">登録</button>
+        </div>
+      </div>
+      <div class="subscription-card">
+        <div class="subscription-img-box">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty24.png" alt="Cindy ビーチリゾート・トータルコーデ サブスク">
+        </div>
+        <div class="subscription-content">
+          <div class="subscription-title">サブスク・コミュニティ</div>
+          <div class="subscription-desc">次々と追加されるクラス、ワークショップ、限定コンテンツのコレクションに、いつでもアクセスできます。毎月、新しいアイテムが追加されます。</div>
+          <button class="subscription-btn" onclick="window.location.href='subscription2.html'">登録</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ブランドの詳細セクション追加 -->
+  <section class="brand-detail-section">
+    <div class="brand-detail-header">
+      <div class="brand-detail-title">ブランドの詳細</div>
+      <div class="brand-detail-desc">
+        専門家によるこだわりと美しさを手に、何かにときめきをプラスし、オンライン化で新たな価値を創るWebサイトの中で、あなたのサイトを特別にするのが、あなただけのストーリーです。<a href="About1.html" class="brand-detail-link">詳細を確認</a>
+      </div>
+    </div>
+    <div class="brand-detail-mainimg">
+      <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty22.png" alt="Aileen ブランドイメージ">
+    </div>
+    <div class="brand-follow-banner">
+      <span class="follow-anim-scroll">フォローする</span>
+      <span class="follow-anim-scroll">フォローする</span>
+      <span class="follow-anim-scroll">フォローする</span>
+      <button class="brand-social-btn" onclick="showSocialModal()">ソーシャル</button>
+    </div>
+    <div class="brand-detail-gallery">
+      <div class="brand-gallery-item"><img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty25.png" alt="Diana"></div>
+      <div class="brand-gallery-item"><img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty26.png" alt="Betty"></div>
+      <div class="brand-gallery-item"><img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty20.png" alt="Cindy"></div>
+      <div class="brand-gallery-item"><img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty21.png" alt="Diana"></div>
+    </div>
+  </section>
+  <!-- お問い合わせセクション追加 -->
+  <section class="contact-section">
+    <div class="contact-container">
+      <form class="contact-form">
+        <h2 class="contact-title">お問い合わせ</h2>
+        <div class="contact-row">
+          <label>姓（必須）</label>
+          <input type="text" name="lastname" required>
+          <label>名</label>
+          <input type="text" name="firstname">
+        </div>
+        <div class="contact-row">
+          <label>メールアドレス（必須）</label>
+          <input type="email" name="email" required>
+        </div>
+        <div class="contact-row">
+          <label>件名</label>
+          <input type="text" name="subject">
+        </div>
+        <div class="contact-row">
+          <label>メッセージ（必須）</label>
+          <textarea name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="contact-submit">送信</button>
+      </form>
+      <div class="contact-image">
+        <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty24.png" alt="Cindy お問い合わせイメージ">
+      </div>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-title">Aileen's Secret</div>
+      <div class="footer-links">
+        <div>さらに見る
+          <ul>
+            <li><a href="#">会社情報</a></li>
+            <li><a href="#">お問い合わせ</a></li>
+            <li><a href="#">ショップ</a></li>
+            <li><a href="#">サービス</a></li>
+          </ul>
+        </div>
+        <div>SNSでフォロー
+          <div class="sns-icons">
+            <a href="https://www.facebook.com" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://x.com" target="_blank">
+              <i class="fab fa-x-twitter"></i>
+            </a>
+          </div>
+        </div>
+        <div>ニュースや最新情報を受け取るには、メールアドレスでサインアップしてください。
+          <form class="newsletter-form">
+            <input type="email" placeholder="メールアドレス">
+            <button type="submit">サインアップ</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- サインインモーダル -->
+  <div id="signin-modal" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.35);align-items:center;justify-content:center;">
+    <div style="background:#fff;border-radius:10px;box-shadow:0 2px 16px rgba(0,0,0,0.18);padding:0;max-width:420px;width:90vw;max-height:95vh;display:flex;flex-direction:column;position:relative;">
+      <button id="close-signin-modal" style="position:absolute;top:8px;right:12px;font-size:1.5rem;background:none;border:none;cursor:pointer;color:#888;">&times;</button>
+      <iframe src="signIn.html" style="border:none;width:100%;height:480px;border-radius:10px;"></iframe>
+    </div>
+  </div>
+  
+  <!-- ソーシャルメディアモーダル -->
+  <div id="social-modal" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.35);align-items:center;justify-content:center;">
+    <div style="background:#fff;border-radius:15px;box-shadow:0 4px 20px rgba(0,0,0,0.2);padding:2rem;max-width:400px;width:90vw;text-align:center;position:relative;">
+      <button id="close-social-modal" style="position:absolute;top:10px;right:15px;font-size:1.5rem;background:none;border:none;cursor:pointer;color:#888;">&times;</button>
+      <h3 style="color:#222;margin-bottom:1.5rem;font-size:1.3rem;">フォローしてください</h3>
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        <a href="https://twitter.com/ailenssecret" target="_blank" style="background:#1DA1F2;color:#fff;padding:0.8rem 1.5rem;border-radius:25px;text-decoration:none;font-weight:600;transition:background 0.2s;">X（Twitter）でフォロー</a>
+        <a href="https://instagram.com/ailenssecret" target="_blank" style="background:linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);color:#fff;padding:0.8rem 1.5rem;border-radius:25px;text-decoration:none;font-weight:600;transition:opacity 0.2s;">Instagramでフォロー</a>
+      </div>
+    </div>
   </div>
   <script>
-    // Dummy price map for products
-    const priceMap = {
-        'AIBeauty6.png': 29.95,
-        'AIBeauty2.png': 29.95,
-        'AIBeauty3.png': 39.95,
-        'AIBeauty5.png': 39.95,
-        'AIBeauty14.png': 39.95,
-        'AIBeauty7.png': 39.95,
-        'AIBeauty4.png': 39.95,
-        'AIBeauty1.png': 39.95
-    };
+    // サインインモーダル表示
+    const loginLink = document.getElementById('login-link');
+    const signinModal = document.getElementById('signin-modal');
+    const closeSigninModal = document.getElementById('close-signin-modal');
+    if(loginLink && signinModal && closeSigninModal){
+      loginLink.addEventListener('click', function(e){
+        e.preventDefault();
+        signinModal.style.display = 'flex';
+      });
+      closeSigninModal.addEventListener('click', function(){
+        signinModal.style.display = 'none';
+      });
+      // モーダル外クリックで閉じる
+      signinModal.addEventListener('click', function(e){
+        if(e.target === signinModal){
+          signinModal.style.display = 'none';
+        }
+      });
+    }
     
-    // Checkout button logic
-    document.querySelector('.checkout-btn').addEventListener('click', function() {
-        const popup = document.getElementById('checkout-popup');
-        const checkoutItems = document.getElementById('checkout-items');
-        const checkoutTotal = document.getElementById('checkout-total');
-    
-        checkoutItems.innerHTML = '';
-        let total = 0;
-    
-        const cartImgs = document.querySelectorAll('.cart-item img');
-        cartImgs.forEach(img => {
-            const src = img.getAttribute('src');
-            const filename = src.split('/').pop();
-            const price = priceMap[filename] || 0;
-            total += price;
-    
-            const imgElem = document.createElement('img');
-            imgElem.src = src;
-            imgElem.style.width = '100px';
-            imgElem.style.height = '100px';
-            imgElem.style.objectFit = 'cover';
-            checkoutItems.appendChild(imgElem);
-        });
-    
-        checkoutTotal.textContent = total.toFixed(2);
-        popup.style.display = 'block';
-    });
-    
-    // Stripe Checkout placeholder
-    document.getElementById('pay-btn').addEventListener('click', function () {
-        // Replace below with actual Stripe integration
-        alert('Redirecting to Stripe Checkout with total amount: $' + document.getElementById('checkout-total').textContent);
+    // ソーシャルメディアモーダル表示
+    function showSocialModal() {
+      const socialModal = document.getElementById('social-modal');
+      const closeSocialModal = document.getElementById('close-social-modal');
+      
+      if(socialModal && closeSocialModal){
+        socialModal.style.display = 'flex';
         
-        // Example (if Stripe is installed and public key is set):
-        /*
-        fetch('/create-checkout-session', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ items: [...] })
-        })
-        .then(res => res.json())
-        .then(session => {
-            return stripe.redirectToCheckout({ sessionId: session.id });
+        closeSocialModal.addEventListener('click', function(){
+          socialModal.style.display = 'none';
         });
-        */
-    });
-    </script>
-
-<!-- Checkout Popup Window -->
-<div id="checkout-popup" style="display:none; position:fixed; top:10%; left:50%; transform:translateX(-50%);
-    background:white; border:2px solid #ccc; border-radius:10px; padding:20px; width:800px; z-index:1000;">
-  <h2>Checkout Summary</h2>
-  <div id="checkout-items" style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:20px;"></div>
-  <p><strong>Total: $<span id="checkout-total">0.00</span></strong></p>
-  <button id="pay-btn" style="padding:10px 20px; background:black; color:white; border:none; border-radius:5px; cursor:pointer;">
-    Pay with Stripe
-  </button>
-  <button onclick="document.getElementById('checkout-popup').style.display='none'" 
-    style="margin-left:20px; background:gray; color:white; padding:10px; border:none; border-radius:5px;">
-    Cancel
-  </button>
-</div>
+        
+        // モーダル外クリックで閉じる
+        socialModal.addEventListener('click', function(e){
+          if(e.target === socialModal){
+            socialModal.style.display = 'none';
+          }
+        });
+      }
+    }
+  </script>
 </body>
 </html>
