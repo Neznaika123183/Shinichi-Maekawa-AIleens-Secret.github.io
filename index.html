@@ -20,12 +20,16 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
     }
     .logo {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       font-weight: bold;
       color: #222;
-      letter-spacing: 1px;
     }
     nav {
       display: flex;
@@ -39,27 +43,35 @@
       transition: color 0.2s;
     }
     nav a:hover {
-      color: #e67e22;
+      color: #FF8C00;
     }
     .hero-section {
       background: #ececec;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      padding: 2.5rem 0 2.5rem 0;
+      position: relative;
+      width: 100vw;
+      height: 56.25vw; /* 16:9の比率 (9/16 = 0.5625) */
+      max-height: 100vh;
+      margin-top: 0;
+      overflow: hidden;
+      margin-top: 0;
     }
     .hero-left {
-      flex: 1 1 320px;
-      min-width: 300px;
+      position: absolute;
+      top: 50%;
+      left: 5%;
+      transform: translateY(-50%);
+      z-index: 10;
       max-width: 500px;
-      padding: 2rem 2rem 2rem 4rem;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
     }
     .hero-left h1 {
       font-size: 2.2rem;
       font-weight: bold;
       margin-bottom: 1.2rem;
-      color: #444;
+      color: #0047AB;
     }
     .hero-left p {
       font-size: 1rem;
@@ -67,39 +79,48 @@
       color: #444;
       line-height: 1.7;
     }
+    .hero-left p .brand-name {
+      font-weight: bold;
+    }
+    .hero-left button .brand-name {
+      font-size: 1rem;
+      font-weight: 900;
+      line-height: 1.7;
+    }
     .hero-left button {
-      background: #222;
-      color: #fff;
-      border: none;
+      background: #fff;
+      color: #444;
+      border: 1px solid #bbb;
       border-radius: 24px;
       padding: 0.8rem 2.2rem;
       font-size: 1rem;
       font-weight: 600;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: background 0.2s, color 0.2s;
     }
     .hero-left button:hover {
-      background: #e67e22;
+      background: #FF8C00;
+      color: #fff;
+      border-color: #FF8C00;
     }
     .hero-right {
-      flex: 1 1 320px;
-      min-width: 300px;
-      max-width: 600px;
-      padding: 2rem 4rem 2rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
     .hero-img-box {
       width: 100%;
-      max-width: 500px;
+      height: 100%;
       position: relative;
     }
     .hero-img-box img {
-      width: 100%;
-      border-radius: 10px;
+      width: 100vw;
+      height: 100%;
+      object-fit: cover;
       display: block;
+      margin-left: calc(-50vw + 50%);
     }
     .hero-img-title {
       position: absolute;
@@ -117,51 +138,66 @@
       border-radius: 0 0 10px 10px;
     }
     .section-title-bar {
-      background: #e0e0e0;
-      padding: 1.2rem 2rem;
+      background: linear-gradient(-45deg, #f6f6f6, #e6e6fa, #fadadd, #e6e6fa);
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+      padding: 1.5rem 2.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-top: 2rem;
+      margin-top: 3rem;
+    }
+    
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
     }
     .section-title {
-      font-size: 1.4rem;
+      font-size: 1.6rem;
       font-weight: bold;
-      color: #888;
+      color: #444;
       letter-spacing: 1px;
     }
     .view-all-btn {
       background: #fff;
       border: 1px solid #bbb;
       border-radius: 24px;
-      color: #888;
-      font-size: 1rem;
-      padding: 0.5rem 1.5rem;
+      color: #444;
+      font-size: 1.1rem;
+      font-weight: bold;
+      padding: 0.7rem 2rem;
       cursor: pointer;
       transition: background 0.2s, color 0.2s;
     }
     .view-all-btn:hover {
-      background: #e67e22;
+      background: #FF8C00;
       color: #fff;
-      border-color: #e67e22;
+      border-color: #FF8C00;
     }
     .products-section {
       background: #f6f6f6;
-      padding: 2rem 0 3rem 0;
+      padding: 3rem 0 4rem 0;
     }
     .products-grid {
       display: flex;
-      gap: 2rem;
+      gap: 3rem;
       justify-content: center;
       flex-wrap: wrap;
-      margin-top: 1.5rem;
+      margin-top: 2rem;
     }
     .product-card {
       background: #fff;
-      border-radius: 10px;
+      border-radius: 15px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-      width: 270px;
-      padding: 0 0 1.2rem 0;
+      width: 320px;
+      padding: 0 0 1.5rem 0;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -173,24 +209,32 @@
     }
     .product-card img {
       width: 100%;
-      border-radius: 10px 10px 0 0;
+      border-radius: 15px 15px 0 0;
       object-fit: cover;
-      height: 220px;
+      height: 260px;
     }
     .product-title {
-      font-size: 1.1rem;
+      font-size: 1.3rem;
       font-weight: 600;
-      margin: 1rem 0 0.3rem 0;
+      margin: 1.2rem 0 0.5rem 0;
       color: #222;
     }
     .product-price {
       color: #888;
-      font-size: 1rem;
+      font-size: 1.1rem;
       margin-bottom: 0.5rem;
     }
     @media (max-width: 900px) {
-      .hero-section { flex-direction: column; padding: 1.5rem 0; }
-      .hero-left, .hero-right { max-width: 100%; padding: 1.5rem 1rem; }
+      .hero-section { 
+        height: 56.25vw; 
+        max-height: 100vh; 
+      }
+      .hero-left { 
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+        max-width: 90vw; 
+        padding: 1.5rem; 
+      }
       .products-grid { gap: 1rem; }
       .product-card { width: 90vw; max-width: 350px; }
     }
@@ -200,34 +244,36 @@
       .hero-img-title { font-size: 1.2rem; }
     }
     .service-section {
-      background: #ececec;
-      padding: 3rem 0 2rem 0;
+      background: linear-gradient(-45deg, #f6f6f6, #e6e6fa, #fadadd, #e6e6fa);
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+      padding: 4rem 0 3rem 0;
       text-align: center;
     }
     .service-title {
-      font-size: 2.2rem;
-      color: #888;
-      margin-bottom: 2.5rem;
-      font-weight: 500;
+      font-size: 2.5rem;
+      color: #444;
+      margin-bottom: 3rem;
+      font-weight: bold;
       letter-spacing: 2px;
     }
     .service-icons {
       display: flex;
       justify-content: center;
-      gap: 2.5rem;
-      margin-bottom: 2.5rem;
+      gap: 3rem;
+      margin-bottom: 3rem;
       flex-wrap: wrap;
     }
     .service-icon img.circle {
-      width: 120px;
-      height: 120px;
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
       object-fit: cover;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
     .service-icon img.flower {
-      width: 120px;
-      height: 120px;
+      width: 140px;
+      height: 140px;
       object-fit: cover;
       clip-path: path('M60,0 C93,0 120,27 120,60 C120,93 93,120 60,120 C27,120 0,93 0,60 C0,27 27,0 60,0 Z M60,20 C44,20 32,32 32,48 C32,64 44,76 60,76 C76,76 88,64 88,48 C88,32 76,20 60,20 Z');
       background: #fff;
@@ -236,12 +282,12 @@
     .service-details {
       display: flex;
       justify-content: center;
-      gap: 2.5rem;
+      gap: 3rem;
       flex-wrap: wrap;
-      margin-top: 1.5rem;
+      margin-top: 2rem;
     }
     .service-detail {
-      width: 220px;
+      width: 260px;
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -257,25 +303,25 @@
       transition: color 0.2s;
     }
     .service-detail-link:hover .service-detail-title {
-      color: #e67e22;
+      color: #FF8C00;
       text-decoration: underline;
     }
     .service-detail-title {
-      font-size: 1.1rem;
+      font-size: 1.3rem;
       font-weight: bold;
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.3rem;
       border-bottom: 1px solid #bbb;
       display: inline-block;
-      padding-bottom: 2px;
-      margin-top: 0.7rem;
+      padding-bottom: 3px;
+      margin-top: 0.8rem;
     }
     .service-detail-price {
       color: #888;
-      font-size: 1rem;
+      font-size: 1.1rem;
       margin-bottom: 0.5rem;
     }
     .service-detail-desc {
-      font-size: 0.98rem;
+      font-size: 1.1rem;
       color: #555;
       line-height: 1.7;
     }
@@ -289,37 +335,39 @@
     }
     .subscription-section {
       background: #ececec;
-      padding: 3rem 0 2rem 0;
+      padding: 4rem 0 3rem 0;
       display: flex;
       justify-content: center;
     }
     .subscription-cards {
       display: flex;
-      gap: 2.5rem;
+      gap: 3rem;
       justify-content: center;
       flex-wrap: wrap;
       width: 100%;
-      max-width: 900px;
+      max-width: 1000px;
     }
     .subscription-card {
-      background: #f6f6f6;
+      background: linear-gradient(-45deg, #f6f6f6, #e6e6fa, #fadadd, #e6e6fa);
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
       border: 1.5px solid #e0bfbf;
-      border-radius: 18px;
+      border-radius: 20px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      width: 340px;
+      width: 380px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 2.2rem 1.2rem 1.5rem 1.2rem;
-      margin-bottom: 1.5rem;
+      padding: 2.5rem 1.5rem 2rem 1.5rem;
+      margin-bottom: 2rem;
       position: relative;
     }
     .subscription-img-box {
-      width: 180px;
-      height: 180px;
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
       overflow: hidden;
-      margin: 0 auto 1.2rem auto;
+      margin: 0 auto 1.5rem auto;
       border: 2px solid #e0bfbf;
       background: #fff;
       display: flex;
@@ -334,47 +382,70 @@
       display: block;
     }
     .subscription-content {
-      text-align: center;
+      text-align: left;
       width: 100%;
     }
     .subscription-title {
-      font-size: 1.1rem;
+      font-size: 1.3rem;
       font-weight: bold;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.7rem;
       border: 1px solid #e0bfbf;
-      border-radius: 8px;
-      padding: 0.5rem 0.7rem;
+      border-radius: 10px;
+      padding: 0.7rem 1rem;
       display: inline-block;
       background: #fff;
       position: relative;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      text-align: center;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .subscription-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 0.7rem;
+      border: 1px solid #e0bfbf;
+      border-radius: 10px;
+      padding: 0.7rem 1rem;
+      display: inline-block;
+      background: #fff;
+      position: relative;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .subscription-title:hover {
+      background: #FF8C00;
+      color: #fff;
+      border-color: #FF8C00;
     }
     .subscription-badge {
       color: #e07a7a;
-      font-size: 1rem;
+      font-size: 1.1rem;
       margin-left: 0.3rem;
       vertical-align: middle;
     }
     .subscription-desc {
-      font-size: 0.98rem;
+      font-size: 1.1rem;
       color: #555;
       line-height: 1.7;
-      margin-bottom: 1.2rem;
-      margin-top: 0.5rem;
+      margin-bottom: 1.5rem;
+      margin-top: 0.7rem;
     }
     .subscription-btn {
       background: #444;
       color: #fff;
       border: none;
       border-radius: 24px;
-      padding: 0.7rem 2.2rem;
-      font-size: 1rem;
+      padding: 0.8rem 2.5rem;
+      font-size: 1.1rem;
       font-weight: 600;
       cursor: pointer;
       transition: background 0.2s;
       letter-spacing: 1px;
     }
     .subscription-btn:hover {
-      background: #e67e22;
+      background: #FF8C00;
     }
     @media (max-width: 900px) {
       .subscription-cards { gap: 1.2rem; }
@@ -386,67 +457,93 @@
     }
     .brand-detail-section {
       background: #ececec;
-      padding: 3rem 0 2rem 0;
+      padding: 4rem 0 3rem 0;
       margin-top: 0;
     }
     .brand-detail-header {
       display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      justify-content: flex-start;
-      gap: 2.5rem;
-      padding: 0 2rem;
-      max-width: 1100px;
-      margin: 0 auto 1.5rem auto;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 0 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto 2rem auto;
+      text-align: center;
+    }
+    .brand-detail-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
     .brand-detail-title {
-      font-size: 2rem;
+      font-size: 2.5rem;
       font-weight: bold;
       color: #444;
       letter-spacing: 2px;
-      min-width: 200px;
     }
     .brand-detail-desc {
-      font-size: 1rem;
+      font-size: 1.2rem;
       color: #444;
-      line-height: 1.7;
-      margin-top: 0.2rem;
-      flex: 1;
+      line-height: 1.8;
+      margin: 0;
+      text-align: center;
+      white-space: nowrap;
     }
     .brand-detail-link {
       color: #888;
-      font-size: 0.98rem;
-      margin-left: 1.2rem;
+      font-size: 1.1rem;
       text-decoration: underline;
       cursor: pointer;
+      text-align: center;
     }
     .brand-detail-mainimg {
       width: 100%;
-      max-width: 900px;
-      margin: 1.5rem auto 2.5rem auto;
-      border-radius: 18px;
+      max-width: 1000px;
+      margin: 2rem auto 3rem auto;
+      border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 2px 12px rgba(0,0,0,0.08);
       background: #f6f6f6;
     }
+    .brand-detail-mainimg {
+      position: relative;
+    }
     .brand-detail-mainimg img {
       width: 100%;
       display: block;
-      border-radius: 18px;
+      border-radius: 20px;
       object-fit: cover;
+    }
+    .brand-detail-img-title {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      color: #fff;
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      letter-spacing: 1px;
+      background: rgba(0,0,0,0.18);
+      padding: 0.5rem 0;
+      border-radius: 0 0 15px 15px;
     }
     .brand-follow-banner {
       width: 100%;
       background: #ececec;
       text-align: center;
-      margin: 2.5rem 0 1.5rem 0;
+      margin: 3rem 0 2rem 0;
       overflow: hidden;
       position: relative;
-      min-height: 5.5rem;
+      min-height: 6rem;
     }
     .follow-anim-scroll {
       display: inline-block;
-      font-size: 4.2rem;
+      font-size: 4.8rem;
       color: #b0a9a9;
       font-weight: 700;
       letter-spacing: 0.2em;
@@ -474,28 +571,32 @@
       background: #444;
       color: #fff;
       border: none;
-      border-radius: 18px;
-      padding: 0.5rem 1.5rem;
-      font-size: 1rem;
+      border-radius: 24px;
+      padding: 1rem 2.8rem;
+      font-size: 1.1rem;
       font-weight: 600;
       cursor: pointer;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       z-index: 2;
+      transition: background 0.2s;
+    }
+    .brand-social-btn:hover {
+      background: #FF8C00;
     }
     .brand-detail-gallery {
       display: flex;
-      gap: 2rem;
+      gap: 2.5rem;
       justify-content: center;
       align-items: flex-start;
-      margin: 2.5rem auto 0 auto;
-      max-width: 1100px;
+      margin: 3rem auto 0 auto;
+      max-width: 1200px;
       flex-wrap: wrap;
     }
     .brand-gallery-item {
-      width: 220px;
-      height: 220px;
+      width: 250px;
+      height: 250px;
       background: #fff;
-      border-radius: 18px;
+      border-radius: 20px;
       overflow: hidden;
       box-shadow: 0 2px 8px rgba(0,0,0,0.07);
       display: flex;
@@ -525,49 +626,49 @@
     }
     .contact-section {
       background: #f6f6f6;
-      padding: 2.5rem 0 0 0;
+      padding: 3rem 0 0 0;
     }
     .contact-container {
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      gap: 2rem;
-      max-width: 1100px;
+      gap: 3rem;
+      max-width: 1200px;
       margin: 0 auto;
       flex-wrap: wrap;
     }
     .contact-form {
       background: #fff;
-      border-radius: 12px;
+      border-radius: 15px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      padding: 2rem 2.5rem 2rem 2.5rem;
-      min-width: 320px;
-      max-width: 420px;
-      flex: 1 1 320px;
+      padding: 2.5rem 3rem 2.5rem 3rem;
+      min-width: 380px;
+      max-width: 480px;
+      flex: 1 1 380px;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1.2rem;
     }
     .contact-title {
-      font-size: 2rem;
+      font-size: 2.5rem;
       color: #888;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
       font-weight: 500;
     }
     .contact-row {
       display: flex;
       flex-direction: column;
-      gap: 0.3rem;
-      margin-bottom: 0.7rem;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
     }
     .contact-form input,
     .contact-form textarea {
       border: 1.5px solid #bbb;
       border-radius: 24px;
-      padding: 0.7rem 1.2rem;
-      font-size: 1rem;
+      padding: 0.8rem 1.5rem;
+      font-size: 1.1rem;
       font-family: inherit;
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.3rem;
       background: #f6f6f6;
       outline: none;
       transition: border 0.2s;
@@ -578,40 +679,42 @@
     }
     .contact-form textarea {
       resize: vertical;
-      min-height: 80px;
+      min-height: 100px;
     }
     .contact-submit {
       background: #6d625c;
       color: #fff;
       border: none;
       border-radius: 24px;
-      padding: 0.7rem 2.2rem;
-      font-size: 1rem;
+      padding: 0.8rem 2.5rem;
+      font-size: 1.1rem;
       font-weight: 600;
       cursor: pointer;
-      margin-top: 0.5rem;
+      margin-top: 0.7rem;
       align-self: flex-start;
       transition: background 0.2s;
     }
     .contact-submit:hover {
-      background: #e67e22;
+      background: #FF8C00;
     }
     .contact-image {
-      flex: 1 1 320px;
-      min-width: 300px;
-      max-width: 420px;
+      flex: 1 1 380px;
+      min-width: 350px;
+      max-width: 480px;
       display: flex;
       align-items: center;
       justify-content: center;
       background: #f6f6f6;
-      border-radius: 12px;
+      border-radius: 15px;
       overflow: hidden;
       box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      padding: 1.5rem;
+      padding: 0;
+      position: relative;
     }
     .contact-image img {
       width: 100%;
-      border-radius: 12px;
+      height: 100%;
+      border-radius: 15px;
       object-fit: cover;
     }
     @media (max-width: 900px) {
@@ -657,7 +760,7 @@
       transition: color 0.2s;
     }
     .footer-links a:hover {
-      color: #e67e22;
+      color: #FF8C00;
       text-decoration: underline;
     }
     .newsletter-form {
@@ -690,7 +793,7 @@
       transition: background 0.2s;
     }
     .newsletter-form button:hover {
-      background: #e67e22;
+      background: #FF8C00;
     }
     @media (max-width: 900px) {
       .footer-links { flex-direction: column; gap: 1.2rem; }
@@ -707,80 +810,81 @@
       <a href="About1.html">About</a>
       <a href="contact1.html">お問い合わせ</a>
       <a href="#" id="login-link">ログイン</a>
-      <a href="Cart2.html">カート</a>
+      <a href="Cart3.html">カート</a>
     </nav>
   </header>
   <section class="hero-section">
     <div class="hero-left">
       <h1>Aileen's Secret</h1>
-      <p>こんにちは、冒険への扉を開けましょう！このウェブサイトでは、楽しいアイデアと元気いっぱいのヒントを集めて、あなたの自信をもっとエキサイティングにします！</p>
-      <button onclick="window.location.href='About1.html'">詳細を確認</button>
+      <p>こんにちは、冒険の扉を開けましょう！<br><span class="brand-name">Aileen's Secret</span>は楽しいアイデアと元気になるヒントを集め <br>あなたの夏をもっとエキサイティングにします！</p>
+      <h2 style="color: #FF8C00;">Now on Summer Sale!</h2>
+      <button onclick="window.location.href='Shop2.html'">セール中の商品を見る</button>
     </div>
     <div class="hero-right">
       <div class="hero-img-box">
-        <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty22.png" alt="Aileen">
+        <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty49.png" alt="Aileen">
         <div class="hero-img-title">Aileen's Secret</div>
       </div>
     </div>
   </section>
   <div class="section-title-bar">
-    <div class="section-title">注目の商品</div>
-    <button class="view-all-btn" onclick="window.location.href='shop1.html'">すべての商品を見る</button>
+    <div class="section-title">NEWS</div>
+    <button class="view-all-btn" onclick="window.location.href='About1.html'"><span class="brand-name">Aileen's Secret</span>について</button>
   </div>
   <section class="products-section">
     <div class="products-grid">
       <div class="product-card" onclick="window.location.href='wakuwakushopping1.html'" style="cursor: pointer;">
-        <div class="brand-gallery-item"><img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty26.png" alt="Cindy 新着＆おすすめアイテム"></div>
+        <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty58.png" alt="Cindy 新着＆おすすめアイテム">
         <div class="product-title">新着＆おすすめアイテム</div>
-        <div class="product-price">¥2,500</div>
+       
       </div>
       <div class="product-card" onclick="window.location.href='premiumpack1.html'" style="cursor: pointer;">
-        <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty27.png" alt="Diana プレミアムパック">
+        <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty71.png" alt="Diana プレミアムパック">
         <div class="product-title">プレミアムパック</div>
-        <div class="product-price">¥2,500</div>
+        
       </div>
-      <div class="product-card">
-        <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty21.png" alt="Betty ウルトラスマイルセール">
+      <div class="product-card" onclick="window.location.href='supersmilesale4.html'" style="cursor: pointer;">
+        <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty67.png" alt="Betty ウルトラスマイルセール">
         <div class="product-title">ウルトラスマイルセール</div>
-        <div class="product-price">¥2,500</div>
+        
       </div>
     </div>
   </section>
   <!-- サービス内容セクション追加 -->
   <section class="service-section">
-    <h2 class="service-title">サービス内容</h2>
+    <h2 class="service-title">季節限定イベント</h2>
     <div class="service-details">
       <div class="service-detail">
         <a href="shopadventure3.html" class="service-detail-link">
-          <div class="service-icon"><img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty33.png" class="circle" alt="ショップアドベンチャー"></div>
+          <div class="service-icon"><img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty57.png" class="circle" alt="ショップアドベンチャー"></div>
           <div class="service-detail-title">ショップアドベンチャー</div>
         </a>
-        <div class="service-detail-price">¥9,900</div>
-        <div class="service-detail-desc">楽しい製品がいっぱいのショップにぜひ遊びに来てください！新しいトレンドを発見するワクワクの時間が待っています。</div>
+      
+        <div class="service-detail-desc" style="text-align: left;">楽しい製品がいっぱいのショップにぜひ遊びに来てください！<br>新しいトレンドを発見するワクワクの時間が待っています。</div>
       </div>
       <div class="service-detail">
-        <a href="smile.html" class="service-detail-link">
-          <div class="service-icon"><img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty29.png" class="circle" alt="スマイルセール"></div>
-          <div class="service-detail-title">スマイルセール</div>
+        <a href="smilesale1.html" class="service-detail-link">
+          <div class="service-icon"><img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty68.png" class="circle" alt="スマイルセール"></div>
+          <div class="service-detail-title">スマイルタイムセール</div>
         </a>
-        <div class="service-detail-price">¥14,900</div>
-        <div class="service-detail-desc">幸せいっぱいのお買い物体験をどうぞ！限定オファーで心が踊るお買い物の旅をお楽しみください。</div>
+        
+        <div class="service-detail-desc" style="text-align: left;">幸せいっぱいのタイムセール体験をどうぞ！<br>限定オファーで心が踊るお買い物の旅をお楽しみください。</div>
       </div>
       <div class="service-detail">
-        <a href="happiibox.html" class="service-detail-link">
-          <div class="service-icon"><img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty32.png" class="circle" alt="サプライズBOX"></div>
+        <a href="suppriseboxes1.html" class="service-detail-link">
+          <div class="service-icon"><img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty74.png" class="circle" alt="サプライズBOX"></div>
           <div class="service-detail-title">サプライズBOX</div>
         </a>
-        <div class="service-detail-price">¥19,900</div>
-        <div class="service-detail-desc">お楽しみが詰まったサプライズBOXで、毎日をもっとワクワクに！新しい驚きと楽しさがあなたを待っています。</div>
+       
+        <div class="service-detail-desc" style="text-align: left;">お楽しみが詰まったサプライズBOXで、毎日をワクワクに！<br>新しい驚きと楽しさがあなたを待っています。</div>
       </div>
       <div class="service-detail">
         <a href="joyfulshopping3.html" class="service-detail-link">
-          <div class="service-icon"><img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty31.png" class="circle" alt="わくわくショッピング"></div>
+          <div class="service-icon"><img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty76.png" class="circle" alt="わくわくショッピング"></div>
           <div class="service-detail-title">わくわくショッピング</div>
         </a>
-        <div class="service-detail-price">¥24,900</div>
-        <div class="service-detail-desc">新しい日常を見つける冒険に出かけよう！おしゃれでユニークなアイテムを手に入れて、自分だけのスタイルを楽しんでください。</div>
+       
+        <div class="service-detail-desc" style="text-align: left;">新しい日常を見つける冒険に出かけよう！おしゃれでユニークなアイテムを手に入れて、自分スタイルを楽しんでください。</div>
       </div>
     </div>
   </section>
@@ -789,22 +893,22 @@
     <div class="subscription-cards">
       <div class="subscription-card">
         <div class="subscription-img-box">
-          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty23.png" alt="Aileen ビーチリゾート・トータルコーデ サブスク">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty88.png" alt="Aileen ビーチリゾート・トータルコーデ サブスク">
         </div>
         <div class="subscription-content">
-          <div class="subscription-title">トータルコーデ・サブスク</div>
-          <div class="subscription-desc">次々と追加されるクラス、ワークショップ、限定コンテンツのコレクションに、いつでもアクセスできます。毎月、新しいアイテムが追加されます。</div>
-          <button class="subscription-btn" onclick="window.location.href='subscription1.html'">登録</button>
+          <div class="subscription-title" onclick="window.location.href='subscription1.html'">トータルコーデ・サブスク</div>
+          <div class="subscription-desc"><div style="text-align: center;">「"今日なに着よう？"にもう悩まない♪」</div>
+            トップスからアクセまで、全身まるっと届くサブスク。あなた専属のコーディネーター感覚で毎月新しい自分に出会える♡</div>
         </div>
       </div>
       <div class="subscription-card">
         <div class="subscription-img-box">
-          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty24.png" alt="Cindy ビーチリゾート・トータルコーデ サブスク">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty84.png" alt="Cindy ビーチリゾート・トータルコーデ サブスク">
         </div>
         <div class="subscription-content">
-          <div class="subscription-title">サブスク・コミュニティ</div>
-          <div class="subscription-desc">次々と追加されるクラス、ワークショップ、限定コンテンツのコレクションに、いつでもアクセスできます。毎月、新しいアイテムが追加されます。</div>
-          <button class="subscription-btn" onclick="window.location.href='subscription2.html'">登録</button>
+          <div class="subscription-title" onclick="window.location.href='subscription2.html'">サブスク・コミュニティ</div>
+          <div class="subscription-desc"><div style="text-align: center;">「ファッション仲間とつながる秘密基地♡」</div>
+            着こなし自慢も、悩み相談もOK！好きなブランドやコーデを語り合える、ゆるっと楽しいファッションコミュニティ♪</div>
         </div>
       </div>
     </div>
@@ -812,25 +916,31 @@
   <!-- ブランドの詳細セクション追加 -->
   <section class="brand-detail-section">
     <div class="brand-detail-header">
-      <div class="brand-detail-title">ブランドの詳細</div>
-      <div class="brand-detail-desc">
-        専門家によるこだわりと美しさを手に、何かにときめきをプラスし、オンライン化で新たな価値を創るWebサイトの中で、あなたのサイトを特別にするのが、あなただけのストーリーです。<a href="About1.html" class="brand-detail-link">詳細を確認</a>
-      </div>
+              <div class="brand-detail-title">ブランドの詳細</div>
+        <div class="brand-detail-content">
+          <div class="brand-detail-desc">
+            こだわりと美しさに、ときめきをプラスし、あなただけのストーリーを創り出します。
+          </div>
+          <div class="brand-detail-link">
+            <a href="About1.html">詳細を確認</a>
+          </div>
+        </div>
     </div>
     <div class="brand-detail-mainimg">
-      <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty22.png" alt="Aileen ブランドイメージ">
+      <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty45.png" alt="Aileen ブランドイメージ">
+      <div class="brand-detail-img-title">Aileen's Secret</div>
     </div>
     <div class="brand-follow-banner">
       <span class="follow-anim-scroll">フォローする</span>
       <span class="follow-anim-scroll">フォローする</span>
       <span class="follow-anim-scroll">フォローする</span>
-      <button class="brand-social-btn" onclick="showSocialModal()">ソーシャル</button>
+      <button class="brand-social-btn" onclick="showSocialModal()">SNS</button>
     </div>
     <div class="brand-detail-gallery">
-      <div class="brand-gallery-item"><img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty25.png" alt="Diana"></div>
-      <div class="brand-gallery-item"><img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty26.png" alt="Betty"></div>
-      <div class="brand-gallery-item"><img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty20.png" alt="Cindy"></div>
-      <div class="brand-gallery-item"><img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty21.png" alt="Diana"></div>
+      <div class="brand-gallery-item"><img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty72.png" alt="Diana"></div>
+      <div class="brand-gallery-item"><img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty73.png" alt="Betty"></div>
+      <div class="brand-gallery-item"><img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty70.png" alt="Cindy"></div>
+      <div class="brand-gallery-item"><img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty79.png" alt="Diana"></div>
     </div>
   </section>
   <!-- お問い合わせセクション追加 -->
@@ -859,7 +969,8 @@
         <button type="submit" class="contact-submit">送信</button>
       </form>
       <div class="contact-image">
-        <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty24.png" alt="Cindy お問い合わせイメージ">
+        <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty54.png" alt="Cindy お問い合わせイメージ">
+        <div class="brand-detail-img-title">Aileen's Secret</div>
       </div>
     </div>
   </section>
@@ -867,12 +978,12 @@
     <div class="footer-container">
       <div class="footer-title">Aileen's Secret</div>
       <div class="footer-links">
-        <div>さらに見る
+        <div>
           <ul>
-            <li><a href="#">会社情報</a></li>
-            <li><a href="#">お問い合わせ</a></li>
-            <li><a href="#">ショップ</a></li>
-            <li><a href="#">サービス</a></li>
+            <li><a href="About1.html">会社情報</a></li>
+            <li><a href="contact1.html">お問い合わせ</a></li>
+            <li><a href="Shop2.html">ショップ</a></li>
+            ービス</a></li>
           </ul>
         </div>
         <div>SNSでフォロー
@@ -891,9 +1002,12 @@
         <div>ニュースや最新情報を受け取るには、メールアドレスでサインアップしてください。
           <form class="newsletter-form">
             <input type="email" placeholder="メールアドレス">
-            <button type="submit">サインアップ</button>
+            <button type="submit" onclick="window.location.href='signIn.html'; return false;">サインアップ</button>
           </form>
         </div>
+      </div>
+      <div style="text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #ddd; color: #666; font-size: 0.9rem;">
+        &copy; 2025 Aileen's Secret. All rights reserved.
       </div>
     </div>
   </footer>
@@ -911,7 +1025,8 @@
       <button id="close-social-modal" style="position:absolute;top:10px;right:15px;font-size:1.5rem;background:none;border:none;cursor:pointer;color:#888;">&times;</button>
       <h3 style="color:#222;margin-bottom:1.5rem;font-size:1.3rem;">フォローしてください</h3>
       <div style="display:flex;flex-direction:column;gap:1rem;">
-        <a href="https://twitter.com/ailenssecret" target="_blank" style="background:#1DA1F2;color:#fff;padding:0.8rem 1.5rem;border-radius:25px;text-decoration:none;font-weight:600;transition:background 0.2s;">X（Twitter）でフォロー</a>
+        <a href="https://www.facebook.com" target="_blank" style="background:#1877F2;color:#fff;padding:0.8rem 1.5rem;border-radius:25px;text-decoration:none;font-weight:600;transition:background 0.2s;">Facebookでフォロー</a>
+        <a href="https://twitter.com/ailenssecret" target="_blank" style="background:#000;color:#fff;padding:0.8rem 1.5rem;border-radius:25px;text-decoration:none;font-weight:600;transition:background 0.2s;">X（Twitter）でフォロー</a>
         <a href="https://instagram.com/ailenssecret" target="_blank" style="background:linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);color:#fff;padding:0.8rem 1.5rem;border-radius:25px;text-decoration:none;font-weight:600;transition:opacity 0.2s;">Instagramでフォロー</a>
       </div>
     </div>
