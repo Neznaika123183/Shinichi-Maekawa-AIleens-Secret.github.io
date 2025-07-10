@@ -38,6 +38,11 @@
     nav {
       display: flex;
       gap: 1.2rem;
+      align-items: center;
+    }
+    .nav-left, .nav-right {
+      display: flex;
+      gap: 1.2rem;
     }
     nav a {
       text-decoration: none;
@@ -45,6 +50,7 @@
       font-weight: 500;
       font-size: 1rem;
       transition: color 0.2s;
+      writing-mode: horizontal-tb; /* 横書きを明示的に指定 */
     }
     nav a:hover {
       color: #FF8C00;
@@ -74,6 +80,8 @@
       font-weight: bold;
       margin-bottom: 1.2rem;
       color: #0047AB;
+      position: relative;
+      top: -15px;
     }
     .hero-left p {
       font-size: 1.1rem;
@@ -87,12 +95,12 @@
     .hero-left h2 {
       margin-top: -10px !important;
       position: relative;
-      top: -10px;
+      top: -25px;
     }
     .hero-left h2[style*="color: #FF8C00"] {
       margin-top: -10px !important;
       position: relative;
-      top: -10px;
+      top: -25px;
     }
     .hero-left button .brand-name {
       font-size: 1rem;
@@ -198,6 +206,7 @@
       padding: 3rem 0 4rem 0;
       position: relative;
       z-index: 1;
+      margin-top: 0; /* 明示的にマージンをリセット */
     }
     .products-grid {
       display: flex;
@@ -264,10 +273,27 @@
     }
     @media (max-width: 600px) {
       :root {
-        --header-height: 85px;
+        --header-height: 120px; /* モバイルでのHeader高さを調整 */
       }
       header {
         padding: 0.8rem 1rem;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 0;
+      }
+      .nav-left, .nav-right {
+        flex-direction: column;
+        gap: 0.3rem;
+        align-items: flex-start;
+      }
+      nav a {
+        font-size: 0.9rem;
+        padding: 0.2rem 0;
+        writing-mode: horizontal-tb; /* 横書きを明示的に指定 */
       }
       .hero-section {
         margin-top: var(--header-height); /* CSS変数を使用 */
@@ -286,10 +312,27 @@
     }
     @media (max-width: 480px) {
       :root {
-        --header-height: 80px;
+        --header-height: 110px; /* さらに小さい画面でのHeader高さ調整 */
       }
       header {
         padding: 0.6rem 0.8rem;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 0;
+      }
+      .nav-left, .nav-right {
+        flex-direction: column;
+        gap: 0.2rem;
+        align-items: flex-start;
+      }
+      nav a {
+        font-size: 0.85rem;
+        padding: 0.15rem 0;
+        writing-mode: horizontal-tb; /* 横書きを明示的に指定 */
       }
       .hero-section {
         margin-top: var(--header-height); /* CSS変数を使用 */
@@ -323,6 +366,7 @@
       text-align: center;
       position: relative;
       z-index: 1;
+      margin-top: 0; /* 明示的にマージンをリセット */
     }
     .service-title {
       font-size: 2.5rem;
@@ -414,6 +458,7 @@
       justify-content: center;
       position: relative;
       z-index: 1;
+      margin-top: 0; /* 明示的にマージンをリセット */
     }
     .subscription-cards {
       display: flex;
@@ -707,6 +752,7 @@
       padding: 3rem 0 0 0;
       position: relative;
       z-index: 1;
+      margin-top: 0; /* 明示的にマージンをリセット */
     }
     .contact-container {
       display: flex;
@@ -904,13 +950,16 @@
   <header>
     <div class="logo">Aileen's Secret</div>
     <nav>
-      <a href="shop1.html">ショップ</a>
-      <a href="Service1.html">サービス</a>
-      <a href="faq1.html">FAQ</a>
-      <a href="About1.html">About</a>
-      <a href="contact1.html">お問い合わせ</a>
-      <a href="#" id="login-link">ログイン</a>
-      <a href="Cart3.html">カート</a>
+      <div class="nav-left">
+        <a href="shop1.html">ショップ</a>
+        <a href="Service1.html">サービス</a>
+        <a href="faq1.html">FAQ</a>
+      </div>
+      <div class="nav-right">
+        <a href="About1.html">About</a>
+        <a href="contact1.html">お問い合わせ</a>
+        <a href="#" id="login-link">ログイン</a>
+      </div>
     </nav>
   </header>
   <section class="hero-section">
@@ -1185,7 +1234,7 @@
       }
     }
 
-    // すべてのセクションがHeaderに隠れないよう調整
+    // すべてのセクションがHeaderに隠れないよう調整（改善版）
     function adjustAllSections() {
       const header = document.querySelector('header');
       const headerHeight = header ? header.offsetHeight : 80;
@@ -1207,22 +1256,28 @@
           const rect = section.getBoundingClientRect();
           if (rect.top < headerHeight) {
             // セクションがHeaderに隠れている場合、上部にマージンを追加
-            const currentMarginTop = parseInt(window.getComputedStyle(section).marginTop) || 0;
             const neededMargin = headerHeight - rect.top + 20; // 20pxの余裕を追加
-            section.style.marginTop = (currentMarginTop + neededMargin) + 'px';
+            section.style.marginTop = neededMargin + 'px';
+          } else {
+            // セクションがHeaderに隠れていない場合は、元のマージンに戻す
+            section.style.marginTop = '';
           }
         }
       });
     }
 
-    // ページ読み込み時とリサイズ時に実行
+    // ページ読み込み時とリサイズ時に実行（改善版）
+    let resizeTimeout;
     window.addEventListener('load', function() {
       adjustHeroMargin();
       setTimeout(adjustAllSections, 100); // 少し遅延させて確実に実行
     });
     window.addEventListener('resize', function() {
-      adjustHeroMargin();
-      setTimeout(adjustAllSections, 100);
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(function() {
+        adjustHeroMargin();
+        adjustAllSections();
+      }, 150); // リサイズ終了後に実行
     });
     
     // DOMContentLoadedでも実行（より確実に）
@@ -1230,6 +1285,9 @@
       adjustHeroMargin();
       setTimeout(adjustAllSections, 100);
     });
+    
+    // スクロール時の調整を無効化（間隔が離れる問題を解決）
+    // window.addEventListener('scroll', adjustAllSections); // この行をコメントアウト
   </script>
 </body>
 </html>
