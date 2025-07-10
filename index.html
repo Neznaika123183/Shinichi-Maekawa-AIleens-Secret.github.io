@@ -12,6 +12,7 @@
       background: #f6f6f6;
       color: #222;
       margin: 0;
+      padding-top: 28px;
     }
     header {
       background: #fff;
@@ -237,11 +238,16 @@
       }
       .products-grid { gap: 1rem; }
       .product-card { width: 90vw; max-width: 350px; }
+      .container { margin-top: 100px; }
+      .grid { gap: 1rem; }
+      .product { width: 90vw; max-width: 350px; }
     }
     @media (max-width: 600px) {
       .section-title-bar { flex-direction: column; gap: 1rem; align-items: flex-start; }
       .products-grid { flex-direction: column; align-items: center; }
       .hero-img-title { font-size: 1.2rem; }
+      .container { margin-top: 80px; }
+      .grid { flex-direction: column; align-items: center; }
     }
     .service-section {
       background: linear-gradient(-45deg, #f6f6f6, #e6e6fa, #fadadd, #e6e6fa);
@@ -633,9 +639,10 @@
       justify-content: center;
       align-items: flex-start;
       gap: 3rem;
-      max-width: 1200px;
+      max-width: 1100px;
       margin: 0 auto;
       flex-wrap: wrap;
+      padding: 0 1rem;
     }
     .contact-form {
       background: #fff;
@@ -718,7 +725,7 @@
       object-fit: cover;
     }
     @media (max-width: 900px) {
-      .contact-container { flex-direction: column; align-items: stretch; gap: 1.2rem; }
+      .contact-container { flex-direction: column; align-items: stretch; gap: 1.2rem; padding: 0 1rem; }
       .contact-form, .contact-image { max-width: 100%; min-width: 0; }
     }
     .site-footer {
@@ -745,11 +752,20 @@
       flex-wrap: wrap;
       font-size: 1rem;
       color: #444;
+      align-items: flex-start;
     }
     .footer-links ul {
       list-style: none;
       padding: 0;
-      margin: 0.5rem 0 0 0;
+      margin: 0;
+    }
+    .footer-links > div:nth-child(1),
+    .footer-links > div:nth-child(2),
+    .footer-links > div:nth-child(3) {
+      height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
     }
     .footer-links li {
       margin-bottom: 0.3rem;
@@ -767,6 +783,8 @@
       display: flex;
       gap: 0.5rem;
       margin-top: 0.7rem;
+      flex-direction: column;
+      align-items: center;
     }
     .newsletter-form input[type="email"] {
       border: 1.5px solid #bbb;
@@ -777,6 +795,9 @@
       background: #fff;
       outline: none;
       transition: border 0.2s;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
     }
     .newsletter-form input[type="email"]:focus {
       border: 1.5px solid #e67e22;
@@ -791,6 +812,9 @@
       font-weight: 600;
       cursor: pointer;
       transition: background 0.2s;
+      width: 66.67%;
+      box-sizing: border-box;
+      align-self: center;
     }
     .newsletter-form button:hover {
       background: #FF8C00;
@@ -813,12 +837,11 @@
       <a href="Cart3.html">カート</a>
     </nav>
   </header>
-  <section class="hero-section">
-    <div class="hero-left">
+      <div class="hero-left">
       <h1>Aileen's Secret</h1>
       <p>こんにちは、冒険の扉を開けましょう！<br><span class="brand-name">Aileen's Secret</span>は楽しいアイデアと元気になるヒントを集め <br>あなたの夏をもっとエキサイティングにします！</p>
       <h2 style="color: #FF8C00;">Now on Summer Sale!</h2>
-      <button onclick="window.location.href='Shop2.html'">セール中の商品を見る</button>
+      <button onclick="window.location.href='Shop2.html'">セール中の商品はこちら</button>
     </div>
     <div class="hero-right">
       <div class="hero-img-box">
@@ -933,7 +956,6 @@
     <div class="brand-follow-banner">
       <span class="follow-anim-scroll">フォローする</span>
       <span class="follow-anim-scroll">フォローする</span>
-      <span class="follow-anim-scroll">フォローする</span>
       <button class="brand-social-btn" onclick="showSocialModal()">SNS</button>
     </div>
     <div class="brand-detail-gallery">
@@ -983,7 +1005,7 @@
             <li><a href="About1.html">会社情報</a></li>
             <li><a href="contact1.html">お問い合わせ</a></li>
             <li><a href="Shop2.html">ショップ</a></li>
-            ービス</a></li>
+            <li><a href="Service1.html">サービス</a></li>
           </ul>
         </div>
         <div>SNSでフォロー
@@ -999,9 +1021,8 @@
             </a>
           </div>
         </div>
-        <div>ニュースや最新情報を受け取るには、メールアドレスでサインアップしてください。
+        <div>ニュースや最新情報を受け取るには<br>メールアドレスでサインアップしてください。
           <form class="newsletter-form">
-            <input type="email" placeholder="メールアドレス">
             <button type="submit" onclick="window.location.href='signIn.html'; return false;">サインアップ</button>
           </form>
         </div>
