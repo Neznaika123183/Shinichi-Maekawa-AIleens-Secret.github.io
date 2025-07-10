@@ -12,7 +12,7 @@
       background: #f6f6f6;
       color: #222;
       margin: 0;
-      padding-top: 28px;
+      padding-top: 0;
     }
     header {
       background: #fff;
@@ -231,26 +231,32 @@
         margin-top: 80px; /* Headerの高さ分のマージンを維持 */
       }
       .hero-left { 
-        left: 50%; 
-        transform: translate(-50%, -50%); 
+        left: 5%; 
+        transform: translateY(-50%); 
         max-width: 90vw; 
         padding: 1.5rem; 
       }
       .products-grid { gap: 1rem; }
-      .product-card { width: 90vw; max-width: 350px; }
+      .product-card { width: 100%; max-width: 100%; }
       .container { margin-top: 100px; }
       .grid { gap: 1rem; }
-      .product { width: 90vw; max-width: 350px; }
+      .product { width: 100%; max-width: 100%; }
     }
     @media (max-width: 600px) {
       .hero-section {
         margin-top: 70px; /* 小さい画面では少し小さく */
       }
+      .hero-left {
+        left: 5%;
+        transform: translateY(-50%);
+        max-width: 85vw;
+        padding: 1rem;
+      }
       .section-title-bar { flex-direction: column; gap: 1rem; align-items: flex-start; }
-      .products-grid { flex-direction: column; align-items: center; }
+      .products-grid { flex-direction: column; align-items: stretch; }
       .hero-img-title { font-size: 1.2rem; }
       .container { margin-top: 80px; }
-      .grid { flex-direction: column; align-items: center; }
+      .grid { flex-direction: column; align-items: stretch; }
     }
     .service-section {
       background: linear-gradient(-45deg, #f6f6f6, #e6e6fa, #fadadd, #e6e6fa);
@@ -336,10 +342,10 @@
     }
     @media (max-width: 900px) {
       .service-details { gap: 1.2rem; }
-      .service-detail { width: 90vw; max-width: 300px; }
+      .service-detail { width: 100%; max-width: 100%; }
     }
     @media (max-width: 600px) {
-      .service-details { flex-direction: column; align-items: center; }
+      .service-details { flex-direction: column; align-items: stretch; }
       .service-title { font-size: 1.3rem; }
     }
     .subscription-section {
@@ -458,10 +464,10 @@
     }
     @media (max-width: 900px) {
       .subscription-cards { gap: 1.2rem; }
-      .subscription-card { width: 90vw; max-width: 350px; }
+      .subscription-card { width: 100%; max-width: 100%; }
     }
     @media (max-width: 600px) {
-      .subscription-cards { flex-direction: column; align-items: center; }
+      .subscription-cards { flex-direction: column; align-items: stretch; }
       .subscription-section { padding: 2rem 0 1rem 0; }
     }
     .brand-detail-section {
@@ -620,9 +626,9 @@
     }
     @media (max-width: 900px) {
       .brand-detail-header { flex-direction: column; gap: 1rem; }
-      .brand-detail-mainimg { max-width: 98vw; }
+      .brand-detail-mainimg { max-width: 100%; }
       .brand-detail-gallery { gap: 1rem; }
-      .brand-gallery-item { width: 45vw; max-width: 220px; height: 45vw; max-height: 220px; }
+      .brand-gallery-item { width: 100%; max-width: 100%; height: 250px; }
       .brand-follow-banner { min-height: 3.5rem; }
       .follow-anim-scroll { font-size: 2.2rem; }
     }
@@ -630,8 +636,8 @@
       .brand-detail-title { font-size: 1.2rem; }
       .brand-detail-header { padding: 0 0.5rem; }
       .brand-follow-banner { margin: 1.2rem 0 1rem 0; }
-      .brand-detail-gallery { flex-direction: column; align-items: center; }
-      .brand-gallery-item { width: 90vw; max-width: 220px; height: 90vw; max-height: 220px; }
+      .brand-detail-gallery { flex-direction: column; align-items: stretch; }
+      .brand-gallery-item { width: 100%; max-width: 100%; height: 250px; }
     }
     .contact-section {
       background: #f6f6f6;
