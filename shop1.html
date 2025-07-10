@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ショップ | Aileen's Secret</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --header-height: 80px;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f6f6f6;
+      color: #222;
+      margin: 0;
+      padding-top: 120px; /* Headerの高さ分のパディングを追加 */
+    }
+    header {
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      padding: 1.2rem 2rem 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #222;
+    }
+    nav {
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+    }
+    .nav-left, .nav-right {
+      display: flex;
+      gap: 1.2rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.2s;
+      writing-mode: horizontal-tb; /* 横書きを明示的に指定 */
+    }
+    nav a:hover {
+      color: #FF8C00;
+    }
+    
+    /* NEWS セクション用CSS */
+    .section-title-bar {
+      background: linear-gradient(-45deg, #f6f6f6, #e6e6fa, #fadadd, #e6e6fa);
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+      padding: 1.5rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 3rem;
+    }
+    
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #444;
+      letter-spacing: 1px;
+    }
+    .view-all-btn {
+      background: #fff;
+      border: 1px solid #bbb;
+      border-radius: 24px;
+      color: #444;
+      font-size: 1.1rem;
+      font-weight: bold;
+      padding: 0.7rem 2rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .view-all-btn:hover {
+      background: #FF8C00;
+      color: #fff;
+      border-color: #FF8C00;
+    }
+    .products-section {
+      background: #f6f6f6;
+      padding: 3rem 0 4rem 0;
+    }
+    .products-grid {
+      display: flex;
+      gap: 3rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .product-card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      width: 320px;
+      padding: 0 0 1.5rem 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .product-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+      transform: translateY(-6px) scale(1.03);
+    }
+    .product-card img {
+      width: 100%;
+      border-radius: 15px 15px 0 0;
+      object-fit: cover;
+      height: 260px;
+    }
+    .product-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 1.2rem 0 0.5rem 0;
+      color: #222;
+    }
+    .product-price {
+      color: #888;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 60px auto 0 auto;
+      padding: 0 1rem;
+    }
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .product {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      width: 270px;
+      padding: 1.2rem 1rem 1.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .product:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+      transform: translateY(-6px) scale(1.03);
+    }
+    .image-placeholder img {
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+      object-fit: cover;
+      height: 220px;
+      display: block;
+    }
+    .product strong {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #222;
+    }
+    .price {
+      color: #888;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .regular-price {
+      color: #bbb;
+      font-size: 0.95em;
+      margin-left: 0.3em;
+      text-decoration: line-through;
+    }
+    .discount {
+      color: #FF8C00;
+      font-size: 0.98rem;
+      font-weight: bold;
+      margin-bottom: 0.7rem;
+      display: block;
+    }
+    .shop-now {
+      background: #222;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 0.7rem 2.2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.7rem;
+    }
+    .shop-now:hover {
+      background: #FF8C00;
+    }
+    @media (max-width: 900px) {
+      .hero-section { 
+        height: 56.25vw; 
+        max-height: 100vh; 
+      }
+      .hero-left { 
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+        max-width: 90vw; 
+        padding: 1.5rem; 
+      }
+      .products-grid { gap: 1rem; }
+      .product-card { width: 90vw; max-width: 350px; }
+      .container { margin-top: 100px; }
+      .grid { gap: 1rem; }
+      .product { width: 90vw; max-width: 350px; }
+    }
+    @media (max-width: 600px) {
+      .section-title-bar { flex-direction: column; gap: 1rem; align-items: flex-start; }
+      .products-grid { flex-direction: column; align-items: center; }
+      .hero-img-title { font-size: 1.2rem; }
+      .container { margin-top: 80px; }
+      .grid { flex-direction: column; align-items: center; }
+    }
+    .site-footer {
+      background: #ececec;
+      padding: 2.5rem 0 1.5rem 0;
+      margin-top: 0 !important;
+      position: relative;
+      z-index: 1;
+    }
+    .footer-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .footer-title {
+      font-size: 1.5rem;
+      color: #888;
+      font-weight: bold;
+      margin-bottom: 1.2rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      font-size: 1rem;
+      color: #444;
+      align-items: flex-start;
+    }
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-links > div:nth-child(1),
+    .footer-links > div:nth-child(2),
+    .footer-links > div:nth-child(3) {
+      height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .footer-links li {
+      margin-bottom: 0.3rem;
+    }
+    .footer-links a {
+      color: #444;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: #FF8C00;
+      text-decoration: underline;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.7rem;
+      flex-direction: column;
+      align-items: center;
+    }
+    .newsletter-form input[type="email"] {
+      border: 1.5px solid #bbb;
+      border-radius: 24px;
+      padding: 0.5rem 1.2rem;
+      font-size: 1rem;
+      font-family: inherit;
+      background: #fff;
+      outline: none;
+      transition: border 0.2s;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    .newsletter-form input[type="email"]:focus {
+      border: 1.5px solid #e67e22;
+    }
+    .newsletter-form button {
+      background: #6d625c;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 0.5rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      width: 66.67%;
+      box-sizing: border-box;
+      align-self: center;
+    }
+    .newsletter-form button:hover {
+      background: #FF8C00;
+    }
+    @media (max-width: 900px) {
+      .footer-links { flex-direction: column; gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo" onclick="window.location.href='index.html'" style="cursor: pointer;">Aileen's Secret</div>
+    <nav>
+      <div class="nav-left">
+        <a href="shop1.html">ショップ</a>
+        <a href="Service1.html">サービス</a>
+        <a href="faq1.html">FAQ</a>
+      </div>
+      <div class="nav-right">
+        <a href="About1.html">About</a>
+        <a href="contact1.html">お問い合わせ</a>
+        <a href="#" id="login-link">ログイン</a>
+      </div>
+    </nav>
+  </header>
+  <!-- SALES セクション -->
+  <div class="section-title-bar">
+    <div class="section-title">SALES</div>
+    <button class="view-all-btn" onclick="window.location.href='About1.html'"><span class="brand-name">Aileen's Secret</span>について</button>
+  </div>
+    
+  <div class="container">
+       <div class="grid">
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty50.png" alt="Best Selling Hut 1">
+        </div>
+        <p><strong>Best Selling Hut 1</strong></p>
+        <p class="price">¥4,980 <span class="regular-price">(Regular Price ¥8,900)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty51.png" alt="Best Selling Earrings 2">
+        </div>
+        <p><strong>Best Selling Earrings 2</strong></p>
+        <p class="price">¥3,980 <span class="regular-price">(Regular Price ¥7,200)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty52.png" alt="Best Selling Tops 3">
+        </div>
+        <p><strong>Best Selling Tops 3</strong></p>
+        <p class="price">¥5,980 <span class="regular-price">(Regular Price ¥10,500)</span></p>
+        <span class="discount">SAVE 43%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty53.png" alt="Best Selling Tops 4">
+        </div>
+        <p><strong>Best Selling Tops 4</strong></p>
+        <p class="price">¥4,480 <span class="regular-price">(Regular Price ¥8,100)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty54.png" alt="Best Selling Earrings 5">
+        </div>
+        <p><strong>Best Selling Earrings 5</strong></p>
+        <p class="price">¥6,480 <span class="regular-price">(Regular Price ¥11,800)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty55.png" alt="Best Selling Earrings 6">
+        </div>
+        <p><strong>Best Selling Earrings 6</strong></p>
+        <p class="price">¥3,980 <span class="regular-price">(Regular Price ¥7,200)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty56.png" alt="Best Selling Bikini 7">
+        </div>
+        <p><strong>Best Selling Bikini 7</strong></p>
+        <p class="price">¥5,480 <span class="regular-price">(Regular Price ¥9,800)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty57.png" alt="Best Selling Tops 8">
+        </div>
+        <p><strong>Best Selling Tops 8</strong></p>
+        <p class="price">¥4,980 <span class="regular-price">(Regular Price ¥8,900)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty58.png" alt="Best Selling Tops 9">
+        </div>
+        <p><strong>Best Selling Tops 9</strong></p>
+        <p class="price">¥7,980 <span class="regular-price">(Regular Price ¥14,500)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty59.png" alt="Best Selling Tops 10">
+        </div>
+        <p><strong>Best Selling Tops 10</strong></p>
+        <p class="price">¥4,280 <span class="regular-price">(Regular Price ¥7,800)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty60.png" alt="Best Selling Tops 11">
+        </div>
+        <p><strong>Best Selling Tops 11</strong></p>
+        <p class="price">¥5,980 <span class="regular-price">(Regular Price ¥10,500)</span></p>
+        <span class="discount">SAVE 43%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty61.png" alt="Best Selling Tops 12">
+        </div>
+        <p><strong>Best Selling Tops 12</strong></p>
+        <p class="price">¥3,980 <span class="regular-price">(Regular Price ¥7,200)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty62.png" alt="Best Selling Tops 13">
+        </div>
+        <p><strong>Best Selling Tops 13</strong></p>
+        <p class="price">¥6,480 <span class="regular-price">(Regular Price ¥11,800)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty63.png" alt="Best Selling Tops 14">
+        </div>
+        <p><strong>Best Selling Tops 14</strong></p>
+        <p class="price">¥4,480 <span class="regular-price">(Regular Price ¥8,100)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty64.png" alt="Best Selling Tops 15">
+        </div>
+        <p><strong>Best Selling Tops 15</strong></p>
+        <p class="price">¥5,480 <span class="regular-price">(Regular Price ¥9,800)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty65.png" alt="Best Selling Tops 16">
+        </div>
+        <p><strong>Best Selling Tops 16</strong></p>
+        <p class="price">¥4,980 <span class="regular-price">(Regular Price ¥8,900)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty66.png" alt="Best Selling Tops 17">
+        </div>
+        <p><strong>Best Selling Tops 17</strong></p>
+        <p class="price">¥7,980 <span class="regular-price">(Regular Price ¥14,500)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty67.png" alt="Best Selling Tops 18">
+        </div>
+        <p><strong>Best Selling Tops 18</strong></p>
+        <p class="price">¥4,280 <span class="regular-price">(Regular Price ¥7,800)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty68.png" alt="Best Selling Tops 19">
+        </div>
+        <p><strong>Best Selling Tops 19</strong></p>
+        <p class="price">¥5,980 <span class="regular-price">(Regular Price ¥10,500)</span></p>
+        <span class="discount">SAVE 43%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty69.png" alt="Best Selling Tops 20">
+        </div>
+        <p><strong>Best Selling Tops 20</strong></p>
+        <p class="price">¥3,980 <span class="regular-price">(Regular Price ¥7,200)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty70.png" alt="Best Selling Tops 21">
+        </div>
+        <p><strong>Best Selling Tops 21</strong></p>
+        <p class="price">¥6,480 <span class="regular-price">(Regular Price ¥11,800)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty71.png" alt="Best Selling Tops 22">
+        </div>
+        <p><strong>Best Selling Tops 22</strong></p>
+        <p class="price">¥4,480 <span class="regular-price">(Regular Price ¥8,100)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty72.png" alt="Best Selling Tops 23">
+        </div>
+        <p><strong>Best Selling Tops 23</strong></p>
+        <p class="price">¥5,480 <span class="regular-price">(Regular Price ¥9,800)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty73.png" alt="Best Selling Tops 24">
+        </div>
+        <p><strong>Best Selling Tops 24</strong></p>
+        <p class="price">¥4,980 <span class="regular-price">(Regular Price ¥8,900)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty74.png" alt="Best Selling Tops 25">
+        </div>
+        <p><strong>Best Selling Tops 25</strong></p>
+        <p class="price">¥7,980 <span class="regular-price">(Regular Price ¥14,500)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty75.png" alt="Best Selling Tops 26">
+        </div>
+        <p><strong>Best Selling Tops 26</strong></p>
+        <p class="price">¥4,280 <span class="regular-price">(Regular Price ¥7,800)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty76.png" alt="Best Selling Tops 27">
+        </div>
+        <p><strong>Best Selling Tops 27</strong></p>
+        <p class="price">¥5,980 <span class="regular-price">(Regular Price ¥10,500)</span></p>
+        <span class="discount">SAVE 43%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty77.png" alt="Best Selling Tops 28">
+        </div>
+        <p><strong>Best Selling Tops 28</strong></p>
+        <p class="price">¥3,980 <span class="regular-price">(Regular Price ¥7,200)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty78.png" alt="Best Selling Tops 29">
+        </div>
+        <p><strong>Best Selling Tops 29</strong></p>
+        <p class="price">¥6,480 <span class="regular-price">(Regular Price ¥11,800)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty79.png" alt="Best Selling Tops 30">
+        </div>
+        <p><strong>Best Selling Tops 30</strong></p>
+        <p class="price">¥4,480 <span class="regular-price">(Regular Price ¥8,100)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty228.png" alt="Best Selling Tops 31">
+        </div>
+        <p><strong>Best Selling Tops 31</strong></p>
+        <p class="price">¥5,480 <span class="regular-price">(Regular Price ¥9,800)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty81.png" alt="Best Selling Tops 32">
+        </div>
+        <p><strong>Best Selling Tops 32</strong></p>
+        <p class="price">¥4,980 <span class="regular-price">(Regular Price ¥8,900)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty82.png" alt="Best Selling Tops 33">
+        </div>
+        <p><strong>Best Selling Tops 33</strong></p>
+        <p class="price">¥7,980 <span class="regular-price">(Regular Price ¥14,500)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty83.png" alt="Best Selling Tops 34">
+        </div>
+        <p><strong>Best Selling Tops 34</strong></p>
+        <p class="price">¥4,280 <span class="regular-price">(Regular Price ¥7,800)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty84.png" alt="Best Selling Tops 35">
+        </div>
+        <p><strong>Best Selling Tops 35</strong></p>
+        <p class="price">¥5,980 <span class="regular-price">(Regular Price ¥10,500)</span></p>
+        <span class="discount">SAVE 43%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty85.png" alt="Best Selling Tops 36">
+        </div>
+        <p><strong>Best Selling Tops 36</strong></p>
+        <p class="price">¥3,980 <span class="regular-price">(Regular Price ¥7,200)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty86.png" alt="Best Selling Tops 37">
+        </div>
+        <p><strong>Best Selling Tops 37</strong></p>
+        <p class="price">¥6,480 <span class="regular-price">(Regular Price ¥11,800)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty87.png" alt="Best Selling Tops 38">
+        </div>
+        <p><strong>Best Selling Tops 38</strong></p>
+        <p class="price">¥4,480 <span class="regular-price">(Regular Price ¥8,100)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty88.png" alt="Best Selling Tops 39">
+        </div>
+        <p><strong>Best Selling Tops 39</strong></p>
+        <p class="price">¥5,480 <span class="regular-price">(Regular Price ¥9,800)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty89.png" alt="Best Selling Tops 40">
+        </div>
+        <p><strong>Best Selling Tops 40</strong></p>
+        <p class="price">¥4,980 <span class="regular-price">(Regular Price ¥8,900)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty90.png" alt="Best Selling Tops 41">
+        </div>
+        <p><strong>Best Selling Tops 41</strong></p>
+        <p class="price">¥7,980 <span class="regular-price">(Regular Price ¥14,500)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty91.png" alt="Best Selling Tops 42">
+        </div>
+        <p><strong>Best Selling Tops 42</strong></p>
+        <p class="price">¥4,280 <span class="regular-price">(Regular Price ¥7,800)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty92.png" alt="Best Selling Tops 43">
+        </div>
+        <p><strong>Best Selling Tops 43</strong></p>
+        <p class="price">¥5,980 <span class="regular-price">(Regular Price ¥10,500)</span></p>
+        <span class="discount">SAVE 43%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty93.png" alt="Best Selling Tops 44">
+        </div>
+        <p><strong>Best Selling Tops 44</strong></p>
+        <p class="price">¥3,980 <span class="regular-price">(Regular Price ¥7,200)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty94.png" alt="Best Selling Tops 45">
+        </div>
+        <p><strong>Best Selling Tops 45</strong></p>
+        <p class="price">¥6,480 <span class="regular-price">(Regular Price ¥11,800)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty95.png" alt="Best Selling Tops 46">
+        </div>
+        <p><strong>Best Selling Tops 46</strong></p>
+        <p class="price">¥4,480 <span class="regular-price">(Regular Price ¥8,100)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty96.png" alt="Best Selling Tops 47">
+        </div>
+        <p><strong>Best Selling Tops 47</strong></p>
+        <p class="price">¥5,480 <span class="regular-price">(Regular Price ¥9,800)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty97.png" alt="Best Selling Tops 48">
+        </div>
+        <p><strong>Best Selling Tops 48</strong></p>
+        <p class="price">¥4,980 <span class="regular-price">(Regular Price ¥8,900)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty98.png" alt="Best Selling Tops 49">
+        </div>
+        <p><strong>Best Selling Tops 49</strong></p>
+        <p class="price">¥7,980 <span class="regular-price">(Regular Price ¥14,500)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty99.png" alt="Best Selling Tops 50">
+        </div>
+        <p><strong>Best Selling Tops 50</strong></p>
+        <p class="price">¥4,280 <span class="regular-price">(Regular Price ¥7,800)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty100.png" alt="Best Selling Tops 51">
+        </div>
+        <p><strong>Best Selling Tops 51</strong></p>
+        <p class="price">¥5,980 <span class="regular-price">(Regular Price ¥10,500)</span></p>
+        <span class="discount">SAVE 43%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty101.png" alt="Best Selling Tops 52">
+        </div>
+        <p><strong>Best Selling Tops 52</strong></p>
+        <p class="price">¥3,980 <span class="regular-price">(Regular Price ¥7,200)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty102.png" alt="Best Selling Tops 53">
+        </div>
+        <p><strong>Best Selling Tops 53</strong></p>
+        <p class="price">¥6,480 <span class="regular-price">(Regular Price ¥11,800)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty103.png" alt="Best Selling Tops 54">
+        </div>
+        <p><strong>Best Selling Tops 54</strong></p>
+        <p class="price">¥4,480 <span class="regular-price">(Regular Price ¥8,100)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty104.png" alt="Best Selling Tops 55">
+        </div>
+        <p><strong>Best Selling Tops 55</strong></p>
+        <p class="price">¥5,480 <span class="regular-price">(Regular Price ¥9,800)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty105.png" alt="Best Selling Tops 56">
+        </div>
+        <p><strong>Best Selling Tops 56</strong></p>
+        <p class="price">¥4,980 <span class="regular-price">(Regular Price ¥8,900)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty106.png" alt="Best Selling Tops 57">
+        </div>
+        <p><strong>Best Selling Tops 57</strong></p>
+        <p class="price">¥7,980 <span class="regular-price">(Regular Price ¥14,500)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty107.png" alt="Best Selling Tops 58">
+        </div>
+        <p><strong>Best Selling Tops 58</strong></p>
+        <p class="price">¥4,280 <span class="regular-price">(Regular Price ¥7,800)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty108.png" alt="Best Selling Tops 59">
+        </div>
+        <p><strong>Best Selling Tops 59</strong></p>
+        <p class="price">¥5,980 <span class="regular-price">(Regular Price ¥10,500)</span></p>
+        <span class="discount">SAVE 43%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty109.png" alt="Best Selling Tops 60">
+        </div>
+        <p><strong>Best Selling Tops 60</strong></p>
+        <p class="price">¥3,980 <span class="regular-price">(Regular Price ¥7,200)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty110.png" alt="Best Selling Tops 61">
+        </div>
+        <p><strong>Best Selling Tops 61</strong></p>
+        <p class="price">¥5,480 <span class="regular-price">(Regular Price ¥9,800)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty111.png" alt="Best Selling Tops 62">
+        </div>
+        <p><strong>Best Selling Tops 62</strong></p>
+        <p class="price">¥4,980 <span class="regular-price">(Regular Price ¥8,900)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty112.png" alt="Best Selling Tops 63">
+        </div>
+        <p><strong>Best Selling Tops 63</strong></p>
+        <p class="price">¥7,980 <span class="regular-price">(Regular Price ¥14,500)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty113.png" alt="Best Selling Tops 64">
+        </div>
+        <p><strong>Best Selling Tops 64</strong></p>
+        <p class="price">¥4,280 <span class="regular-price">(Regular Price ¥7,800)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty114.png" alt="Best Selling Tops 65">
+        </div>
+        <p><strong>Best Selling Tops 65</strong></p>
+        <p class="price">¥5,980 <span class="regular-price">(Regular Price ¥10,500)</span></p>
+        <span class="discount">SAVE 43%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty115.png" alt="Best Selling Tops 66">
+        </div>
+        <p><strong>Best Selling Tops 66</strong></p>
+        <p class="price">¥3,980 <span class="regular-price">(Regular Price ¥7,200)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty116.png" alt="Best Selling Tops 67">
+        </div>
+        <p><strong>Best Selling Tops 67</strong></p>
+        <p class="price">¥6,480 <span class="regular-price">(Regular Price ¥11,800)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty117.png" alt="Best Selling Tops 68">
+        </div>
+        <p><strong>Best Selling Tops 68</strong></p>
+        <p class="price">¥4,480 <span class="regular-price">(Regular Price ¥8,100)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty118.png" alt="Best Selling Tops 69">
+        </div>
+        <p><strong>Best Selling Tops 69</strong></p>
+        <p class="price">¥5,480 <span class="regular-price">(Regular Price ¥9,800)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty119.png" alt="Best Selling Tops 70">
+        </div>
+        <p><strong>Best Selling Tops 70</strong></p>
+        <p class="price">¥4,980 <span class="regular-price">(Regular Price ¥8,900)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty120.png" alt="Best Selling Tops 71">
+        </div>
+        <p><strong>Best Selling Tops 71</strong></p>
+        <p class="price">¥7,980 <span class="regular-price">(Regular Price ¥14,500)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty121.png" alt="Best Selling Tops 72">
+        </div>
+        <p><strong>Best Selling Tops 72</strong></p>
+        <p class="price">¥4,280 <span class="regular-price">(Regular Price ¥7,800)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty234.png" alt="Best Selling Tops 73">
+        </div>
+        <p><strong>Best Selling Tops 73</strong></p>
+        <p class="price">¥5,980 <span class="regular-price">(Regular Price ¥10,500)</span></p>
+        <span class="discount">SAVE 43%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty123.png" alt="Best Selling Tops 74">
+        </div>
+        <p><strong>Best Selling Tops 74</strong></p>
+        <p class="price">¥3,980 <span class="regular-price">(Regular Price ¥7,200)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty124.png" alt="Best Selling Tops 75">
+        </div>
+        <p><strong>Best Selling Tops 75</strong></p>
+        <p class="price">¥6,480 <span class="regular-price">(Regular Price ¥11,800)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty125.png" alt="Best Selling Tops 76">
+        </div>
+        <p><strong>Best Selling Tops 76</strong></p>
+        <p class="price">¥4,480 <span class="regular-price">(Regular Price ¥8,100)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty126.png" alt="Best Selling Tops 77">
+        </div>
+        <p><strong>Best Selling Tops 77</strong></p>
+        <p class="price">¥5,480 <span class="regular-price">(Regular Price ¥9,800)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty127.png" alt="Best Selling Tops 78">
+        </div>
+        <p><strong>Best Selling Tops 78</strong></p>
+        <p class="price">¥4,980 <span class="regular-price">(Regular Price ¥8,900)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty128.png" alt="Best Selling Tops 79">
+        </div>
+        <p><strong>Best Selling Tops 79</strong></p>
+        <p class="price">¥7,980 <span class="regular-price">(Regular Price ¥14,500)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty129.png" alt="Best Selling Tops 80">
+        </div>
+        <p><strong>Best Selling Tops 80</strong></p>
+        <p class="price">¥4,280 <span class="regular-price">(Regular Price ¥7,800)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty130.png" alt="Best Selling Tops 81">
+        </div>
+        <p><strong>Best Selling Tops 81</strong></p>
+        <p class="price">¥5,980 <span class="regular-price">(Regular Price ¥10,500)</span></p>
+        <span class="discount">SAVE 43%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty131.png" alt="Best Selling Tops 82">
+        </div>
+        <p><strong>Best Selling Tops 82</strong></p>
+        <p class="price">¥3,980 <span class="regular-price">(Regular Price ¥7,200)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty132.png" alt="Best Selling Tops 83">
+        </div>
+        <p><strong>Best Selling Tops 83</strong></p>
+        <p class="price">¥6,480 <span class="regular-price">(Regular Price ¥11,800)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty133.png" alt="Best Selling Tops 84">
+        </div>
+        <p><strong>Best Selling Tops 84</strong></p>
+        <p class="price">¥4,480 <span class="regular-price">(Regular Price ¥8,100)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty134.png" alt="Best Selling Tops 85">
+        </div>
+        <p><strong>Best Selling Tops 85</strong></p>
+        <p class="price">¥5,480 <span class="regular-price">(Regular Price ¥9,800)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty135.png" alt="Best Selling Tops 86">
+        </div>
+        <p><strong>Best Selling Tops 86</strong></p>
+        <p class="price">¥4,980 <span class="regular-price">(Regular Price ¥8,900)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty136.png" alt="Best Selling Tops 87">
+        </div>
+        <p><strong>Best Selling Tops 87</strong></p>
+        <p class="price">¥7,980 <span class="regular-price">(Regular Price ¥14,500)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty137.png" alt="Best Selling Tops 88">
+        </div>
+        <p><strong>Best Selling Tops 88</strong></p>
+        <p class="price">¥4,280 <span class="regular-price">(Regular Price ¥7,800)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty138.png" alt="Best Selling Tops 89">
+        </div>
+        <p><strong>Best Selling Tops 89</strong></p>
+        <p class="price">¥5,980 <span class="regular-price">(Regular Price ¥10,500)</span></p>
+        <span class="discount">SAVE 43%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty139.png" alt="Best Selling Tops 90">
+        </div>
+        <p><strong>Best Selling Tops 90</strong></p>
+        <p class="price">¥3,980 <span class="regular-price">(Regular Price ¥7,200)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty140.png" alt="Best Selling Tops91">
+        </div>
+        <p><strong>Best Selling Tops 91</strong></p>
+        <p class="price">¥5,480 <span class="regular-price">(Regular Price ¥9,800)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty141.png" alt="Best Selling Tops 92">
+        </div>
+        <p><strong>Best Selling Tops 92</strong></p>
+        <p class="price">¥4,980 <span class="regular-price">(Regular Price ¥8,900)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty142.png" alt="Best Selling Tops 93">
+        </div>
+        <p><strong>Best Selling Tops 93</strong></p>
+        <p class="price">¥7,980 <span class="regular-price">(Regular Price ¥14,500)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty143.png" alt="Best Selling Tops 94">
+        </div>
+        <p><strong>Best Selling Tops 94</strong></p>
+        <p class="price">¥4,280 <span class="regular-price">(Regular Price ¥7,800)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty144.png" alt="Best Selling Tops 95">
+        </div>
+        <p><strong>Best Selling Tops 95</strong></p>
+        <p class="price">¥5,980 <span class="regular-price">(Regular Price ¥10,500)</span></p>
+        <span class="discount">SAVE 43%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty145.png" alt="Best Selling Tops 96">
+        </div>
+        <p><strong>Best Selling Tops 96</strong></p>
+        <p class="price">¥3,980 <span class="regular-price">(Regular Price ¥7,200)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty146.png" alt="Best Selling Tops 97">
+        </div>
+        <p><strong>Best Selling Tops 97</strong></p>
+        <p class="price">¥6,480 <span class="regular-price">(Regular Price ¥11,800)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty147.png" alt="Best Selling Tops 98">
+        </div>
+        <p><strong>Best Selling Tops 98</strong></p>
+        <p class="price">¥4,480 <span class="regular-price">(Regular Price ¥8,100)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty148.png" alt="Best Selling Tops 99">
+        </div>
+        <p><strong>Best Selling Tops 99</strong></p>
+        <p class="price">¥5,480 <span class="regular-price">(Regular Price ¥9,800)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty149.png" alt="Best Selling Tops 100">
+        </div>
+        <p><strong>Best Selling Tops 100</strong></p>
+        <p class="price">¥4,980 <span class="regular-price">(Regular Price ¥8,900)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty150.png" alt="Best Selling Tops 101">
+        </div>
+        <p><strong>Best Selling Tops 101</strong></p>
+        <p class="price">¥7,980 <span class="regular-price">(Regular Price ¥14,500)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty151.png" alt="Best Selling Tops 102">
+        </div>
+        <p><strong>Best Selling Tops 102</strong></p>
+        <p class="price">¥4,280 <span class="regular-price">(Regular Price ¥7,800)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty152.png" alt="Best Selling Tops 103">
+        </div>
+        <p><strong>Best Selling Tops 103</strong></p>
+        <p class="price">¥5,980 <span class="regular-price">(Regular Price ¥10,500)</span></p>
+        <span class="discount">SAVE 43%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty153.png" alt="Best Selling Tops 104">
+        </div>
+        <p><strong>Best Selling Tops 104</strong></p>
+        <p class="price">¥3,980 <span class="regular-price">(Regular Price ¥7,200)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty154.png" alt="Best Selling Tops 105">
+        </div>
+        <p><strong>Best Selling Tops 105</strong></p>
+        <p class="price">¥6,480 <span class="regular-price">(Regular Price ¥11,800)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty155.png" alt="Best Selling Tops 106">
+        </div>
+        <p><strong>Best Selling Tops 106</strong></p>
+        <p class="price">¥4,480 <span class="regular-price">(Regular Price ¥8,100)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty156.png" alt="Best Selling Tops 107">
+        </div>
+        <p><strong>Best Selling Tops 107</strong></p>
+        <p class="price">¥5,480 <span class="regular-price">(Regular Price ¥9,800)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty157.png" alt="Best Selling Tops 108">
+        </div>
+        <p><strong>Best Selling Tops 108</strong></p>
+        <p class="price">¥4,980 <span class="regular-price">(Regular Price ¥8,900)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty158.png" alt="Best Selling Tops 109">
+        </div>
+        <p><strong>Best Selling Tops 109</strong></p>
+        <p class="price">¥7,980 <span class="regular-price">(Regular Price ¥14,500)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty159.png" alt="Best Selling Tops 110">
+        </div>
+        <p><strong>Best Selling Tops 110</strong></p>
+        <p class="price">¥4,280 <span class="regular-price">(Regular Price ¥7,800)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty160.png" alt="Best Selling Tops 111">
+        </div>
+        <p><strong>Best Selling Tops 111</strong></p>
+        <p class="price">¥5,980 <span class="regular-price">(Regular Price ¥10,500)</span></p>
+        <span class="discount">SAVE 43%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty161.png" alt="Best Selling Tops 112">
+        </div>
+        <p><strong>Best Selling Tops 112</strong></p>
+        <p class="price">¥3,980 <span class="regular-price">(Regular Price ¥7,200)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty162.png" alt="Best Selling Tops 113">
+        </div>
+        <p><strong>Best Selling Tops 113</strong></p>
+        <p class="price">¥6,480 <span class="regular-price">(Regular Price ¥11,800)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty163.png" alt="Best Selling Tops 114">
+        </div>
+        <p><strong>Best Selling Tops 114</strong></p>
+        <p class="price">¥4,480 <span class="regular-price">(Regular Price ¥8,100)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty164.png" alt="Best Selling Tops 115">
+        </div>
+        <p><strong>Best Selling Tops 115</strong></p>
+        <p class="price">¥5,480 <span class="regular-price">(Regular Price ¥9,800)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty165.png" alt="Best Selling Tops 116">
+        </div>
+        <p><strong>Best Selling Tops 116</strong></p>
+        <p class="price">¥4,980 <span class="regular-price">(Regular Price ¥8,900)</span></p>
+        <span class="discount">SAVE 44%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty166.png" alt="Best Selling Tops 117">
+        </div>
+        <p><strong>Best Selling Tops 117</strong></p>
+        <p class="price">¥7,980 <span class="regular-price">(Regular Price ¥14,500)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty167.png" alt="Best Selling Tops 118">
+        </div>
+        <p><strong>Best Selling Tops 118</strong></p>
+        <p class="price">¥4,280 <span class="regular-price">(Regular Price ¥7,800)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty168.png" alt="Best Selling Tops 119">
+        </div>
+        <p><strong>Best Selling Tops 119</strong></p>
+        <p class="price">¥5,980 <span class="regular-price">(Regular Price ¥10,500)</span></p>
+        <span class="discount">SAVE 43%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty169.png" alt="Best Selling Tops 120">
+        </div>
+        <p><strong>Best Selling Tops 120</strong></p>
+        <p class="price">¥3,980 <span class="regular-price">(Regular Price ¥7,200)</span></p>
+        <span class="discount">SAVE 45%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+    </div>
+  </div>
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-title">Aileen's Secret</div>
+      <div class="footer-links">
+        <div>
+          <ul>
+            <li><a href="About1.html">会社情報</a></li>
+            <li><a href="Service1.html#contact">お問い合わせ</a></li>
+            <li><a href="Shop2.html">ショップ</a></li>
+            <li><a href="Service1.html">サービス</a></li>
+          </ul>
+        </div>
+        <div>SNSでフォロー
+          <div class="sns-icons">
+            <a href="https://www.facebook.com" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://x.com" target="_blank">
+              <i class="fab fa-x-twitter"></i>
+            </a>
+          </div>
+        </div>
+        <div>ニュースや最新情報を受け取るには<br>メールアドレスでサインアップしてください。
+          <form class="newsletter-form">
+            <button type="submit" onclick="window.location.href='signIn.html'; return false;">サインアップ</button>
+          </form>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #ddd; color: #666; font-size: 0.9rem;">
+        &copy; 2025 Aileen's Secret. All rights reserved.
+      </div>
+    </div>
+  </footer>
+  <!-- サインインモーダル -->
+  <div id="signin-modal" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.35);align-items:center;justify-content:center;">
+    <div style="background:#fff;border-radius:10px;box-shadow:0 2px 16px rgba(0,0,0,0.18);padding:0;max-width:420px;width:90vw;max-height:95vh;display:flex;flex-direction:column;position:relative;">
+      <button id="close-signin-modal" style="position:absolute;top:8px;right:12px;font-size:1.5rem;background:none;border:none;cursor:pointer;color:#888;">&times;</button>
+      <iframe src="signIn.html" style="border:none;width:100%;height:480px;border-radius:10px;"></iframe>
+    </div>
+  </div>
+  <script>
+    // カート連携
+    document.querySelectorAll('.shop-now').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const product = btn.closest('.product');
+        const img = product.querySelector('img').src;
+        const name = product.querySelector('strong').textContent;
+        const price = product.querySelector('.price').textContent;
+        const item = { img, name, price };
+        let cart = JSON.parse(localStorage.getItem('cartItems') || '[]');
+        cart.push(item);
+        localStorage.setItem('cartItems', JSON.stringify(cart));
+        window.location.href = 'Cart3.html';
+      });
+    });
+    // カートリンク
+    document.querySelectorAll('nav a').forEach(a => {
+      if(a.textContent.includes('カート')){
+        a.addEventListener('click', function(e){
+          e.preventDefault();
+          window.location.href = 'Cart3.html';
+        });
+      }
+    });
+    // サインインモーダル表示
+    const loginLink = document.getElementById('login-link');
+    const signinModal = document.getElementById('signin-modal');
+    const closeSigninModal = document.getElementById('close-signin-modal');
+    if(loginLink && signinModal && closeSigninModal){
+      loginLink.addEventListener('click', function(e){
+        e.preventDefault();
+        signinModal.style.display = 'flex';
+      });
+      closeSigninModal.addEventListener('click', function(){
+        signinModal.style.display = 'none';
+      });
+      // モーダル外クリックで閉じる
+      signinModal.addEventListener('click', function(e){
+        if(e.target === signinModal){
+          signinModal.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html> 
