@@ -7,6 +7,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
+    :root {
+      --header-height: 80px;
+    }
     body {
       font-family: 'Poppins', sans-serif;
       background: #f6f6f6;
@@ -52,7 +55,7 @@
       width: 100vw;
       height: 56.25vw; /* 16:9の比率 (9/16 = 0.5625) */
       max-height: 100vh;
-      margin-top: 80px; /* Headerの高さ分のマージンを追加 */
+      margin-top: var(--header-height); /* CSS変数を使用してHeaderの高さ分のマージンを設定 */
       overflow: hidden;
     }
     .hero-left {
@@ -80,6 +83,16 @@
     }
     .hero-left p .brand-name {
       font-weight: bold;
+    }
+    .hero-left h2 {
+      margin-top: -10px !important;
+      position: relative;
+      top: -10px;
+    }
+    .hero-left h2[style*="color: #FF8C00"] {
+      margin-top: -10px !important;
+      position: relative;
+      top: -10px;
     }
     .hero-left button .brand-name {
       font-size: 1rem;
@@ -183,6 +196,8 @@
     .products-section {
       background: #f6f6f6;
       padding: 3rem 0 4rem 0;
+      position: relative;
+      z-index: 1;
     }
     .products-grid {
       display: flex;
@@ -224,10 +239,16 @@
       margin-bottom: 0.5rem;
     }
     @media (max-width: 900px) {
+      :root {
+        --header-height: 90px;
+      }
+      header {
+        padding: 1rem 1.5rem;
+      }
       .hero-section { 
         height: 56.25vw; 
         max-height: 100vh; 
-        margin-top: 80px; /* Headerの高さ分のマージンを維持 */
+        margin-top: var(--header-height); /* CSS変数を使用 */
       }
       .hero-left { 
         left: 5%; 
@@ -242,8 +263,14 @@
       .product { width: 100%; max-width: 100%; }
     }
     @media (max-width: 600px) {
+      :root {
+        --header-height: 85px;
+      }
+      header {
+        padding: 0.8rem 1rem;
+      }
       .hero-section {
-        margin-top: 70px; /* 小さい画面では少し小さく */
+        margin-top: var(--header-height); /* CSS変数を使用 */
       }
       .hero-left {
         left: 5%;
@@ -254,8 +281,39 @@
       .section-title-bar { flex-direction: column; gap: 1rem; align-items: flex-start; }
       .products-grid { flex-direction: column; align-items: stretch; }
       .hero-img-title { font-size: 1.2rem; }
-      .container { margin-top: 80px; }
+      .container { margin-top: 90px; }
       .grid { flex-direction: column; align-items: stretch; }
+    }
+    @media (max-width: 480px) {
+      :root {
+        --header-height: 80px;
+      }
+      header {
+        padding: 0.6rem 0.8rem;
+      }
+      .hero-section {
+        margin-top: var(--header-height); /* CSS変数を使用 */
+      }
+      .hero-left {
+        left: 3%;
+        max-width: 90vw;
+        padding: 0.8rem;
+      }
+      .hero-left h1 {
+        font-size: 1.8rem;
+      }
+      .hero-left p {
+        font-size: 1rem;
+      }
+      /* 小さい画面でのセクション間隔調整 */
+      .products-section,
+      .service-section,
+      .subscription-section,
+      .brand-detail-section,
+      .contact-section {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+      }
     }
     .service-section {
       background: linear-gradient(-45deg, #f6f6f6, #e6e6fa, #fadadd, #e6e6fa);
@@ -263,6 +321,8 @@
       animation: gradientShift 8s ease infinite;
       padding: 4rem 0 3rem 0;
       text-align: center;
+      position: relative;
+      z-index: 1;
     }
     .service-title {
       font-size: 2.5rem;
@@ -352,6 +412,8 @@
       padding: 4rem 0 3rem 0;
       display: flex;
       justify-content: center;
+      position: relative;
+      z-index: 1;
     }
     .subscription-cards {
       display: flex;
@@ -473,6 +535,8 @@
       background: #ececec;
       padding: 4rem 0 3rem 0;
       margin-top: 0;
+      position: relative;
+      z-index: 1;
     }
     .brand-detail-header {
       display: flex;
@@ -641,6 +705,8 @@
     .contact-section {
       background: #f6f6f6;
       padding: 3rem 0 0 0;
+      position: relative;
+      z-index: 1;
     }
     .contact-container {
       display: flex;
@@ -740,6 +806,8 @@
       background: #ececec;
       padding: 2.5rem 0 1.5rem 0;
       margin-top: 0;
+      position: relative;
+      z-index: 1;
     }
     .footer-container {
       max-width: 1100px;
@@ -849,7 +917,7 @@
       <div class="hero-left">
       <h1>Aileen's Secret</h1>
       <p>冒険の扉を開けましょう！<br><span class="brand-name">Aileen's Secret</span>は楽しさと元気になるヒントを集め <br>あなたをもっとエキサイティングにします！</p>
-      <h2 style="color: #FF8C00;">Now on Summer Sale!</h2>
+      <h2 style="color: #FF8C00; margin-top: -10px; position: relative; top: -10px;">Now on Summer Sale!</h2>
       <button onclick="window.location.href='Shop2.html'">セール商品はこちら</button>
     </div>
     <div class="hero-right">
@@ -1102,6 +1170,66 @@
         });
       }
     }
+
+    // Headerの高さを動的に計算してHero Sectionのmargin-topを調整
+    function adjustHeroMargin() {
+      const header = document.querySelector('header');
+      const heroSection = document.querySelector('.hero-section');
+      
+      if (header && heroSection) {
+        const headerHeight = header.offsetHeight;
+        heroSection.style.marginTop = headerHeight + 'px';
+        
+        // CSS変数も更新
+        document.documentElement.style.setProperty('--header-height', headerHeight + 'px');
+      }
+    }
+
+    // すべてのセクションがHeaderに隠れないよう調整
+    function adjustAllSections() {
+      const header = document.querySelector('header');
+      const headerHeight = header ? header.offsetHeight : 80;
+      
+      // 各セクションのz-indexを確認し、必要に応じて調整
+      const sections = [
+        '.products-section',
+        '.service-section', 
+        '.subscription-section',
+        '.brand-detail-section',
+        '.contact-section',
+        '.site-footer'
+      ];
+      
+      sections.forEach(selector => {
+        const section = document.querySelector(selector);
+        if (section) {
+          // セクションがHeaderの下に正しく配置されるよう確認
+          const rect = section.getBoundingClientRect();
+          if (rect.top < headerHeight) {
+            // セクションがHeaderに隠れている場合、上部にマージンを追加
+            const currentMarginTop = parseInt(window.getComputedStyle(section).marginTop) || 0;
+            const neededMargin = headerHeight - rect.top + 20; // 20pxの余裕を追加
+            section.style.marginTop = (currentMarginTop + neededMargin) + 'px';
+          }
+        }
+      });
+    }
+
+    // ページ読み込み時とリサイズ時に実行
+    window.addEventListener('load', function() {
+      adjustHeroMargin();
+      setTimeout(adjustAllSections, 100); // 少し遅延させて確実に実行
+    });
+    window.addEventListener('resize', function() {
+      adjustHeroMargin();
+      setTimeout(adjustAllSections, 100);
+    });
+    
+    // DOMContentLoadedでも実行（より確実に）
+    document.addEventListener('DOMContentLoaded', function() {
+      adjustHeroMargin();
+      setTimeout(adjustAllSections, 100);
+    });
   </script>
 </body>
 </html>
