@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>サインイン | Aileen's Secret</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      background: #fafafa;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .signin-container {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 40px 32px 24px 32px;
+      width: 100%;
+      max-width: 400px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    .signin-title {
+      font-size: 1.2rem;
+      margin-bottom: 32px;
+      font-weight: bold;
+      color: #222;
+    }
+    .signin-input {
+      width: 100%;
+      padding: 14px 12px;
+      margin-bottom: 16px;
+      border: 1.5px solid #bbb;
+      border-radius: 5px;
+      font-size: 1rem;
+      background: #fafafa;
+      box-sizing: border-box;
+    }
+    .signin-label {
+      display: block;
+      text-align: left;
+      margin-bottom: 4px;
+      color: #b0b0b0;
+      font-size: 0.95rem;
+    }
+    .signin-btn {
+      width: 100%;
+      background: #222;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 14px 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 24px 0 16px 0;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .signin-btn:hover {
+      background: #444;
+    }
+    .signin-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      font-size: 0.95rem;
+      color: #888;
+    }
+    .signin-links a {
+      color: #888;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .signin-links a:hover {
+      color: #222;
+      text-decoration: underline;
+    }
+    .sns-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    .sns-icons a {
+      color: #888;
+      font-size: 1.2rem;
+      transition: color 0.2s;
+    }
+    .sns-icons a:hover {
+      color: #FF8C00;
+    }
+  </style>
+</head>
+<body>
+  <div class="signin-container">
+    <div class="signin-title">Aileen's Secretへようこそ</div>
+    <form>
+      <input class="signin-input" type="email" placeholder="メールアドレス" required>
+      <label class="signin-label" for="password">パスワード</label>
+      <input class="signin-input" type="password" id="password" placeholder="" required>
+      <button class="signin-btn" type="submit">サインイン</button>
+    </form>
+    <div class="signin-links">
+      <a href="#" onclick="showForgotPasswordModal()">パスワードを忘れた場合</a>
+      <span>｜</span>
+      <a href="#" onclick="showCreateAccountModal()">アカウントを作成</a>
+    </div>
+    <div style="cursor: pointer; margin-top: 1rem; padding: 0.5rem; border-radius: 5px; transition: background 0.2s;" onclick="showSocialModal()" onmouseover="this.style.background='#f5f5f5'" onmouseout="this.style.background='transparent'">
+      <div style="font-weight: 600; color: #444; margin-bottom: 0.5rem;">SNSでフォロー</div>
+      <div class="sns-icons">
+        <a href="https://www.facebook.com" target="_blank">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.instagram.com" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://x.com" target="_blank">
+          <i class="fab fa-x-twitter"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- ソーシャルメディアモーダル -->
+  <div id="social-modal" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.35);align-items:center;justify-content:center;">
+    <div style="background:#fff;border-radius:15px;box-shadow:0 4px 20px rgba(0,0,0,0.2);padding:2rem;max-width:400px;width:90vw;text-align:center;position:relative;">
+      <button id="close-social-modal" style="position:absolute;top:10px;right:15px;font-size:1.5rem;background:none;border:none;cursor:pointer;color:#888;">&times;</button>
+      <h3 style="color:#222;margin-bottom:1.5rem;font-size:1.3rem;">フォローしてください</h3>
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        <a href="https://www.facebook.com" target="_blank" style="background:#1877F2;color:#fff;padding:0.8rem 1.5rem;border-radius:25px;text-decoration:none;font-weight:600;transition:background 0.2s;">Facebookでフォロー</a>
+        <a href="https://twitter.com/ailenssecret" target="_blank" style="background:#000;color:#fff;padding:0.8rem 1.5rem;border-radius:25px;text-decoration:none;font-weight:600;transition:background 0.2s;">X（Twitter）でフォロー</a>
+        <a href="https://instagram.com/ailenssecret" target="_blank" style="background:linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);color:#fff;padding:0.8rem 1.5rem;border-radius:25px;text-decoration:none;font-weight:600;transition:opacity 0.2s;">Instagramでフォロー</a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- パスワードリセットモーダル -->
+  <div id="forgot-password-modal" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.35);align-items:center;justify-content:center;">
+    <div style="background:#fff;border-radius:15px;box-shadow:0 4px 20px rgba(0,0,0,0.2);padding:2rem;max-width:400px;width:90vw;text-align:center;position:relative;">
+      <button id="close-forgot-password-modal" style="position:absolute;top:10px;right:15px;font-size:1.5rem;background:none;border:none;cursor:pointer;color:#888;">&times;</button>
+      <h3 style="color:#222;margin-bottom:1.5rem;font-size:1.3rem;">パスワードリセット</h3>
+      <p style="color:#666;margin-bottom:1.5rem;line-height:1.6;">登録済みのメールアドレスを入力してください。<br>パスワードリセット用のリンクをお送りします。</p>
+      <form style="display:flex;flex-direction:column;gap:1rem;">
+        <input type="email" placeholder="メールアドレス" required style="padding:0.8rem 1rem;border:1.5px solid #bbb;border-radius:8px;font-size:1rem;outline:none;">
+        <button type="submit" style="background:#222;color:#fff;border:none;border-radius:8px;padding:0.8rem 1.5rem;font-size:1rem;font-weight:600;cursor:pointer;transition:background 0.2s;">リセットリンクを送信</button>
+      </form>
+    </div>
+  </div>
+  
+  <!-- アカウント作成モーダル -->
+  <div id="create-account-modal" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.35);align-items:center;justify-content:center;">
+    <div style="background:#fff;border-radius:15px;box-shadow:0 4px 20px rgba(0,0,0,0.2);padding:2rem;max-width:400px;width:90vw;text-align:center;position:relative;">
+      <button id="close-create-account-modal" style="position:absolute;top:10px;right:15px;font-size:1.5rem;background:none;border:none;cursor:pointer;color:#888;">&times;</button>
+      <h3 style="color:#222;margin-bottom:1.5rem;font-size:1.3rem;">アカウント作成</h3>
+      <form style="display:flex;flex-direction:column;gap:1rem;">
+        <input type="text" placeholder="姓" required style="padding:0.8rem 1rem;border:1.5px solid #bbb;border-radius:8px;font-size:1rem;outline:none;">
+        <input type="text" placeholder="名" required style="padding:0.8rem 1rem;border:1.5px solid #bbb;border-radius:8px;font-size:1rem;outline:none;">
+        <input type="email" placeholder="メールアドレス" required style="padding:0.8rem 1rem;border:1.5px solid #bbb;border-radius:8px;font-size:1rem;outline:none;">
+        <input type="password" placeholder="パスワード" required style="padding:0.8rem 1rem;border:1.5px solid #bbb;border-radius:8px;font-size:1rem;outline:none;">
+        <input type="password" placeholder="パスワード（確認）" required style="padding:0.8rem 1rem;border:1.5px solid #bbb;border-radius:8px;font-size:1rem;outline:none;">
+        <button type="submit" style="background:#222;color:#fff;border:none;border-radius:8px;padding:0.8rem 1.5rem;font-size:1rem;font-weight:600;cursor:pointer;transition:background 0.2s;">アカウントを作成</button>
+      </form>
+    </div>
+  </div>
+  
+  <script>
+    // ソーシャルメディアモーダル表示
+    function showSocialModal() {
+      const socialModal = document.getElementById('social-modal');
+      const closeSocialModal = document.getElementById('close-social-modal');
+      
+      if(socialModal && closeSocialModal){
+        socialModal.style.display = 'flex';
+        
+        closeSocialModal.addEventListener('click', function(){
+          socialModal.style.display = 'none';
+        });
+        
+        // モーダル外クリックで閉じる
+        socialModal.addEventListener('click', function(e){
+          if(e.target === socialModal){
+            socialModal.style.display = 'none';
+          }
+        });
+      }
+    }
+    
+    // パスワードリセットモーダル表示
+    function showForgotPasswordModal() {
+      const forgotPasswordModal = document.getElementById('forgot-password-modal');
+      const closeForgotPasswordModal = document.getElementById('close-forgot-password-modal');
+      
+      if(forgotPasswordModal && closeForgotPasswordModal){
+        forgotPasswordModal.style.display = 'flex';
+        
+        closeForgotPasswordModal.addEventListener('click', function(){
+          forgotPasswordModal.style.display = 'none';
+        });
+        
+        // モーダル外クリックで閉じる
+        forgotPasswordModal.addEventListener('click', function(e){
+          if(e.target === forgotPasswordModal){
+            forgotPasswordModal.style.display = 'none';
+          }
+        });
+        
+        // フォーム送信処理
+        const form = forgotPasswordModal.querySelector('form');
+        form.addEventListener('submit', function(e){
+          e.preventDefault();
+          alert('パスワードリセット用のリンクをメールで送信しました。');
+          forgotPasswordModal.style.display = 'none';
+        });
+      }
+    }
+    
+    // アカウント作成モーダル表示
+    function showCreateAccountModal() {
+      const createAccountModal = document.getElementById('create-account-modal');
+      const closeCreateAccountModal = document.getElementById('close-create-account-modal');
+      
+      if(createAccountModal && closeCreateAccountModal){
+        createAccountModal.style.display = 'flex';
+        
+        closeCreateAccountModal.addEventListener('click', function(){
+          createAccountModal.style.display = 'none';
+        });
+        
+        // モーダル外クリックで閉じる
+        createAccountModal.addEventListener('click', function(e){
+          if(e.target === createAccountModal){
+            createAccountModal.style.display = 'none';
+          }
+        });
+        
+        // フォーム送信処理
+        const form = createAccountModal.querySelector('form');
+        form.addEventListener('submit', function(e){
+          e.preventDefault();
+          alert('アカウントが正常に作成されました。');
+          createAccountModal.style.display = 'none';
+        });
+      }
+    }
+  </script>
+</body>
+</html> 
