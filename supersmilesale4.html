@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ウルトラスマイル・タイムセール | Aileen's Secret</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --header-height: 80px;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f6f6f6;
+      color: #222;
+      margin: 0;
+      padding-top: 0;
+    }
+    header {
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      padding: 1.2rem 2rem 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #222;
+    }
+    .logo a {
+      text-decoration: none;
+      color: inherit;
+    }
+    nav {
+      display: flex;
+      gap: 1.2rem;
+      margin-right: 75px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.2s;
+      writing-mode: horizontal-tb; /* 横書きを明示的に指定 */
+    }
+    nav a:hover {
+      color: #FF8C00;
+    }
+    .cart-icon {
+      font-size: 1.2rem;
+      transition: transform 0.2s;
+    }
+    .cart-icon:hover {
+      transform: scale(1.1);
+    }
+    .page-header {
+      background: linear-gradient(-45deg, #f6f6f6, #e6e6fa, #fadadd, #e6e6fa);
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+      padding: 2rem 2rem;
+      text-align: center;
+      border-radius: 15px;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    .page-header h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: #444;
+      margin-top: -1rem;
+    }
+    .page-header p {
+      font-size: 1.1rem;
+      color: #666;
+      margin: 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 50px auto 0 auto;
+      padding: 0 1rem;
+    }
+    .main-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 280px;
+      padding: 1.5rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+      position: relative;
+    }
+    .card:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 8px 24px rgba(230,126,34,0.13);
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      border-radius: 12px;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+    .rank-badge {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      background: #e67e22;
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    .username {
+      font-weight: bold;
+      margin: 1rem 0 0.5rem;
+      color: #333;
+      font-size: 1.1rem;
+    }
+    .likes {
+      color: #666;
+      font-size: 1rem;
+      margin: 0.5rem 0 1rem;
+    }
+    .like-btn {
+      background: #222;
+      border: none;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 24px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: background 0.2s;
+      width: 100%;
+    }
+    .like-btn:hover {
+      background: #e67e22;
+    }
+    .like-btn:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    .progress-container {
+      width: 100%;
+      max-width: 800px;
+      margin: 2rem auto;
+      background-color: #f0f0f0;
+      border-radius: 30px;
+      overflow: hidden;
+      height: 30px;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+    }
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #e67e22, #ff6b35);
+      width: 0%;
+      transition: width 0.3s ease-in-out;
+    }
+    .total-smiles {
+      text-align: center;
+      font-size: 1.5rem;
+      margin: -30px 0 2rem 0;
+      color: #444;
+      font-weight: bold;
+    }
+    .sale-message {
+      margin-top: 2rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #e67e22;
+      display: none;
+      animation: pop 1s ease;
+      padding: 1rem;
+      background: #fff3cd;
+      border-radius: 12px;
+      border: 2px solid #ffeaa7;
+      text-align: center;
+    }
+    @keyframes pop {
+      0% { transform: scale(0); opacity: 0; }
+      60% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+    .site-footer {
+      background: #ececec;
+      padding: 2.5rem 0 1.5rem 0;
+      margin-top: 3rem;
+    }
+    .footer-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .footer-title {
+      font-size: 1.5rem;
+      color: #888;
+      font-weight: bold;
+      margin-bottom: 1.2rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      font-size: 1rem;
+      color: #444;
+    }
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0 0;
+    }
+    .footer-links li {
+      margin-bottom: 0.3rem;
+    }
+    .footer-links a {
+      color: #444;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: #e67e22;
+      text-decoration: underline;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.7rem;
+    }
+    .newsletter-form input[type="email"] {
+      border: 1.5px solid #bbb;
+      border-radius: 24px;
+      padding: 0.5rem 1.2rem;
+      font-size: 1rem;
+      font-family: inherit;
+      background: #fff;
+      outline: none;
+      transition: border 0.2s;
+    }
+    .newsletter-form input[type="email"]:focus {
+      border: 1.5px solid #e67e22;
+    }
+    .newsletter-form button {
+      background: #6d625c;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 0.5rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .newsletter-form button:hover {
+      background: #e67e22;
+    }
+    @media (max-width: 900px) {
+      :root {
+        --header-height: 90px;
+      }
+      header {
+        padding: 1rem 1.5rem;
+      }
+      .container { margin-top: 70px; }
+      .footer-links { flex-direction: column; gap: 1.2rem; }
+      .gallery { gap: 1rem; }
+      .card { width: 90vw; max-width: 300px; }
+    }
+    @media (max-width: 600px) {
+      :root {
+        --header-height: 100px; /* モバイルでのHeader高さを調整 */
+      }
+      header {
+        padding: 0.8rem 1rem;
+        flex-direction: column;
+        gap: 0.3rem;
+        align-items: flex-start;
+      }
+      .logo {
+        font-size: 1.3rem;
+        margin-bottom: 0.2rem;
+      }
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 2rem;
+        margin-left: 0;
+        margin-right: 0;
+        flex-wrap: wrap;
+      }
+      nav a:not(.cart-icon) {
+        font-size: 0.9rem;
+        padding: 0.1rem 0;
+        writing-mode: horizontal-tb; /* 横書きを明示的に指定 */
+      }
+      .cart-icon {
+        margin-left: auto;
+        font-size: 1.2rem;
+      }
+      .container { margin-top: 50px; }
+      .page-header h1 { font-size: 2rem; }
+      .gallery { flex-direction: column; align-items: center; }
+    }
+    @media (max-width: 480px) {
+      :root {
+        --header-height: 90px; /* さらに小さい画面でのHeader高さ調整 */
+      }
+      header {
+        padding: 0.6rem 0.8rem;
+        flex-direction: column;
+        gap: 0.2rem;
+        align-items: flex-start;
+      }
+      .logo {
+        font-size: 1.2rem;
+        margin-bottom: 0.1rem;
+      }
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 1.5rem;
+        margin-left: 0;
+        margin-right: 0;
+        flex-wrap: wrap;
+      }
+      nav a:not(.cart-icon) {
+        font-size: 0.8rem;
+        padding: 0.1rem 0;
+        writing-mode: horizontal-tb; /* 横書きを明示的に指定 */
+      }
+      .cart-icon {
+        margin-left: auto;
+        font-size: 1.1rem;
+      }
+    }
+    @media (max-width: 400px) {
+      :root {
+        --header-height: 85px; /* 非常に小さい画面でのHeader高さ調整 */
+      }
+      header {
+        padding: 0.5rem 0.6rem;
+        flex-direction: column;
+        gap: 0.15rem;
+        align-items: flex-start;
+      }
+      .logo {
+        font-size: 1.1rem;
+        margin-bottom: 0.1rem;
+      }
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 1.2rem;
+        margin-left: 0;
+        margin-right: 0;
+        flex-wrap: wrap;
+      }
+      nav a:not(.cart-icon) {
+        font-size: 0.75rem;
+        padding: 0.05rem 0;
+        writing-mode: horizontal-tb; /* 横書きを明示的に指定 */
+      }
+      .cart-icon {
+        margin-left: auto;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo" onclick="window.location.href='index.html'" style="cursor: pointer;">Aileen's Secret</div>
+    <nav>
+      <a href="shop1.html">ショップ</a>
+      <a href="Service1.html">サービス</a>
+      <a href="faq1.html">FAQ</a>
+      <a href="About1.html">About</a>
+      <a href="contact1.html">お問い合わせ</a>
+      <a href="#" id="login-link">ログイン</a>
+      <a href="Cart3.html" class="cart-icon">
+        <i class="fas fa-shopping-cart"></i>
+      </a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <section class="page-header">
+      <h1>ウルトラスマイル・タイムセール</h1>
+      <p>お気に入りのスマイルコーデに「スマイル♡」を押して応援しよう！<br>みんなのスマイルが集まると爆発的セールが始まるよ！</p>
+    </section>
+
+    <main class="main-content">
+    <div class="total-smiles">
+      総スマイル♡数: <span id="totalSmiles">0</span> / 500
+    </div>
+
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="sale-message" id="saleMessage">
+      🔥 ウルトラタイムセール爆発中！今すぐチェック！🔥
+    </div>
+
+    <div class="gallery" id="gallery">
+      <!-- カードがここに生成されます -->
+    </div>
+  </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-title">Aileen's Secret</div>
+      <div class="footer-links">
+        <div>
+          <ul>
+            <li><a href="About1.html">会社情報</a></li>
+            <li><a href="new site project11.html#contact">お問い合わせ</a></li>
+            <li><a href="shop1.html">ショップ</a></li>
+            <li><a href="Service1.html">サービス</a></li>
+          </ul>
+        </div>
+        <div>SNSでフォロー
+          <div class="sns-icons">
+            <a href="https://www.facebook.com" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://x.com" target="_blank">
+              <i class="fab fa-x-twitter"></i>
+            </a>
+          </div>
+        </div>
+        <div>ニュースや最新情報を受け取るには、メールアドレスでサインアップしてください。
+          <form class="newsletter-form">
+            <input type="email" placeholder="メールアドレス">
+            <button type="submit">サインアップ</button>
+          </form>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #ddd; color: #666; font-size: 0.9rem;">
+        &copy; 2025 Aileen's Secret. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- サインインモーダル -->
+  <div id="signin-modal" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.35);align-items:center;justify-content:center;">
+    <div style="background:#fff;border-radius:10px;box-shadow:0 2px 16px rgba(0,0,0,0.18);padding:0;max-width:420px;width:90vw;max-height:95vh;display:flex;flex-direction:column;position:relative;">
+      <button id="close-signin-modal" style="position:absolute;top:8px;right:12px;font-size:1.5rem;background:none;border:none;cursor:pointer;color:#888;">&times;</button>
+      <iframe src="signIn.html" style="border:none;width:100%;height:480px;border-radius:10px;"></iframe>
+    </div>
+  </div>
+
+  <script>
+    const users = [
+      { name: "Yui", image: "https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty225.png", likes: 3 },
+      { name: "Hana", image: "https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty188.png", likes: 5 },
+      { name: "Rina", image: "https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty289.png", likes: 1 },
+      { name: "Mika", image: "https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty235.png", likes: 2 },
+      { name: "Saki", image: "https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty288.png", likes: 4 },
+      { name: "Aoi", image: "https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty87.png", likes: 2 },
+    ];
+
+    const goal = 500;
+    const progressBar = document.getElementById("progressBar");
+    const totalSmilesDisplay = document.getElementById("totalSmiles");
+    const saleMessage = document.getElementById("saleMessage");
+
+    function updateProgress() {
+      const totalLikes = users.reduce((sum, user) => sum + user.likes, 0);
+      totalSmilesDisplay.textContent = totalLikes;
+
+      const progress = (totalLikes / goal) * 100;
+      progressBar.style.width = progress + "%";
+
+      if (totalLikes >= goal) {
+        saleMessage.style.display = "block";
+        // すべてのボタンを無効化
+        document.querySelectorAll('.like-btn').forEach(btn => {
+          btn.disabled = true;
+          btn.textContent = "セール開始！";
+        });
+      }
+    }
+
+    function renderGallery() {
+      const gallery = document.getElementById('gallery');
+      gallery.innerHTML = '';
+      const sorted = [...users].sort((a, b) => b.likes - a.likes);
+
+      sorted.forEach((user, index) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        
+        // 元の配列でのインデックスを見つける
+        const originalIndex = users.findIndex(u => u.name === user.name && u.image === user.image);
+
+        card.innerHTML = `
+          <div class="rank-badge">${index + 1}</div>
+          <img src="${user.image}" alt="${user.name}">
+          <div class="username">${user.name}</div>
+          <div class="likes">スマイル♡: <span>${user.likes}</span></div>
+          <button class="like-btn" onclick="addLike(${originalIndex})">スマイル♡を送る</button>
+        `;
+
+        gallery.appendChild(card);
+      });
+    }
+
+    function addLike(index) {
+      users[index].likes += 1;
+      renderGallery();
+      updateProgress();
+    }
+
+    // サインインモーダル表示
+    const loginLink = document.getElementById('login-link');
+    const signinModal = document.getElementById('signin-modal');
+    const closeSigninModal = document.getElementById('close-signin-modal');
+    if(loginLink && signinModal && closeSigninModal){
+      loginLink.addEventListener('click', function(e){
+        e.preventDefault();
+        signinModal.style.display = 'flex';
+      });
+      closeSigninModal.addEventListener('click', function(){
+        signinModal.style.display = 'none';
+      });
+      // モーダル外クリックで閉じる
+      signinModal.addEventListener('click', function(e){
+        if(e.target === signinModal){
+          signinModal.style.display = 'none';
+        }
+      });
+    }
+
+    renderGallery();
+    updateProgress();
+  </script>
+</body>
+</html> 
