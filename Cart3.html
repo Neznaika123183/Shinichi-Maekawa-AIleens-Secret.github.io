@@ -60,7 +60,7 @@
     }
     .cart-container {
       max-width: 1200px;
-      margin: 70px auto 0 auto;
+      margin: 150px auto 0 auto;
       display: flex;
       gap: 30px;
       margin-bottom: 10px;
@@ -227,18 +227,55 @@
       background: #e67e22;
     }
     @media (max-width: 900px) {
+      :root {
+        --header-height: 90px;
+      }
+      header {
+        padding: 1rem 1.5rem;
+      }
       .cart-container { 
         flex-direction: column; 
-        margin-top: 50px; 
+        margin-top: 150px; 
         margin-bottom: 10px; 
       }
       .cart-main { padding: 1.2rem; }
       .cart-summary { margin-top: 20px; }
+      .footer-links { flex-direction: column; gap: 1.2rem; }
     }
     @media (max-width: 600px) {
+      :root {
+        --header-height: 100px; /* モバイルでのHeader高さを調整 */
+      }
+      header {
+        padding: 0.8rem 1rem;
+        flex-direction: column;
+        gap: 0.3rem;
+        align-items: flex-start;
+      }
+      .logo {
+        font-size: 1.3rem;
+        margin-bottom: 0.2rem;
+      }
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 2rem;
+        margin-left: 0;
+        margin-right: 0;
+        flex-wrap: wrap;
+      }
+      nav a:not(.cart-icon) {
+        font-size: 0.9rem;
+        padding: 0.1rem 0;
+        writing-mode: horizontal-tb; /* 横書きを明示的に指定 */
+      }
+      .cart-icon {
+        margin-left: auto;
+        font-size: 1.2rem;
+      }
       .cart-container { 
         flex-direction: column; 
-        margin-top: 40px; 
+        margin-top: 150px; 
         margin-bottom: 10px; 
       }
       .cart-main { padding: 0.7rem; }
@@ -278,6 +315,16 @@
         margin-left: auto;
         font-size: 1.1rem;
       }
+      .cart-container { 
+        margin-top: 150px; 
+        padding: 0 0.8rem;
+      }
+      .cart-main { 
+        padding: 0.8rem; 
+      }
+      .cart-summary { 
+        padding: 1rem; 
+      }
     }
     @media (max-width: 400px) {
       :root {
@@ -310,11 +357,41 @@
         margin-left: auto;
         font-size: 1rem;
       }
+      .cart-container { 
+        margin-top: 150px; 
+        padding: 0 0.6rem;
+      }
+      .cart-main { 
+        padding: 0.6rem; 
+      }
+      .cart-summary { 
+        padding: 0.8rem; 
+      }
+      .cart-title {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+      }
+      .cart-item {
+        gap: 0.8rem;
+        padding-bottom: 0.8rem;
+      }
+      .cart-image {
+        width: 60px;
+        height: 60px;
+      }
+      .cart-item-name {
+        font-size: 1rem;
+      }
+      .cart-item-price {
+        font-size: 0.9rem;
+      }
     }
     .site-footer {
       background: #ececec;
       padding: 2.5rem 0 1.5rem 0;
-      margin-top: 0;
+      margin-top: 0 !important;
+      position: relative;
+      z-index: 1;
     }
     .footer-container {
       max-width: 1100px;
@@ -335,11 +412,20 @@
       flex-wrap: wrap;
       font-size: 1rem;
       color: #444;
+      align-items: flex-start;
     }
     .footer-links ul {
       list-style: none;
       padding: 0;
-      margin: 0.5rem 0 0 0;
+      margin: 0;
+    }
+    .footer-links > div:nth-child(1),
+    .footer-links > div:nth-child(2),
+    .footer-links > div:nth-child(3) {
+      height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
     }
     .footer-links li {
       margin-bottom: 0.3rem;
@@ -350,13 +436,15 @@
       transition: color 0.2s;
     }
     .footer-links a:hover {
-      color: #e67e22;
+      color: #FF8C00;
       text-decoration: underline;
     }
     .newsletter-form {
       display: flex;
       gap: 0.5rem;
       margin-top: 0.7rem;
+      flex-direction: column;
+      align-items: center;
     }
     .newsletter-form input[type="email"] {
       border: 1.5px solid #bbb;
@@ -367,6 +455,9 @@
       background: #fff;
       outline: none;
       transition: border 0.2s;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
     }
     .newsletter-form input[type="email"]:focus {
       border: 1.5px solid #e67e22;
@@ -381,18 +472,94 @@
       font-weight: 600;
       cursor: pointer;
       transition: background 0.2s;
+      width: 66.67%;
+      box-sizing: border-box;
+      align-self: center;
     }
     .newsletter-form button:hover {
-      background: #e67e22;
+      background: #FF8C00;
     }
     @media (max-width: 900px) {
       .footer-links { flex-direction: column; gap: 1.2rem; }
+    }
+    @media (max-width: 350px) {
+      :root {
+        --header-height: 80px;
+      }
+      header {
+        padding: 0.4rem 0.5rem;
+        flex-direction: column;
+        gap: 0.1rem;
+        align-items: flex-start;
+      }
+      .logo {
+        font-size: 1rem;
+        margin-bottom: 0.05rem;
+      }
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-left: 0;
+        margin-right: 0;
+        flex-wrap: wrap;
+      }
+      nav a:not(.cart-icon) {
+        font-size: 0.7rem;
+        padding: 0.03rem 0;
+        writing-mode: horizontal-tb;
+      }
+      .cart-icon {
+        margin-left: auto;
+        font-size: 0.9rem;
+      }
+      .cart-container { 
+        margin-top: 150px; 
+        padding: 0 0.4rem;
+      }
+      .cart-main { 
+        padding: 0.5rem; 
+      }
+      .cart-summary { 
+        padding: 0.6rem; 
+      }
+      .cart-title {
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+      }
+      .cart-item {
+        gap: 0.6rem;
+        padding-bottom: 0.6rem;
+      }
+      .cart-image {
+        width: 50px;
+        height: 50px;
+      }
+      .cart-item-name {
+        font-size: 0.9rem;
+      }
+      .cart-item-price {
+        font-size: 0.8rem;
+      }
+      .quantity-btn {
+        width: 25px;
+        height: 25px;
+        font-size: 0.8rem;
+      }
+      .size-btn {
+        padding: 0.2rem 0.6rem;
+        font-size: 0.8rem;
+      }
+      .remove-btn {
+        padding: 0.2rem 0.8rem;
+        font-size: 0.8rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo" onclick="window.location.href='index.html'" style="cursor: pointer;">Aileen's Secret</div>
+    <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">Aileen's Secret</a></div>
     <nav>
       <a href="shop1.html">ショップ</a>
       <a href="Service1.html">サービス</a>
@@ -439,7 +606,7 @@
           <ul>
             <li><a href="About1.html">会社情報</a></li>
             <li><a href="new site project11.html#contact">お問い合わせ</a></li>
-            <li><a href="Shop2.html">ショップ</a></li>
+            <li><a href="shop1.html">ショップ</a></li>
             <li><a href="Service1.html">サービス</a></li>
           </ul>
         </div>
@@ -456,9 +623,8 @@
             </a>
           </div>
         </div>
-        <div>ニュースや最新情報を受け取るには、メールアドレスでサインアップしてください。
+        <div>ニュースや最新情報を受け取るには<br>メールアドレスでサインアップしてください。
           <form class="newsletter-form">
-            <input type="email" placeholder="メールアドレス">
             <button type="submit" onclick="window.location.href='signIn.html'; return false;">サインアップ</button>
           </form>
         </div>
