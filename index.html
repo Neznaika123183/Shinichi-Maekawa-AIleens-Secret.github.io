@@ -77,14 +77,16 @@
       padding: 2rem;
       background: transparent;
       border-radius: 15px;
+      margin-top: -40px;
     }
     .hero-left h1 {
-      font-size: 2.2rem;
+      font-size: 2.42rem;
       font-weight: bold;
       margin-bottom: 1.2rem;
       color: #0047AB;
       position: relative;
       top: -15px;
+      text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
     }
     .hero-left p {
       font-size: 1.1rem;
@@ -116,8 +118,8 @@
       border: 1px solid #bbb;
       border-radius: 24px;
       padding: 0.8rem 2.2rem;
-      font-size: 1rem;
-      font-weight: 600;
+      font-size: 1.1rem;
+      font-weight: bold;
       cursor: pointer;
       transition: background 0.2s, color 0.2s;
     }
@@ -267,6 +269,7 @@
         transform: translateY(-50%); 
         max-width: 90vw; 
         padding: 1.5rem; 
+        margin-top: -20px; /* モバイルでは上への移動を調整 */
       }
       .products-grid { gap: 1rem; }
       .product-card { width: 100%; max-width: 100%; }
@@ -313,6 +316,7 @@
         transform: translateY(-50%);
         max-width: 85vw;
         padding: 1rem;
+        margin-top: 0px; /* 600px以下では上への移動をリセット */
       }
       .section-title-bar { flex-direction: column; gap: 1rem; align-items: flex-start; }
       .products-grid { flex-direction: column; align-items: stretch; }
@@ -358,9 +362,13 @@
         left: 3%;
         max-width: 90vw;
         padding: 0.8rem;
+        margin-top: 10px; /* 480px以下では少し下に移動してheaderとの重なりを防ぐ */
       }
       .hero-left h1 {
         font-size: 1.8rem;
+      }
+      .hero-left h2 {
+        font-size: 1rem;
       }
       .hero-left p {
         font-size: 1rem;
@@ -619,10 +627,11 @@
     }
     @media (max-width: 900px) {
       .subscription-cards { gap: 1.2rem; }
-      .subscription-card { width: 100%; max-width: 100%; }
+      .subscription-card { width: 100%; max-width: 320px; }
     }
     @media (max-width: 600px) {
-      .subscription-cards { flex-direction: column; align-items: stretch; }
+      .subscription-cards { flex-direction: column; align-items: center; }
+      .subscription-card { max-width: 320px; }
       .subscription-section { padding: 2rem 0 1rem 0; }
     }
     .brand-detail-section {
@@ -894,8 +903,8 @@
       object-fit: cover;
     }
     @media (max-width: 900px) {
-      .contact-container { flex-direction: column; align-items: stretch; gap: 1.2rem; padding: 0 1rem; }
-      .contact-form, .contact-image { max-width: 100%; min-width: 0; }
+      .contact-container { flex-direction: column; align-items: center; gap: 1.2rem; padding: 0 1rem; }
+      .contact-form, .contact-image { max-width: 320px; min-width: 0; }
     }
     .site-footer {
       background: #ececec;
@@ -997,7 +1006,7 @@
 </head>
 <body>
   <header>
-    <div class="logo">Aileen's Secret</div>
+    <div class="logo" onclick="window.location.href='index.html'" style="cursor: pointer;">Aileen's Secret</div>
     <nav>
       <a href="shop1.html">ショップ</a>
       <a href="Service1.html">サービス</a>
@@ -1014,8 +1023,8 @@
       <div class="hero-left">
       <h1>Aileen's Secret</h1>
       <!--<p>冒険の扉を開けましょう！<br><span class="brand-name">Aileen's Secret</span>は楽しさと元気になるヒントを集め <br>あなたをもっとエキサイティングにします！</p>-->
-      <h2 style="color: #FF8C00; margin-top: -10px; position: relative; top: -10px;">Now on Sale!</h2>
-      <button onclick="window.location.href='Shop2.html'">セール商品はこちら</button>
+      <h2 style="color: #FF8C00; margin-top: -10px; position: relative; top: -10px; font-size: 1.8rem;">Now on Sale!</h2>
+      <button onclick="window.location.href='shop1.html'">セール商品はこちら</button>
     </div>
     <div class="hero-right">
       <div class="hero-img-box">
@@ -1178,7 +1187,7 @@
           <ul>
             <li><a href="About1.html">会社情報</a></li>
             <li><a href="contact1.html">お問い合わせ</a></li>
-            <li><a href="Shop2.html">ショップ</a></li>
+            <li><a href="shop1.html">ショップ</a></li>
             <li><a href="Service1.html">サービス</a></li>
           </ul>
         </div>
