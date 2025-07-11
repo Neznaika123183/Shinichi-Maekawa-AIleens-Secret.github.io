@@ -167,7 +167,9 @@
     .site-footer {
       background: #ececec;
       padding: 2.5rem 0 1.5rem 0;
-      margin-top: 3rem;
+      margin-top: 0 !important;
+      position: relative;
+      z-index: 1;
     }
     .footer-container {
       max-width: 1100px;
@@ -188,11 +190,20 @@
       flex-wrap: wrap;
       font-size: 1rem;
       color: #444;
+      align-items: flex-start;
     }
     .footer-links ul {
       list-style: none;
       padding: 0;
-      margin: 0.5rem 0 0 0;
+      margin: 0;
+    }
+    .footer-links > div:nth-child(1),
+    .footer-links > div:nth-child(2),
+    .footer-links > div:nth-child(3) {
+      height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
     }
     .footer-links li {
       margin-bottom: 0.3rem;
@@ -203,13 +214,15 @@
       transition: color 0.2s;
     }
     .footer-links a:hover {
-      color: #e67e22;
+      color: #FF8C00;
       text-decoration: underline;
     }
     .newsletter-form {
       display: flex;
       gap: 0.5rem;
       margin-top: 0.7rem;
+      flex-direction: column;
+      align-items: center;
     }
     .newsletter-form input[type="email"] {
       border: 1.5px solid #bbb;
@@ -220,6 +233,9 @@
       background: #fff;
       outline: none;
       transition: border 0.2s;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
     }
     .newsletter-form input[type="email"]:focus {
       border: 1.5px solid #e67e22;
@@ -234,9 +250,12 @@
       font-weight: 600;
       cursor: pointer;
       transition: background 0.2s;
+      width: 66.67%;
+      box-sizing: border-box;
+      align-self: center;
     }
     .newsletter-form button:hover {
-      background: #e67e22;
+      background: #FF8C00;
     }
     @media (max-width: 900px) {
       :root {
@@ -401,13 +420,13 @@
 
 <footer class="site-footer">
   <div class="footer-container">
-    <div class="footer-title">サイトのタイトル</div>
+    <div class="footer-title">Aileen's Secret</div>
     <div class="footer-links">
       <div>
         <ul>
           <li><a href="About1.html">会社情報</a></li>
-          <li><a href="new site project11.html#contact">お問い合わせ</a></li>
-          <li><a href="Shop2.html">ショップ</a></li>
+          <li><a href="contact1.html">お問い合わせ</a></li>
+          <li><a href="shop1.html">ショップ</a></li>
           <li><a href="Service1.html">サービス</a></li>
         </ul>
       </div>
@@ -424,12 +443,14 @@
           </a>
         </div>
       </div>
-      <div>ニュースや最新情報を受け取るには、メールアドレスでサインアップしてください。
+      <div>ニュースや最新情報を受け取るには<br>メールアドレスでサインアップしてください。
         <form class="newsletter-form">
-          <input type="email" placeholder="メールアドレス">
-          <button type="submit">サインアップ</button>
+          <button type="submit" onclick="window.location.href='signIn.html'; return false;">サインアップ</button>
         </form>
       </div>
+    </div>
+    <div style="text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #ddd; color: #666; font-size: 0.9rem;">
+      &copy; 2025 Aileen's Secret. All rights reserved.
     </div>
   </div>
 </footer>
