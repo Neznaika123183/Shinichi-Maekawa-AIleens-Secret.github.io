@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>わくわくタイムセール | Aileen's Secret</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --header-height: 80px;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f6f6f6;
+      color: #222;
+      margin: 0;
+      padding-top: 0;
+    }
+    header {
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      padding: 1.2rem 2rem 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #222;
+    }
+    nav {
+      display: flex;
+      gap: 1.2rem;
+      margin-right: 75px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.2s;
+      writing-mode: horizontal-tb;
+    }
+    nav a:hover {
+      color: #FF8C00;
+    }
+    .cart-icon {
+      font-size: 1.2rem;
+      transition: transform 0.2s;
+    }
+    .cart-icon:hover {
+      transform: scale(1.1);
+    }
+    .container {
+      max-width: 1200px;
+      margin: 120px auto 0 auto;
+      padding: 0 1rem;
+    }
+    .hero-section {
+      background: #ececec;
+      padding: 3rem 2rem;
+      text-align: center;
+      border-radius: 15px;
+      margin-bottom: 2rem;
+    }
+    .hero-section h1 {
+      color: #222;
+      margin-bottom: 1rem;
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+    .hero-section p {
+      color: #444;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .sale-image {
+      margin-bottom: 2rem;
+    }
+    .sale-image img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    .machine {
+      background: #fff;
+      border: 1px solid #bbb;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      display: inline-block;
+      margin: 1rem 0;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .machine:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+      transform: translateY(-6px) scale(1.03);
+    }
+    .slot {
+      font-size: 2rem;
+      margin: 1rem 0;
+      height: 3rem;
+      line-height: 3rem;
+      color: #222;
+      font-weight: 600;
+    }
+    .btn {
+      background: #222;
+      color: #fff;
+      border: none;
+      padding: 0.7rem 2.2rem;
+      font-size: 1rem;
+      border-radius: 24px;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+    }
+    .btn:hover {
+      background: #e67e22;
+    }
+    .result {
+      margin-top: 2rem;
+      font-size: 1.4rem;
+      color: #222;
+      min-height: 3rem;
+      font-weight: 600;
+    }
+    .timer {
+      font-size: 1rem;
+      color: #666;
+      margin-top: 1rem;
+    }
+    .site-footer {
+      background: #ececec;
+      padding: 2.5rem 0 1.5rem 0;
+      margin-top: 0 !important;
+      position: relative;
+      z-index: 1;
+    }
+    .footer-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .footer-title {
+      font-size: 1.5rem;
+      color: #888;
+      font-weight: bold;
+      margin-bottom: 1.2rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      font-size: 1rem;
+      color: #444;
+      align-items: flex-start;
+    }
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-links > div:nth-child(1),
+    .footer-links > div:nth-child(2),
+    .footer-links > div:nth-child(3) {
+      height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .footer-links li {
+      margin-bottom: 0.3rem;
+    }
+    .footer-links a {
+      color: #444;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: #FF8C00;
+      text-decoration: underline;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.7rem;
+      flex-direction: column;
+      align-items: center;
+    }
+    .newsletter-form input[type="email"] {
+      border: 1.5px solid #bbb;
+      border-radius: 24px;
+      padding: 0.5rem 1.2rem;
+      font-size: 1rem;
+      font-family: inherit;
+      background: #fff;
+      outline: none;
+      transition: border 0.2s;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    .newsletter-form input[type="email"]:focus {
+      border: 1.5px solid #e67e22;
+    }
+    .newsletter-form button {
+      background: #6d625c;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 0.5rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      width: 66.67%;
+      box-sizing: border-box;
+      align-self: center;
+    }
+    .newsletter-form button:hover {
+      background: #FF8C00;
+    }
+    @media (max-width: 900px) {
+      :root {
+        --header-height: 90px;
+      }
+      header {
+        padding: 1rem 1.5rem;
+      }
+      .container { 
+        margin-top: 150px; 
+        padding: 0 1.5rem;
+      }
+      .hero-section { padding: 2rem 1rem; }
+      .footer-links { flex-direction: column; gap: 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      :root {
+        --header-height: 100px;
+      }
+      header {
+        padding: 0.8rem 1rem;
+        flex-direction: column;
+        gap: 0.3rem;
+        align-items: flex-start;
+      }
+      .logo {
+        font-size: 1.3rem;
+        margin-bottom: 0.2rem;
+      }
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 2rem;
+        margin-left: 0;
+        margin-right: 0;
+        flex-wrap: wrap;
+      }
+      nav a:not(.cart-icon) {
+        font-size: 0.9rem;
+        padding: 0.1rem 0;
+        writing-mode: horizontal-tb;
+      }
+      .cart-icon {
+        margin-left: auto;
+        font-size: 1.2rem;
+      }
+      .container { 
+        margin-top: 180px; 
+        padding: 0 1rem;
+      }
+      .hero-section h1 { font-size: 1.8rem; }
+      .machine { padding: 1.5rem; }
+      .slot { font-size: 1.5rem; }
+    }
+    @media (max-width: 480px) {
+      :root {
+        --header-height: 90px;
+      }
+      header {
+        padding: 0.6rem 0.8rem;
+        flex-direction: column;
+        gap: 0.2rem;
+        align-items: flex-start;
+      }
+      .logo {
+        font-size: 1.2rem;
+        margin-bottom: 0.1rem;
+      }
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 1.5rem;
+        margin-left: 0;
+        margin-right: 0;
+        flex-wrap: wrap;
+      }
+      nav a:not(.cart-icon) {
+        font-size: 0.8rem;
+        padding: 0.1rem 0;
+        writing-mode: horizontal-tb;
+      }
+      .cart-icon {
+        margin-left: auto;
+        font-size: 1.1rem;
+      }
+      .container { 
+        margin-top: 210px; 
+        padding: 0 0.8rem;
+      }
+    }
+    @media (max-width: 400px) {
+      :root {
+        --header-height: 85px;
+      }
+      header {
+        padding: 0.5rem 0.6rem;
+        flex-direction: column;
+        gap: 0.15rem;
+        align-items: flex-start;
+      }
+      .logo {
+        font-size: 1.1rem;
+        margin-bottom: 0.1rem;
+      }
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 1.2rem;
+        margin-left: 0;
+        margin-right: 0;
+        flex-wrap: wrap;
+      }
+      nav a:not(.cart-icon) {
+        font-size: 0.75rem;
+        padding: 0.05rem 0;
+        writing-mode: horizontal-tb;
+      }
+      .cart-icon {
+        margin-left: auto;
+        font-size: 1rem;
+      }
+      .container { 
+        margin-top: 240px; 
+        padding: 0 0.6rem;
+      }
+    }
+    @media (max-width: 350px) {
+      :root {
+        --header-height: 80px;
+      }
+      header {
+        padding: 0.4rem 0.5rem;
+        flex-direction: column;
+        gap: 0.1rem;
+        align-items: flex-start;
+      }
+      .logo {
+        font-size: 1rem;
+        margin-bottom: 0.05rem;
+      }
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-left: 0;
+        margin-right: 0;
+        flex-wrap: wrap;
+      }
+      nav a:not(.cart-icon) {
+        font-size: 0.7rem;
+        padding: 0.03rem 0;
+        writing-mode: horizontal-tb;
+      }
+      .cart-icon {
+        margin-left: auto;
+        font-size: 0.9rem;
+      }
+      .container { 
+        margin-top: 270px; 
+        padding: 0 0.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">Aileen's Secret</a></div>
+  <nav>
+    <a href="shop1.html">ショップ</a>
+    <a href="Service1.html">サービス</a>
+    <a href="faq1.html">FAQ</a>
+    <a href="About1.html">About</a>
+    <a href="contact1.html">お問い合わせ</a>
+    <a href="#" id="login-link">ログイン</a>
+    <a href="Cart3.html" class="cart-icon">
+      <i class="fas fa-shopping-cart"></i>
+    </a>
+  </nav>
+</header>
+
+<div class="container">
+  <section class="hero-section">
+    <h1>🎉 わくわくタイムセール 🎉</h1>
+    <p>ボタンを押して今日のスペシャル特典を引いてみよう！</p>
+
+    <div class="sale-image">
+      <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty169.png" alt="タイムセールイメージ">
+    </div>
+
+    <div class="machine">
+      <div class="slot" id="slot">？？？</div>
+      <button class="btn" onclick="startSale()">ガチャを回す！</button>
+      <div class="result" id="result"></div>
+      <div class="timer" id="timer"></div>
+    </div>
+  </section>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-title">Aileen's Secret</div>
+    <div class="footer-links">
+      <div>
+        <ul>
+          <li><a href="About1.html">会社情報</a></li>
+          <li><a href="new site project11.html#contact">お問い合わせ</a></li>
+                      <li><a href="shop1.html">ショップ</a></li>
+          <li><a href="Service1.html">サービス</a></li>
+        </ul>
+      </div>
+      <div>SNSでフォロー
+        <div class="sns-icons">
+          <a href="https://www.facebook.com" target="_blank">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://x.com" target="_blank">
+            <i class="fab fa-x-twitter"></i>
+          </a>
+        </div>
+      </div>
+      <div>ニュースや最新情報を受け取るには<br>メールアドレスでサインアップしてください。
+        <form class="newsletter-form">
+          <button type="submit" onclick="window.location.href='signIn.html'; return false;">サインアップ</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- サインインモーダル -->
+<div id="signin-modal" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.35);align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:10px;box-shadow:0 2px 16px rgba(0,0,0,0.18);padding:0;max-width:420px;width:90vw;max-height:95vh;display:flex;flex-direction:column;position:relative;">
+    <button id="close-signin-modal" style="position:absolute;top:8px;right:12px;font-size:1.5rem;background:none;border:none;cursor:pointer;color:#888;">&times;</button>
+    <iframe src="signIn.html" style="border:none;width:100%;height:480px;border-radius:10px;"></iframe>
+  </div>
+</div>
+
+<script>
+  const offers = [
+    "✨ 30%オフクーポンGET！",
+    "🌟 送料無料クーポン！",
+    "🎁 シークレットアイテム付き！",
+    "💖 20%オフクーポン！",
+    "🎉 ハズレなし！次回10%オフ",
+    "🌴 夏限定ステッカーをプレゼント！"
+  ];
+
+  let isRunning = false;
+
+  function startSale() {
+    if (isRunning) return;
+    isRunning = true;
+
+    const slot = document.getElementById('slot');
+    const result = document.getElementById('result');
+    result.textContent = '';
+    slot.textContent = '回転中...';
+
+    let count = 0;
+    const interval = setInterval(() => {
+      const random = offers[Math.floor(Math.random() * offers.length)];
+      slot.textContent = random;
+      count++;
+      if (count > 15) {
+        clearInterval(interval);
+        result.textContent = `🎊 あなたの特典：${random}`;
+        startTimer();
+        isRunning = false;
+      }
+    }, 100);
+  }
+
+  function startTimer() {
+    const timerEl = document.getElementById('timer');
+    let timeLeft = 300; // 5分（300秒）
+
+    function updateTimer() {
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+      timerEl.textContent = `⏳ この特典は ${minutes}:${seconds.toString().padStart(2, '0')} 以内に使用可能！`;
+      timeLeft--;
+
+      if (timeLeft < 0) {
+        timerEl.textContent = "🕒 特典の有効時間が終了しました";
+      } else {
+        setTimeout(updateTimer, 1000);
+      }
+    }
+
+    updateTimer();
+  }
+
+  // カートリンク
+  document.querySelectorAll('nav a').forEach(a => {
+    if(a.textContent.includes('カート')){
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        window.location.href = 'Cart3.html';
+      });
+    }
+  });
+  
+  // サインインモーダル表示
+  const loginLink = document.getElementById('login-link');
+  const signinModal = document.getElementById('signin-modal');
+  const closeSigninModal = document.getElementById('close-signin-modal');
+  if(loginLink && signinModal && closeSigninModal){
+    loginLink.addEventListener('click', function(e){
+      e.preventDefault();
+      signinModal.style.display = 'flex';
+    });
+    closeSigninModal.addEventListener('click', function(){
+      signinModal.style.display = 'none';
+    });
+    // モーダル外クリックで閉じる
+    signinModal.addEventListener('click', function(e){
+      if(e.target === signinModal){
+        signinModal.style.display = 'none';
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
