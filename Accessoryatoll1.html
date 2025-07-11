@@ -63,6 +63,10 @@
       margin: 210px auto 0 auto;
       padding: 0 1rem;
     }
+    h2#container {
+      margin-top: -121.5px;
+      margin-bottom: 2.5rem;
+    }
     .grid {
       display: flex;
       flex-wrap: wrap;
@@ -136,7 +140,14 @@
       header {
         padding: 1rem 1.5rem;
       }
-      .container { margin-top: 210px; }
+      .container { 
+        margin-top: 240px; 
+        padding: 0 1.5rem;
+      }
+      h2#container {
+        margin-top: -121.5px;
+        margin-bottom: 2rem;
+      }
       .grid { gap: 1rem; }
       .product { width: 90vw; max-width: 350px; }
       .footer-links { flex-direction: column; gap: 1.2rem; }
@@ -173,16 +184,16 @@
         font-size: 1.2rem;
       }
       .container { 
-        margin-top: 210px; 
+        margin-top: 270px; 
         padding: 0 0.8rem;
       }
-      .grid { flex-direction: column; align-items: center; }
-      h2 {
-        font-size: 1.8rem;
+      h2#container {
         margin-top: -121.5px;
         margin-bottom: 2rem;
+        font-size: 1.8rem;
         text-align: center;
       }
+      .grid { flex-direction: column; align-items: center; }
     }
     @media (max-width: 480px) {
       :root {
@@ -216,13 +227,13 @@
         font-size: 1.1rem;
       }
       .container { 
-        margin-top: 210px; 
+        margin-top: 300px; 
         padding: 0 0.6rem;
       }
-      h2 {
-        font-size: 1.6rem;
+      h2#container {
         margin-top: -121.5px;
         margin-bottom: 1.8rem;
+        font-size: 1.6rem;
         text-align: center;
       }
     }
@@ -258,13 +269,13 @@
         font-size: 1rem;
       }
       .container { 
-        margin-top: 210px; 
+        margin-top: 330px; 
         padding: 0 0.5rem;
       }
-      h2 {
-        font-size: 1.4rem;
+      h2#container {
         margin-top: -121.5px;
         margin-bottom: 1.5rem;
+        font-size: 1.4rem;
         text-align: center;
       }
     }
@@ -379,7 +390,7 @@
     </nav>
   </header>
   <div class="container">
-    <h2 id="container" style="margin-top:-121.5px; margin-bottom: 2.5rem;">Accessory Atollへようこそ！</h2>
+    <h2 id="container">Accessory Atollへようこそ！</h2>
     <div class="grid">
       <div class="product">
         <div class="image-placeholder">
@@ -544,10 +555,28 @@
         const name = product.querySelector('strong').textContent;
         const price = product.querySelector('.price').textContent;
         const item = { img, name, price };
-        let cart = JSON.parse(localStorage.getItem('cartItems') || '[]');
-        cart.push(item);
-        localStorage.setItem('cartItems', JSON.stringify(cart));
-        window.location.href = 'Cart2.html';
+        let cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+        
+        // 既に同じ商品がカートにあるかチェック
+        const existingItemIndex = cartItems.findIndex(cartItem => cartItem.name === name);
+        
+        if (existingItemIndex !== -1) {
+          // 既に存在する場合は数量を増やす
+          cartItems[existingItemIndex].quantity = (cartItems[existingItemIndex].quantity || 1) + 1;
+        } else {
+          // 新しい商品の場合は追加
+          cartItems.push({
+            ...item,
+            quantity: 1
+          });
+        }
+        
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        
+        // Cart3.htmlに遷移
+        setTimeout(() => {
+          window.location.href = 'Cart3.html';
+        }, 500);
       });
     });
     // カートリンク
@@ -555,7 +584,7 @@
       if(a.textContent.includes('カート')){
         a.addEventListener('click', function(e){
           e.preventDefault();
-          window.location.href = 'Cart2.html';
+          window.location.href = 'Cart3.html';
         });
       }
     });
