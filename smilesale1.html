@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>スマイルタイムセール| Aileen's Secret</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --header-height: 80px;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f6f6f6;
+      color: #222;
+      margin: 0;
+      padding-top: 0;
+    }
+    header {
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      padding: 1.2rem 2rem 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #222;
+    }
+    nav {
+      display: flex;
+      gap: 1.2rem;
+      margin-right: 75px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.2s;
+      writing-mode: horizontal-tb;
+    }
+    nav a:hover {
+      color: #FF8C00;
+    }
+    .cart-icon {
+      font-size: 1.2rem;
+      transition: transform 0.2s;
+    }
+    .cart-icon:hover {
+      transform: scale(1.1);
+    }
+    .container {
+      max-width: 1200px;
+      margin: 120px auto 0 auto;
+      padding: 0 1rem;
+    }
+    .sale-header {
+      background: linear-gradient(-45deg, #f6f6f6, #e6e6fa, #fadadd, #e6e6fa);
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+      color: #222;
+      padding: 0.75rem 2rem;
+      text-align: center;
+      border-radius: 15px;
+      margin-bottom: 2rem;
+    }
+    
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    .sale-header h1 {
+      font-size: 2.5rem;
+      margin: 0 0 1rem 0;
+      color: #222;
+      font-weight: bold;
+    }
+    .sale-header p {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: #444;
+    }
+    .countdown {
+      font-size: 1.5rem;
+      margin-top: 1.5rem;
+      background: #fff;
+      display: inline-block;
+      padding: 1rem 2rem;
+      color: #e67e22;
+      border-radius: 24px;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      border: 1px solid #bbb;
+    }
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 2rem 0;
+      gap: 2rem;
+    }
+    .product {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      overflow: hidden;
+      width: 270px;
+      text-align: center;
+      transition: box-shadow 0.2s, transform 0.2s;
+      position: relative;
+      padding: 0 0 1.5rem 0;
+    }
+    .product:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+      transform: translateY(-6px) scale(1.03);
+    }
+    .product img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+    .product h3 {
+      margin: 1rem 0 0.5rem;
+      font-size: 1.1rem;
+      color: #222;
+      padding: 0 1rem;
+      font-weight: 600;
+    }
+    .product .price {
+      color: #e67e22;
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+    .cta {
+      background: #222;
+      color: #fff;
+      padding: 0.7rem 2.2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      border-radius: 24px;
+      margin: 1rem;
+      transition: background 0.2s;
+    }
+    .cta:hover {
+      background: #e67e22;
+    }
+    .site-footer {
+      background: #ececec;
+      padding: 2.5rem 0 1.5rem 0;
+      margin-top: 0 !important;
+      position: relative;
+      z-index: 1;
+    }
+    .footer-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .footer-title {
+      font-size: 1.5rem;
+      color: #888;
+      font-weight: bold;
+      margin-bottom: 1.2rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      font-size: 1rem;
+      color: #444;
+      align-items: flex-start;
+    }
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-links > div:nth-child(1),
+    .footer-links > div:nth-child(2),
+    .footer-links > div:nth-child(3) {
+      height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .footer-links li {
+      margin-bottom: 0.3rem;
+    }
+    .footer-links a {
+      color: #444;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: #FF8C00;
+      text-decoration: underline;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.7rem;
+      flex-direction: column;
+      align-items: center;
+    }
+    .newsletter-form input[type="email"] {
+      border: 1.5px solid #bbb;
+      border-radius: 24px;
+      padding: 0.5rem 1.2rem;
+      font-size: 1rem;
+      font-family: inherit;
+      background: #fff;
+      outline: none;
+      transition: border 0.2s;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    .newsletter-form input[type="email"]:focus {
+      border: 1.5px solid #e67e22;
+    }
+    .newsletter-form button {
+      background: #6d625c;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 0.5rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      width: 66.67%;
+      box-sizing: border-box;
+      align-self: center;
+    }
+    .newsletter-form button:hover {
+      background: #FF8C00;
+    }
+    .sns-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    .sns-icons a {
+      color: #444;
+      font-size: 1.2rem;
+      transition: color 0.2s;
+    }
+    .sns-icons a:hover {
+      color: #FF8C00;
+    }
+    @media (max-width: 900px) {
+      :root {
+        --header-height: 90px;
+      }
+      header {
+        padding: 1rem 1.5rem;
+      }
+      .container { 
+        margin-top: 150px; 
+        padding: 0 1.5rem;
+      }
+      .products { gap: 1.5rem; }
+      .footer-links { flex-direction: column; gap: 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      :root {
+        --header-height: 100px;
+      }
+      header {
+        padding: 0.8rem 1rem;
+        flex-direction: column;
+        gap: 0.3rem;
+        align-items: flex-start;
+      }
+      .logo {
+        font-size: 1.3rem;
+        margin-bottom: 0.2rem;
+      }
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 2rem;
+        margin-left: 0;
+        margin-right: 0;
+        flex-wrap: wrap;
+      }
+      nav a:not(.cart-icon) {
+        font-size: 0.9rem;
+        padding: 0.1rem 0;
+        writing-mode: horizontal-tb;
+      }
+      .cart-icon {
+        margin-left: auto;
+        font-size: 1.2rem;
+      }
+      .container { 
+        margin-top: 180px; 
+        padding: 0 1rem;
+      }
+      .products {
+        flex-direction: column;
+        align-items: center;
+      }
+      .product { width: 90vw; max-width: 350px; }
+    }
+    @media (max-width: 480px) {
+      :root {
+        --header-height: 90px;
+      }
+      header {
+        padding: 0.6rem 0.8rem;
+        flex-direction: column;
+        gap: 0.2rem;
+        align-items: flex-start;
+      }
+      .logo {
+        font-size: 1.2rem;
+        margin-bottom: 0.1rem;
+      }
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 1.5rem;
+        margin-left: 0;
+        margin-right: 0;
+        flex-wrap: wrap;
+      }
+      nav a:not(.cart-icon) {
+        font-size: 0.8rem;
+        padding: 0.1rem 0;
+        writing-mode: horizontal-tb;
+      }
+      .cart-icon {
+        margin-left: auto;
+        font-size: 1.1rem;
+      }
+      .container { 
+        margin-top: 210px; 
+        padding: 0 0.8rem;
+      }
+    }
+    @media (max-width: 400px) {
+      :root {
+        --header-height: 85px;
+      }
+      header {
+        padding: 0.5rem 0.6rem;
+        flex-direction: column;
+        gap: 0.15rem;
+        align-items: flex-start;
+      }
+      .logo {
+        font-size: 1.1rem;
+        margin-bottom: 0.1rem;
+      }
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 1.2rem;
+        margin-left: 0;
+        margin-right: 0;
+        flex-wrap: wrap;
+      }
+      nav a:not(.cart-icon) {
+        font-size: 0.75rem;
+        padding: 0.05rem 0;
+        writing-mode: horizontal-tb;
+      }
+      .cart-icon {
+        margin-left: auto;
+        font-size: 1rem;
+      }
+      .container { 
+        margin-top: 240px; 
+        padding: 0 0.6rem;
+      }
+    }
+    @media (max-width: 350px) {
+      :root {
+        --header-height: 80px;
+      }
+      header {
+        padding: 0.4rem 0.5rem;
+        flex-direction: column;
+        gap: 0.1rem;
+        align-items: flex-start;
+      }
+      .logo {
+        font-size: 1rem;
+        margin-bottom: 0.05rem;
+      }
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-left: 0;
+        margin-right: 0;
+        flex-wrap: wrap;
+      }
+      nav a:not(.cart-icon) {
+        font-size: 0.7rem;
+        padding: 0.03rem 0;
+        writing-mode: horizontal-tb;
+      }
+      .cart-icon {
+        margin-left: auto;
+        font-size: 0.9rem;
+      }
+      .container { 
+        margin-top: 270px; 
+        padding: 0 0.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">Aileen's Secret</a></div>
+    <nav>
+      <a href="shop1.html">ショップ</a>
+      <a href="Service1.html">サービス</a>
+      <a href="faq1.html">FAQ</a>
+      <a href="About1.html">About</a>
+      <a href="contact1.html">お問い合わせ</a>
+      <a href="#" id="login-link">ログイン</a>
+      <a href="Cart3.html" class="cart-icon">
+        <i class="fas fa-shopping-cart"></i>
+      </a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <section class="sale-header">
+      <h1>スマイル・タイムセール</h1>
+      <p>幸せいっぱいのタイムセール体験をお楽しみください！</p>
+      <div class="countdown" id="countdown">終了まで：--:--:--</div>
+    </section>
+
+    <section class="products">
+      <div class="product">
+        <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty240.png" alt="水着A">
+        <h3>ハッピービーチ水着</h3>
+        <div class="price">¥2,980 → ¥1,980</div>
+        <button class="cta" onclick="addToCart('ハッピービーチ水着', '¥1,980')">今すぐゲット！💛</button> 
+      </div>
+      <div class="product">
+        <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty291.png" alt="帽子">
+        <h3>スマイルサマーハット</h3>
+        <div class="price">¥1,800 → ¥1,200</div>
+        <button class="cta" onclick="addToCart('スマイルサマーハット', '¥1,200')">今すぐゲット！💛</button>
+      </div>
+      <div class="product">
+        <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty114.png" alt="サングラス">
+        <h3>ラッキーサングラス</h3>
+        <div class="price">¥2,000 → ¥1,500</div>
+        <button class="cta" onclick="addToCart('ラッキーサングラス', '¥1,500')">今すぐゲット！💛</button>
+      </div>
+    </section>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-title">Aileen's Secret</div>
+      <div class="footer-links">
+        <div>
+          <ul>
+            <li><a href="About1.html">会社情報</a></li>
+            <li><a href="contact1.html">お問い合わせ</a></li>
+            <li><a href="shop1.html">ショップ</a></li>
+            <li><a href="Service1.html">サービス</a></li>
+          </ul>
+        </div>
+        <div>SNSでフォロー
+          <div class="sns-icons">
+            <a href="https://www.facebook.com" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://x.com" target="_blank">
+              <i class="fab fa-x-twitter"></i>
+            </a>
+          </div>
+        </div>
+        <div>ニュースや最新情報を受け取るには<br>メールアドレスでサインアップしてください。
+          <form class="newsletter-form">
+            <button type="submit" onclick="window.location.href='signIn.html'; return false;">サインアップ</button>
+          </form>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #ddd; color: #666; font-size: 0.9rem;">
+        &copy; 2025 Aileen's Secret. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- サインインモーダル -->
+  <div id="signin-modal" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.35);align-items:center;justify-content:center;">
+    <div style="background:#fff;border-radius:10px;box-shadow:0 2px 16px rgba(0,0,0,0.18);padding:0;max-width:420px;width:90vw;max-height:95vh;display:flex;flex-direction:column;position:relative;">
+      <button id="close-signin-modal" style="position:absolute;top:8px;right:12px;font-size:1.5rem;background:none;border:none;cursor:pointer;color:#888;">&times;</button>
+      <iframe src="signIn.html" style="border:none;width:100%;height:480px;border-radius:10px;"></iframe>
+    </div>
+  </div>
+
+  <script>
+    // カウントダウンロジック
+    const countdown = document.getElementById("countdown");
+    const endDate = new Date();
+    endDate.setHours(endDate.getHours() + 5); // 5時間後にセール終了と仮定
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = endDate - now;
+
+      if (diff <= 0) {
+        countdown.textContent = "セール終了しました！";
+        return;
+      }
+
+      const hours = Math.floor(diff / 1000 / 60 / 60);
+      const minutes = Math.floor((diff / 1000 / 60) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdown.textContent = `終了まで：${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    }
+
+    function addToCart(name, price) {
+      let imgUrl = 'https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIbeauty20.png';
+      
+      if (name === 'ハッピービーチ水着') {
+        imgUrl = 'https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty240.png';
+      } else if (name === 'スマイルサマーハット') {
+        imgUrl = 'https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty291.png';
+      } else if (name === 'ラッキーサングラス') {
+        imgUrl = 'https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty114.png';
+      }
+      
+      const item = { name, price, img: imgUrl };
+      let cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+      
+      // 既に同じ商品がカートにあるかチェック
+      const existingItemIndex = cartItems.findIndex(cartItem => cartItem.name === name);
+      
+      if (existingItemIndex !== -1) {
+        // 既に存在する場合は数量を増やす
+        cartItems[existingItemIndex].quantity = (cartItems[existingItemIndex].quantity || 1) + 1;
+      } else {
+        // 新しい商品の場合は追加
+        cartItems.push({
+          ...item,
+          quantity: 1
+        });
+      }
+      
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      
+      // Cart3.htmlに遷移
+      setTimeout(() => {
+        window.location.href = 'Cart3.html';
+      }, 500);
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+    
+    // カートリンク
+    document.querySelectorAll('nav a').forEach(a => {
+      if(a.textContent.includes('カート')){
+        a.addEventListener('click', function(e){
+          e.preventDefault();
+          window.location.href = 'Cart3.html';
+        });
+      }
+    });
+    
+    // サインインモーダル表示
+    const loginLink = document.getElementById('login-link');
+    const signinModal = document.getElementById('signin-modal');
+    const closeSigninModal = document.getElementById('close-signin-modal');
+    if(loginLink && signinModal && closeSigninModal){
+      loginLink.addEventListener('click', function(e){
+        e.preventDefault();
+        signinModal.style.display = 'flex';
+      });
+      closeSigninModal.addEventListener('click', function(){
+        signinModal.style.display = 'none';
+      });
+      // モーダル外クリックで閉じる
+      signinModal.addEventListener('click', function(e){
+        if(e.target === signinModal){
+          signinModal.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
