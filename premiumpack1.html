@@ -1,689 +1,574 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aileen's Secret - Special Offer</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: poppins, sans-serif;
-            text-align: center;
-        }
-        .header {
-            background: white;
-            width: 1520px;
-            height: 60px;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-weight: bold;
-            font-size: 30px;
-            position: relative;
-            left: 20px;
-        }
-        .nav {
-            display: flex;
-            gap: 20px;
-            position: relative;
-            left: 400px;
-            align-items: center; /* 要素を中央揃えに */
-        }
-        .contact-btn {
-            background: black;
-            color: white;
-            padding: 3px 10px;
-            border-radius: 5px;
-            font-size: 25px;
-            text-decoration: none;
-            opacity: 1;
-        }
-        .hero {
-            background: lightgray;
-            width: 1520px;
-            height: 790px;
-            padding: 0px 0px;
-            position: relative;
-        }
-        .hero img {
-            width: 1520px;
-            height: 890px;
-            object-fit: cover;
-            position: relative; /* .hero-content を前面にするため */
-            z-index: 0;
-        }
-        .hero-content {
-            display: flex;
-            position: relative; 
-            bottom: 340px; 
-            left: 53%;
-            transform: translateX(-50%);
-            text-align: center;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-        .hero-content h2 {
-            color: white;
-            font-size: 35px;
-            margin-bottom: 2px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-        }
-        .hero-content p {
-            color: gold;
-            font-size: 33px;
-            font-weight: bold;
-            margin: 0;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-        }
-        .hero-content p:nth-of-type(1) {
-            margin-bottom: 3px;
-        }
-        .btn {
-            background: rgba(0, 0, 0, 0.1); /* 半透明の背景を追加 */
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            display: inline-block;
-            margin-bottom: 0px; /* 下の要素との間隔を確保 */   
-        }
-        .sign-in {
-            width: 1520px;
-            height: 300px;
-            margin: 10px auto;
-            padding: 50px;
-            background: #f5f5f5;
-            text-align: center;
-            transform: translateX(0%); /* 左へ0%移動 */
-            border-radius: 10px;
-        }
-        .sign-in input {
-            width: 300px;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .sign-in a {
-            display: block;
-            margin: 10px 0;
-            color: blue;
-            text-decoration: none;
-        }
-        .sign-in button {
-            background: black;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            bottom: 0px; 
-        }
-    </style>
-</head>
-<body>
-  <div class="header">
-    <div class="logo">Aileen's Secret</div>
-    <div class="nav">
-        <a href="#container" class="container">News</a>
-        <a href="#faq" class="faq">FAQ</a>
-        <a href="#info" class="contact">Contact</a>
-    </div>
-    <a href="#cart" class="cart-btn">
-        <img src="https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/cart4.png" alt="Cart">
-    </a>   
-    </div>
-    <div class="hero">
-        <img src="https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/AIBeauty1.png" alt="Aileen">
-    </div>
-    <div class="hero-content">
-        <h2>SPECIAL OFFER FOR SUMMER</h2>
-        <p>Sign up and enjoy 45% OFF</p>
-        <a href="#sign-in" class="btn">CREATE ACCOUNT / SHOP NOW</a>
-    </div>
-  </div>
-    <div id="sign-in" class="sign-in">
-         <h3>Create Account / Sign In</h3>
-         <input type="email" placeholder="Email">
-         <input type="password" placeholder="Password">
-         <a href="#">Forget Password?</a>
-         <button>Secure Sign In</button>
-    </div>
-</body>
-
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>e-commerce site-special offers</title>
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プレミアムパック | Aileen's Secret</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --header-height: 80px;
+    }
     body {
-        font-family: poppins, sans-serif;
-        width: 1520px;
-        height: 2584px;
-        margin: 0;
-        padding: 10px;
-        background-color: #f8f8f8;
+      font-family: 'Poppins', sans-serif;
+      background: #f6f6f6;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      padding: 1.2rem 2rem 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #222;
+    }
+    nav {
+      display: flex;
+      gap: 1.2rem;
+      margin-right: 75px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.2s;
+      writing-mode: horizontal-tb; /* 横書きを明示的に指定 */
+    }
+    nav a:hover {
+      color: #FF8C00;
+    }
+    .cart-icon {
+      font-size: 1.2rem;
+      transition: transform 0.2s;
+    }
+    .cart-icon:hover {
+      transform: scale(1.1);
     }
     .container {
-        max-width: 1520px;
-        margin: auto;
-        padding: 10px 0px;
+      max-width: 1200px;
+      margin: 50px auto 0 auto;
+      padding: 0 1rem;
     }
-    h2 {
-        font-size: 24px;
-        font-weight: bold;
-        text-align: left; /* テキストの左寄せ */
-        align-items: flex-start; /* 左端に寄せる */
+    .page-header {
+      background: linear-gradient(-45deg, #f6f6f6, #e6e6fa, #fadadd, #e6e6fa);
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+      padding: 2rem 2rem;
+      text-align: center;
+      border-radius: 15px;
+      margin-bottom: 2rem;
     }
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-    }
-    .product {
-        background: white;
-        color: black;
-        font-size: 28px;
-        padding: 42px;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        text-align: center;
-    }
-    .image-placeholder {
-        width: 650px;
-        height: 650px;
-        background: #ccc;
-        border-radius: 8px;
-    }
-    .image-placeholder img {
-        width: 650px;
-        height: 650px;
-        object-fit: cover;
-    }
-    .discount {
-        background: gold;
-        color: black;
-        font-size: 20px;
-        font-weight: bold;
-        padding: 5px 10px;
-        border-radius: 50px;
-        display: inline-block;
-        margin-top: 10px;
-    }
-    .price {
-        color: red;
-        font-size: 30px;
-        font-weight: bold;
-    }
-    .regular-price {
-        text-decoration: line-through;
-        font-size: 25px;
-        color: gray;
-    }
-    .shop-now {
-        background: red;
-        color: white;
-        font-size: 20px;
-        font-weight: bold;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-top: 10px;
-    }
-    p strong {
-        font-size: 25px;
-    }
-</style>
-
-</head>
-<body>
-        <div class="container">
-           <h2 id="container">NEWS</h2>
-        <div class="grid">
-            <div class="product">
-            <div class="image-placeholder">
-            <img src="https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/AIBeauty6.png" alt="Cindy">
-            </div>
-            <p><strong>Best Selling Tank Top</strong></p>
-            <p class="price">$29.95 <span class="regular-price">(Regular Price $55)</span></p>
-            <span class="discount">SAVE 46%</span>
-            <button class="shop-now">SHOP NOW</button>
-        </div>
-        <div class="product">
-            <div class="image-placeholder">
-            <img src="https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/AIBeauty2.png" alt="Diana">
-            </div>
-            <p><strong>Best Selling Tank Top</strong></p>
-            <p class="price">$29.95 <span class="regular-price">(Regular Price $55)</span></p>
-            <span class="discount">SAVE 46%</span>
-            <button class="shop-now">SHOP NOW</button>
-        </div>
-        <div class="product">
-            <div class="image-placeholder">
-            <img src="https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/AIBeauty3.png" alt="Betty">
-            </div>
-            <p><strong>Best Selling Evening Dress Top</strong></p>
-            <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
-            <span class="discount">SAVE 47%</span>
-            <button class="shop-now">SHOP NOW</button>
-        </div>
-        <div class="product">
-            <div class="image-placeholder">
-            <img src="https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/AIBeauty5.png" alt="Aileen">
-            </div>
-            <p><strong>Best Selling V-Necked Top</strong></p>
-            <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
-            <span class="discount">SAVE 47%</span>
-            <button class="shop-now">SHOP NOW</button>
-        </div>
-        <div class="product">
-          <div class="image-placeholder">
-          <img src="https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/AIBeauty14.png" alt="Cindy">
-          </div>
-          <p><strong>Best Selling V-Necked Knit Top</strong></p>
-          <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
-          <span class="discount">SAVE 46%</span>
-          <button class="shop-now">SHOP NOW</button>
-        </div>
-        <div class="product">
-          <div class="image-placeholder">
-          <img src="https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/AIBeauty7.png" alt="Diana">
-          </div>
-          <p><strong>Best Selling V-Necked Knit Top</strong></p>
-          <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
-          <span class="discount">SAVE 47%</span>
-          <button class="shop-now">SHOP NOW</button>
-        </div>
-        <div class="product">
-          <div class="image-placeholder">
-          <img src="https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/AIBeauty4.png" alt="Betty">
-          </div>
-          <p><strong>Best Selling Evening Dress Top</strong></p>
-          <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
-          <span class="discount">SAVE 47%</span>
-          <button class="shop-now">SHOP NOW</button>
-        </div>
-        <div class="product">
-          <div class="image-placeholder">
-          <img src="https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/AIBeauty1.png" alt="Aileen">
-          </div>
-          <p><strong>Best Selling V-Necked Knit Top</strong></p>
-          <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
-          <span class="discount">SAVE 47%</span>
-          <button class="shop-now">SHOP NOW</button>
-        </div>
-    </div>
-</div>
-</body>
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shopping Cart</title>
-  <link rel="stylesheet" href="styles.css">
-  <style>
-      .cart-container {
-          width: 1520px;
-          height: 500px; 
-          background-color: white;
-          padding: 20px;
-          box-sizing: border-box;
-      }
-      .cart-grid {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 20px;
-      }
-      .cart-item {
-          width: 150px;
-          height: 200px;
-          background: #ccc;
-          border-radius: 8px;
-          padding: 10px;
-      }
-      .cart-item img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-      }
-    </style>
-</head>
-<body>
-  <div class="cart-container" id="cart">
-      <h2 class="cart-title">🛒 Your Cart</h2>
-      <div class="cart-grid">       
-      </div>
-      <div class="checkout-container" style="margin-top: 220px;">
-          <button class="checkout-btn">Proceed to Checkout</button>
-      </div>
-  </div>
-</body>
-<style>
-/* --- 既存コードはそのまま --- */
-
-/* ▼ メディアクエリ：画面幅が900px以下の場合に適用 */
-@media (max-width: 900px) {
-  main {
-    flex-direction: column;
-    padding: 20px;
-  }
-
-  .cart, .summary {
-    width: 100%;
-  }
-
-  .cart-item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .cart-item img {
-    margin-bottom: 10px;
-    width: 100%;
-    max-width: 120px;
-  }
-
-  .details {
-    width: 100%;
-  }
-
-  .summary {
-    margin-top: 30px;
-  }
-
-  .promo {
-    flex-direction: column;
-  }
-
-  .promo input {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  .promo button {
-    width: 100%;
-  }
-
-  .pay, .giftcard {
-    font-size: 16px;
-  }
-
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  nav a {
-    display: inline-block;
-    margin: 5px 10px 0 0;
-  }
-
-  .icons {
-    margin-top: 10px;
-  }
-}
-
-/* ▼ スマホ対応：画面幅600px以下 */
-@media (max-width: 600px) {
-  .pay, .giftcard {
-    font-size: 14px;
-    padding: 10px;
-  }
-
-  .cart-item {
-    padding: 10px;
-  }
-
-  .summary {
-    padding: 15px;
-  }
-
-  .promo button {
-    padding: 10px;
-  }
-}
-</style>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ Section - E-commerce</title>
-    <style>
-        body {
-            font-family: Poppins, sans-serif;
-            width: 1520px;
-            height: 2584px;
-            margin: 0 ;
-            padding: 0 ;
-            background-color: #f8f8f8;
-            * {
-              box-sizing: border-box;
-        }
-
-        .faq-section {
-            max-width: 1520px;
-            margin: 0 ;
-            padding: 40px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .faq-section h2 {
-            font-size: 26px;
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .faq {
-            border-bottom: 1px solid #ddd;
-            padding: 20px 0;
-        }
-
-        .faq:last-child {
-            border-bottom: none;
-        }
-
-        .question {
-            font-size: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            position: relative;
-            padding-right: 30px;
-            transition: color 0.3s ease;
-        }
-
-        .question:hover {
-            color: #e63946;
-        }
-
-        .answer {
-            font-size: 18px;
-            margin-top: 10px;
-            display: none;
-            color: #555;
-            line-height: 1.6;
-        }
-
-        .toggle-icon {
-            position: absolute;
-            right: 10px;
-            top: 5px;
-            font-size: 24px;
-            transition: transform 0.3s ease;
-        }
-
-        .active .toggle-icon {
-            transform: rotate(180deg);
-        }
-
-        .active .answer {
-            display: block;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="faq-section">
-        <h2 id="faq">Frequently Asked Questions</h2>
-        
-        <div class="faq">
-            <div class="question">
-                What payment methods do you accept?
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="answer">
-                We accept credit cards, PayPal, Apple Pay, and Google Pay for a seamless checkout experience.
-            </div>
-        </div>
-
-        <div class="faq">
-            <div class="question">
-                How long does shipping take?
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="answer">
-                Standard shipping takes 5-7 business days, while express shipping takes 2-3 business days.
-            </div>
-        </div>
-
-        <div class="faq">
-            <div class="question">
-                Can I return or exchange an item?
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="answer">
-                Yes, we offer a 30-day return and exchange policy for unused items in their original packaging.
-            </div>
-        </div>
-
-        <div class="faq">
-            <div class="question">
-                Do you offer international shipping?
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="answer">
-                Yes, we ship internationally. Shipping fees and delivery times vary depending on your location.
-            </div>
-        </div>
-
-        <div class="faq">
-            <div class="question">
-                How can I track my order?
-                <span class="toggle-icon">▼</span>
-            </div>
-            <div class="answer">
-                Once your order is shipped, we will send you a tracking link via email.
-            </div>
-        </div>
-    </div>
-
-    <script>
-        document.querySelectorAll(".question").forEach((question) => {
-            question.addEventListener("click", () => {
-                question.parentNode.classList.toggle("active");
-            });
-        });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const buttons = document.querySelectorAll(".shop-now");
-            const cartGrid = document.querySelector(".cart-grid");
     
-        buttons.forEach(button => {
-            button.addEventListener("click", function() {
-            const product = this.closest(".product");
-            const imgSrc = product.querySelector(".image-placeholder img").src;
-            const name = product.querySelector("p strong").textContent;
-            const price = product.querySelector(".price").textContent;
-            
-            const cartItem = document.createElement("div");
-            cartItem.classList.add("cart-item");
-            cartItem.innerHTML = `
-                <img src="${imgSrc}" alt="${name}" class="cart-image">
-                <h3 class="cart-item-name">${name}</h3>
-                <p class="cart-item-price">${price}</p>
-                <button class="remove-btn">🗑 Remove</button>
-            `;
-            
-            cartGrid.appendChild(cartItem);
-            
-            cartItem.querySelector(".remove-btn").addEventListener("click", function() {
-                cartItem.remove();
-                      });
-                   });
-                });
-            });
-
-    </script>
-
-</body>
-</html>
-
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>INFO & FOOTER</title>
-  <style>
-      body {
-          margin: 0 auto;
-          font-family: Poppins, sans-serif;
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
       }
-      .info {
-          width: 1520px;
-          height: 406px;
-          background: url('https://raw.githubusercontent.com/Neznaika123183/neznaika123183.github.io/refs/heads/main/beach1.png') no-repeat center/cover;
-          display: flex;
-          flex-direction: column; /* コンテンツを縦方向に配置 */
-          align-items: flex-start; /* 左端に寄せる */
-          justify-content: flex-start; /* 上端に寄せる */
-          padding-top:  50px;
-          padding-left: 15px;
-          color: white;
-          font-size: 20px;
-          font-weight: bold;
-          text-align: left; /* テキストの左寄せ */
+      50% {
+        background-position: 100% 50%;
       }
-      .footer {
-          width: 1520px;
-          height: 70px;
-          background: white;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: black;
-          font-size: 16px;
+      100% {
+        background-position: 0% 50%;
       }
-      * {
-          box-sizing: border-box;
+    }
+    h1 {
+      color: #222;
+      margin: 0 0 1rem 0;
+      font-size: 2.5rem;
+      letter-spacing: 0.1em;
+    }
+    .subtitle {
+      color: #666;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .page-header p {
+      color: #666;
+      margin-top: 1rem;
+    }
+    .card-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding: 1rem 2rem;
+      margin: 1rem auto;
+      max-width: 1100px;
+    }
+    .card {
+      width: 280px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 24px rgba(230,126,34,0.13);
+    }
+    .badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #e67e22;
+      color: white;
+      padding: 4px 12px;
+      font-size: 0.75rem;
+      border-radius: 12px;
+    }
+    .card img {
+      width: 100%;
+      transition: opacity 0.4s ease;
+    }
+    .card:hover img.front {
+      opacity: 0;
+    }
+    .card:hover img.back {
+      opacity: 1;
+    }
+    .card .info {
+      padding: 1rem;
+    }
+    .info h2 {
+      font-size: 1.2rem;
+      margin: 0.2rem 0;
+      color: #333;
+    }
+    .info p {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    .share-buttons {
+      margin-top: 1rem;
+      display: flex;
+      gap: 0.5rem;
+    }
+    .share-buttons a {
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 4px 8px;
+      border-radius: 6px;
+      color: white;
+    }
+    .share-x { background: #000; }
+    .share-insta { background: linear-gradient(to right, #f9ce34, #ee2a7b, #6228d7); }
+    .share-facebook { background: #1877f2; }
+    .item-price {
+      color: #e67e22;
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    .btn-cart {
+      background: #222;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 0.7rem 2.2rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+    .btn-cart:hover {
+      background: #e67e22;
+    }
+    .notification {
+      display: none;
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: #e67e22;
+      color: #fff;
+      padding: 1rem 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.13);
+      font-size: 1rem;
+      z-index: 100;
+      animation: fadein 0.3s;
+    }
+    @keyframes fadein {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .site-footer {
+      background: #ececec;
+      padding: 2.5rem 0 1.5rem 0;
+      margin-top: 3rem;
+    }
+    .footer-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .footer-title {
+      font-size: 1.5rem;
+      color: #888;
+      font-weight: bold;
+      margin-bottom: 1.2rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      font-size: 1rem;
+      color: #444;
+    }
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0 0;
+    }
+    .footer-links li {
+      margin-bottom: 0.3rem;
+    }
+    .footer-links a {
+      color: #444;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: #e67e22;
+      text-decoration: underline;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.7rem;
+    }
+    .newsletter-form input[type="email"] {
+      border: 1.5px solid #bbb;
+      border-radius: 24px;
+      padding: 0.5rem 1.2rem;
+      font-size: 1rem;
+      font-family: inherit;
+      background: #fff;
+      outline: none;
+      transition: border 0.2s;
+    }
+    .newsletter-form input[type="email"]:focus {
+      border: 1.5px solid #e67e22;
+    }
+    .newsletter-form button {
+      background: #6d625c;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 0.5rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .newsletter-form button:hover {
+      background: #e67e22;
+    }
+    @media (max-width: 900px) {
+      :root {
+        --header-height: 90px;
       }
+      header {
+        padding: 1rem 1.5rem;
+      }
+      .container { margin-top: 70px; }
+      .card-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .footer-links { flex-direction: column; gap: 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      :root {
+        --header-height: 100px; /* モバイルでのHeader高さを調整 */
+      }
+      header {
+        padding: 0.8rem 1rem;
+        flex-direction: column;
+        gap: 0.3rem;
+        align-items: flex-start;
+      }
+      .logo {
+        font-size: 1.3rem;
+        margin-bottom: 0.2rem;
+      }
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 2rem;
+        margin-left: 0;
+        margin-right: 0;
+        flex-wrap: wrap;
+      }
+      nav a:not(.cart-icon) {
+        font-size: 0.9rem;
+        padding: 0.1rem 0;
+        writing-mode: horizontal-tb; /* 横書きを明示的に指定 */
+      }
+      .cart-icon {
+        margin-left: auto;
+        font-size: 1.2rem;
+      }
+      .container { margin-top: 50px; }
+      h1 { font-size: 2rem; }
+    }
+    @media (max-width: 480px) {
+      :root {
+        --header-height: 90px; /* さらに小さい画面でのHeader高さ調整 */
+      }
+      header {
+        padding: 0.6rem 0.8rem;
+        flex-direction: column;
+        gap: 0.2rem;
+        align-items: flex-start;
+      }
+      .logo {
+        font-size: 1.2rem;
+        margin-bottom: 0.1rem;
+      }
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 1.5rem;
+        margin-left: 0;
+        margin-right: 0;
+        flex-wrap: wrap;
+      }
+      nav a:not(.cart-icon) {
+        font-size: 0.8rem;
+        padding: 0.1rem 0;
+        writing-mode: horizontal-tb; /* 横書きを明示的に指定 */
+      }
+      .cart-icon {
+        margin-left: auto;
+        font-size: 1.1rem;
+      }
+    }
+    @media (max-width: 400px) {
+      :root {
+        --header-height: 85px; /* 非常に小さい画面でのHeader高さ調整 */
+      }
+      header {
+        padding: 0.5rem 0.6rem;
+        flex-direction: column;
+        gap: 0.15rem;
+        align-items: flex-start;
+      }
+      .logo {
+        font-size: 1.1rem;
+        margin-bottom: 0.1rem;
+      }
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 1.2rem;
+        margin-left: 0;
+        margin-right: 0;
+        flex-wrap: wrap;
+      }
+      nav a:not(.cart-icon) {
+        font-size: 0.75rem;
+        padding: 0.05rem 0;
+        writing-mode: horizontal-tb; /* 横書きを明示的に指定 */
+      }
+      .cart-icon {
+        margin-left: auto;
+        font-size: 1rem;
+      }
+    }
+    body { padding-top: 30px; }
   </style>
 </head>
 <body>
-  <div class="info">
-      <div>
-          <h4 id="info">CONTACT</h4>
-          <p>987 Somewhere St.</p>
-          <p>Overtherainbow, Neverneverland</p>
-          <p>+123-456-7890</p>
-          <p>info@aileenssecret</p>
+
+<header>
+      <div class="logo" onclick="window.location.href='index.html'" style="cursor: pointer;">Aileen's Secret</div>
+    <nav>
+      <a href="shop1.html">ショップ</a>
+      <a href="Service1.html">サービス</a>
+      <a href="faq1.html">FAQ</a>
+      <a href="About1.html">About</a>
+      <a href="contact1.html">お問い合わせ</a>
+      <a href="#" id="login-link">ログイン</a>
+      <a href="Cart3.html" class="cart-icon">
+        <i class="fas fa-shopping-cart"></i>
+      </a>
+    </nav>
+</header>
+
+<div class="container">
+  <section class="page-header">
+    <h1>プレミアムパック</h1>
+    <div class="subtitle">特別な日のためのプレミアムスタイルセット</div>
+    <p>上質な素材とデザインで、あなたの特別な瞬間を彩ります。</p>
+  </section>
+
+  <div class="card-container">
+
+    <div class="card">
+      <div class="badge">数量限定</div>
+      <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty184.png" class="front" alt="style front">
+      <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty186.png" class="back" alt="style back" style="position:absolute; top:0; left:0; opacity:0;">
+      <div class="info">
+        <h2>サンセットガール</h2>
+        <p>夕暮れビーチにぴったりのリゾートコーデセット</p>
+        <div class="item-price">¥6,980</div>
+        <button class="btn-cart" onclick="addToCart('サンセットガール', '¥6,980', 'https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty184.png')">カートに追加</button>
+        <div class="share-buttons">
+          <a href="https://www.facebook.com" target="_blank" class="share-facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com" target="_blank" class="share-insta"><i class="fab fa-instagram"></i></a>
+          <a href="https://x.com" target="_blank" class="share-x"><i class="fab fa-x-twitter"></i></a>
+        </div>
       </div>
+    </div>
+
+    <div class="card">
+      <div class="badge">数量限定</div>
+      <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty71.png" class="front" alt="style front">
+      <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty81.png" class="back" alt="style back" style="position:absolute; top:0; left:0; opacity:0;">
+      <div class="info">
+        <h2>ピンク・コレクション</h2>
+        <p>鮮やかなピンクトーンで纏めた全身コーデ</p>
+        <div class="item-price">¥6,980</div>
+        <button class="btn-cart" onclick="addToCart('ピンク・コレクション', '¥6,980', 'https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty71.png')">カートに追加</button>
+        <div class="share-buttons">
+          <a href="https://www.facebook.com" target="_blank" class="share-facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com" target="_blank" class="share-insta"><i class="fab fa-instagram"></i></a>
+          <a href="https://x.com" target="_blank" class="share-x"><i class="fab fa-x-twitter"></i></a>
+        </div>
+      </div>
+    </div>
+
   </div>
-  <div class="footer">
-      <p>&copy; Aileen's Secret</p>
+</div>
+
+<div class="notification" id="notification">カートに追加しました！</div>
+
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-title">Aileen's Secret</div>
+    <div class="footer-links">
+      <div>
+        <ul>
+          <li><a href="About1.html">会社情報</a></li>
+          <li><a href="new site project11.html#contact">お問い合わせ</a></li>
+                      <li><a href="shop1.html">ショップ</a></li>
+          <li><a href="Service1.html">サービス</a></li>
+        </ul>
+      </div>
+      <div>SNSでフォロー
+        <div class="sns-icons">
+          <a href="https://www.facebook.com" target="_blank">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://x.com" target="_blank">
+            <i class="fab fa-x-twitter"></i>
+          </a>
+        </div>
+      </div>
+      <div>ニュースや最新情報を受け取るには、メールアドレスでサインアップしてください。
+        <form class="newsletter-form">
+          <input type="email" placeholder="メールアドレス">
+          <button type="submit" onclick="window.location.href='signIn.html'; return false;">サインアップ</button>
+        </form>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #ddd; color: #666; font-size: 0.9rem;">
+      &copy; 2025 Aileen's Secret. All rights reserved.
+    </div>
   </div>
+</footer>
+
+<!-- サインインモーダル -->
+<div id="signin-modal" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.35);align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:10px;box-shadow:0 2px 16px rgba(0,0,0,0.18);padding:0;max-width:420px;width:90vw;max-height:95vh;display:flex;flex-direction:column;position:relative;">
+    <button id="close-signin-modal" style="position:absolute;top:8px;right:12px;font-size:1.5rem;background:none;border:none;cursor:pointer;color:#888;">&times;</button>
+    <iframe src="signIn.html" style="border:none;width:100%;height:480px;border-radius:10px;"></iframe>
+  </div>
+</div>
+
+<script>
+  // サインインモーダル表示
+  const loginLink = document.getElementById('login-link');
+  const signinModal = document.getElementById('signin-modal');
+  const closeSigninModal = document.getElementById('close-signin-modal');
+  if(loginLink && signinModal && closeSigninModal){
+    loginLink.addEventListener('click', function(e){
+      e.preventDefault();
+      signinModal.style.display = 'flex';
+    });
+    closeSigninModal.addEventListener('click', function(){
+      signinModal.style.display = 'none';
+    });
+    // モーダル外クリックで閉じる
+    signinModal.addEventListener('click', function(e){
+      if(e.target === signinModal){
+        signinModal.style.display = 'none';
+      }
+    });
+  }
+  
+  // カートに商品を追加する関数
+  function addToCart(name, price, img) {
+    let cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+    
+    // 既に同じ商品がカートにあるかチェック
+    const existingItemIndex = cartItems.findIndex(cartItem => cartItem.name === name);
+    
+    if (existingItemIndex !== -1) {
+      // 既に存在する場合は数量を増やす
+      cartItems[existingItemIndex].quantity = (cartItems[existingItemIndex].quantity || 1) + 1;
+    } else {
+      // 新しい商品の場合は追加
+      cartItems.push({
+        name: name,
+        price: price,
+        img: img,
+        quantity: 1
+      });
+    }
+    
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    
+    // 通知を表示
+    showNotification();
+    
+    // Cart3.htmlに遷移
+    setTimeout(() => {
+      window.location.href = 'Cart3.html';
+    }, 1000);
+  }
+
+  function showNotification() {
+    const notification = document.getElementById('notification');
+    notification.style.display = 'block';
+    setTimeout(() => {
+      notification.style.display = 'none';
+    }, 1600);
+  }
+</script>
+
 </body>
 </html>
