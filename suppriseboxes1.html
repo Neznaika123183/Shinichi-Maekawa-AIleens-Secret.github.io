@@ -400,7 +400,7 @@
     <div id="box" onclick="openBox()"></div>
     <div id="message"></div>
     <div id="share">
-      <button onclick="alert('シェア機能は準備中です！')">みんなにシェアする</button>
+      <button onclick="showSocialModal()">みんなにシェアする</button>
     </div>
   </section>
 </div>
@@ -447,6 +447,19 @@
   <div style="background:#fff;border-radius:10px;box-shadow:0 2px 16px rgba(0,0,0,0.18);padding:0;max-width:420px;width:90vw;max-height:95vh;display:flex;flex-direction:column;position:relative;">
     <button id="close-signin-modal" style="position:absolute;top:8px;right:12px;font-size:1.5rem;background:none;border:none;cursor:pointer;color:#888;">&times;</button>
     <iframe src="signIn.html" style="border:none;width:100%;height:480px;border-radius:10px;"></iframe>
+  </div>
+</div>
+
+<!-- ソーシャルメディアモーダル -->
+<div id="social-modal" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.35);align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:15px;box-shadow:0 4px 20px rgba(0,0,0,0.2);padding:2rem;max-width:400px;width:90vw;text-align:center;position:relative;">
+    <button id="close-social-modal" style="position:absolute;top:10px;right:15px;font-size:1.5rem;background:none;border:none;cursor:pointer;color:#888;">&times;</button>
+    <h3 style="color:#222;margin-bottom:1.5rem;font-size:1.3rem;">フォローしてください</h3>
+    <div style="display:flex;flex-direction:column;gap:1rem;">
+      <a href="https://www.facebook.com" target="_blank" style="background:#1877F2;color:#fff;padding:0.8rem 1.5rem;border-radius:25px;text-decoration:none;font-weight:600;transition:background 0.2s;">Facebookでフォロー</a>
+      <a href="https://twitter.com/ailenssecret" target="_blank" style="background:#000;color:#fff;padding:0.8rem 1.5rem;border-radius:25px;text-decoration:none;font-weight:600;transition:background 0.2s;">X（Twitter）でフォロー</a>
+      <a href="https://instagram.com/ailenssecret" target="_blank" style="background:linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);color:#fff;padding:0.8rem 1.5rem;border-radius:25px;text-decoration:none;font-weight:600;transition:opacity 0.2s;">Instagramでフォロー</a>
+    </div>
   </div>
 </div>
 
@@ -507,6 +520,27 @@
         signinModal.style.display = 'none';
       }
     });
+  }
+  
+  // ソーシャルメディアモーダル表示
+  function showSocialModal() {
+    const socialModal = document.getElementById('social-modal');
+    const closeSocialModal = document.getElementById('close-social-modal');
+    
+    if(socialModal && closeSocialModal){
+      socialModal.style.display = 'flex';
+      
+      closeSocialModal.addEventListener('click', function(){
+        socialModal.style.display = 'none';
+      });
+      
+      // モーダル外クリックで閉じる
+      socialModal.addEventListener('click', function(e){
+        if(e.target === socialModal){
+          socialModal.style.display = 'none';
+        }
+      });
+    }
   }
 </script>
 
