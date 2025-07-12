@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ショップ | Aileen's Secret</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --header-height: 80px;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f6f6f6;
+      color: #222;
+      margin: 0;
+      padding-top: 0;
+    }
+    header {
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      padding: 1.2rem 2rem 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #222;
+    }
+    nav {
+      display: flex;
+      gap: 1.2rem;
+      margin-right: 75px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.2s;
+      writing-mode: horizontal-tb; /* 横書きを明示的に指定 */
+    }
+    nav a:hover {
+      color: #FF8C00;
+    }
+    .cart-icon {
+      font-size: 1.2rem;
+      transition: transform 0.2s;
+    }
+    .cart-icon:hover {
+      transform: scale(1.1);
+    }
+    .container {
+      max-width: 1200px;
+      margin: 140px auto 0 auto;
+      padding: 0 1rem;
+    }
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .product {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      width: 270px;
+      padding: 1.2rem 1rem 1.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .product:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+      transform: translateY(-6px) scale(1.03);
+    }
+    .image-placeholder img {
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+      object-fit: cover;
+      height: 220px;
+      display: block;
+    }
+    .product strong {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #222;
+    }
+    .price {
+      color: #888;
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .regular-price {
+      color: #bbb;
+      font-size: 0.95em;
+      margin-left: 0.3em;
+      text-decoration: line-through;
+    }
+    .discount {
+      color: #e67e22;
+      font-size: 0.98rem;
+      font-weight: bold;
+      margin-bottom: 0.7rem;
+      display: block;
+    }
+    .shop-now {
+      background: #222;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 0.7rem 2.2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.7rem;
+    }
+    .shop-now:hover {
+      background: #e67e22;
+    }
+    @media (max-width: 900px) {
+      .container { margin-top: 140px; }
+      .grid { gap: 1rem; }
+      .product { width: 90vw; max-width: 350px; }
+    }
+    @media (max-width: 600px) {
+      .container { margin-top: 130px; }
+      .grid { flex-direction: column; align-items: center; }
+    }
+    @media (max-width: 480px) {
+      .container { margin-top: 120px; }
+    }
+    @media (max-width: 400px) {
+      .container { margin-top: 115px; }
+    }
+    @media (max-width: 350px) {
+      .container { margin-top: 110px; }
+    }
+    .site-footer {
+      background: #ececec;
+      padding: 2.5rem 0 1.5rem 0;
+      margin-top: 0;
+    }
+    .footer-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .footer-title {
+      font-size: 1.5rem;
+      color: #888;
+      font-weight: bold;
+      margin-bottom: 1.2rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      font-size: 1rem;
+      color: #444;
+    }
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0 0;
+    }
+    .footer-links li {
+      margin-bottom: 0.3rem;
+    }
+    .footer-links a {
+      color: #444;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: #e67e22;
+      text-decoration: underline;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.7rem;
+    }
+    .newsletter-form input[type="email"] {
+      border: 1.5px solid #bbb;
+      border-radius: 24px;
+      padding: 0.5rem 1.2rem;
+      font-size: 1rem;
+      font-family: inherit;
+      background: #fff;
+      outline: none;
+      transition: border 0.2s;
+    }
+    .newsletter-form input[type="email"]:focus {
+      border: 1.5px solid #e67e22;
+    }
+    .newsletter-form button {
+      background: #6d625c;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 0.5rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .newsletter-form button:hover {
+      background: #e67e22;
+    }
+    @media (max-width: 900px) {
+      .footer-links { flex-direction: column; gap: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo" onclick="window.location.href='index.html'" style="cursor: pointer;">Aileen's Secret</div>
+    <nav>
+      <a href="shop1.html">ショップ</a>
+      <a href="Service1.html">サービス</a>
+      <a href="faq1.html">FAQ</a>
+      <a href="About1.html">About</a>
+      <a href="contact1.html">お問い合わせ</a>
+      <a href="#" id="login-link">ログイン</a>
+      <a href="Cart3.html" class="cart-icon">
+        <i class="fas fa-shopping-cart"></i>
+      </a>
+    </nav>
+  </header>
+  <div class="container">
+    <h2 id="container" style="margin-top: 0; margin-bottom: 2.5rem;">Beachwear Islandへようこそ！</h2>
+    <div class="grid">
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty59.png" alt="Cindy">
+        </div>
+        <p><strong>Best Selling Beachwear A</strong></p>
+        <p class="price">$29.95 <span class="regular-price">(Regular Price $55)</span></p>
+        <span class="discount">SAVE 46%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty91.png" alt="Diana">
+        </div>
+        <p><strong>Best Selling Beachwear B</strong></p>
+        <p class="price">$29.95 <span class="regular-price">(Regular Price $55)</span></p>
+        <span class="discount">SAVE 46%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty92.png" alt="Betty">
+        </div>
+        <p><strong>Best Selling Beachwear C</strong></p>
+        <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
+        <span class="discount">SAVE 47%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty93.png" alt="Aileen">
+        </div>
+        <p><strong>Best Selling Beachwear D</strong></p>
+        <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
+        <span class="discount">SAVE 47%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty101.png" alt="Cindy">
+        </div>
+        <p><strong>Best Selling Beachwear E</strong></p>
+        <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
+        <span class="discount">SAVE 46%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty82.png"
+           alt="Diana">
+        </div>
+        <p><strong>Best Selling Beachwear F</strong></p>
+        <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
+        <span class="discount">SAVE 47%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty95.png" alt="Betty">
+        </div>
+        <p><strong>Best Selling Beachwear G</strong></p>
+        <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
+        <span class="discount">SAVE 47%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty96.png" alt="Aileen">
+        </div>
+        <p><strong>Best Selling Beachwear H</strong></p>
+        <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
+        <span class="discount">SAVE 47%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty97.png" alt="Aileen">
+        </div>
+        <p><strong>Best Selling Beachwear I</strong></p>
+        <p class="price">$29.95 <span class="regular-price">(Regular Price $55)</span></p>
+        <span class="discount">SAVE 46%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty98.png" alt="Diana">
+        </div>
+        <p><strong>Best Selling Beachwear J</strong></p>
+        <p class="price">$29.95 <span class="regular-price">(Regular Price $55)</span></p>
+        <span class="discount">SAVE 46%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty99.png" alt="Betty">
+        </div>
+        <p><strong>Best Selling Beachwear K</strong></p>
+        <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
+        <span class="discount">SAVE 47%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+      <div class="product">
+        <div class="image-placeholder">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty100.png" alt="Cindy">
+        </div>
+        <p><strong>Best Selling Beachwear L</strong></p>
+        <p class="price">$39.95 <span class="regular-price">(Regular Price $75)</span></p>
+        <span class="discount">SAVE 47%</span>
+        <button class="shop-now">SHOP NOW</button>
+      </div>
+    </div>
+  </div>
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-title">Aileen's Secret</div>
+      <div class="footer-links">
+        <div>
+          <ul>
+            <li><a href="About1.html">会社情報</a></li>
+            <li><a href="contact1.html">お問い合わせ</a></li>
+            <li><a href="shop1.html">ショップ</a></li>
+            <li><a href="Service1.html">サービス</a></li>
+          </ul>
+        </div>
+        <div>SNSでフォロー
+          <div class="sns-icons">
+            <a href="https://www.facebook.com" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://x.com" target="_blank">
+              <i class="fab fa-x-twitter"></i>
+            </a>
+          </div>
+        </div>
+        <div>ニュースや最新情報を受け取るには、メールアドレスでサインアップしてください。
+          <form class="newsletter-form">
+            <input type="email" placeholder="メールアドレス">
+            <button type="submit">サインアップ</button>
+          </form>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #ddd; color: #666; font-size: 0.9rem;">
+        &copy; 2025 Aileen's Secret. All rights reserved.
+      </div>
+    </div>
+  </footer>
+  <!-- サインインモーダル -->
+  <div id="signin-modal" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.35);align-items:center;justify-content:center;">
+    <div style="background:#fff;border-radius:10px;box-shadow:0 2px 16px rgba(0,0,0,0.18);padding:0;max-width:420px;width:90vw;max-height:95vh;display:flex;flex-direction:column;position:relative;">
+      <button id="close-signin-modal" style="position:absolute;top:8px;right:12px;font-size:1.5rem;background:none;border:none;cursor:pointer;color:#888;">&times;</button>
+      <iframe src="signIn.html" style="border:none;width:100%;height:480px;border-radius:10px;"></iframe>
+    </div>
+  </div>
+  <script>
+    // カート連携
+    document.querySelectorAll('.shop-now').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const product = btn.closest('.product');
+        const img = product.querySelector('img').src;
+        const name = product.querySelector('strong').textContent;
+        const price = product.querySelector('.price').textContent;
+        const item = { img, name, price };
+        let cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
+        
+        // 既に同じ商品がカートにあるかチェック
+        const existingItemIndex = cartItems.findIndex(cartItem => cartItem.name === name);
+        
+        if (existingItemIndex !== -1) {
+          // 既に存在する場合は数量を増やす
+          cartItems[existingItemIndex].quantity = (cartItems[existingItemIndex].quantity || 1) + 1;
+        } else {
+          // 新しい商品の場合は追加
+          cartItems.push({
+            ...item,
+            quantity: 1
+          });
+        }
+        
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        
+        // Cart3.htmlに遷移
+        setTimeout(() => {
+          window.location.href = 'Cart3.html';
+        }, 500);
+      });
+    });
+    // カートリンク
+    document.querySelectorAll('nav a').forEach(a => {
+      if(a.textContent.includes('カート')){
+        a.addEventListener('click', function(e){
+          e.preventDefault();
+          window.location.href = 'Cart3.html';
+        });
+      }
+    });
+    // サインインモーダル表示
+    const loginLink = document.getElementById('login-link');
+    const signinModal = document.getElementById('signin-modal');
+    const closeSigninModal = document.getElementById('close-signin-modal');
+    if(loginLink && signinModal && closeSigninModal){
+      loginLink.addEventListener('click', function(e){
+        e.preventDefault();
+        signinModal.style.display = 'flex';
+      });
+      closeSigninModal.addEventListener('click', function(){
+        signinModal.style.display = 'none';
+      });
+      // モーダル外クリックで閉じる
+      signinModal.addEventListener('click', function(e){
+        if(e.target === signinModal){
+          signinModal.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html> 
