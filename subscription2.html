@@ -554,6 +554,617 @@
         <div>
           <ul>
             <li><a href="About1.html">会社情報</a></li>
+            <li><a href="contact1.html">お問い合わせ</a></li>
+            <li><a href="shop1.html">ショップ</a></li>
+            <li><a href="Service1.html">サービス</a></li>
+          </ul>
+        </div>
+        <div>SNSでフォロー
+          <div class="sns-icons">
+            <a href="https://www.facebook.com" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://x.com" target="_blank">
+              <i class="fab fa-x-twitter"></i>
+            </a>
+          </div>
+        </div>
+        <div>ニュースや最新情報を受け取るには<br>メールアドレスでサインアップしてください。
+          <form class="newsletter-form">
+            <button type="submit" onclick="window.location.href='signIn.html'; return false;">サインアップ</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- サインインモーダル（共通） -->
+  <div id="signin-modal" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.35);align-items:center;justify-content:center;">
+    <div style="background:#fff;border-radius:10px;box-shadow:0 2px 16px rgba(0,0,0,0.18);padding:0;max-width:420px;width:90vw;max-height:95vh;display:flex;flex-direction:column;position:relative;">
+      <button id="close-signin-modal" style="position:absolute;top:8px;right:12px;font-size:1.5rem;background:none;border:none;cursor:pointer;color:#888;">&times;</button>
+      <iframe src="signIn.html" style="border:none;width:100%;height:480px;border-radius:10px;"></iframe>
+    </div>
+  </div>
+  <script>
+    // サインインモーダル表示
+    const loginLink = document.getElementById('login-link');
+    const signinModal = document.getElementById('signin-modal');
+    const closeSigninModal = document.getElementById('close-signin-modal');
+    if(loginLink && signinModal && closeSigninModal){
+      loginLink.addEventListener('click', function(e){
+        e.preventDefault();
+        signinModal.style.display = 'flex';
+      });
+      closeSigninModal.addEventListener('click', function(){
+        signinModal.style.display = 'none';
+      });
+      // モーダル外クリックで閉じる
+      signinModal.addEventListener('click', function(e){
+        if(e.target === signinModal){
+          signinModal.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html> <!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ビーチライフ・サブスク・コミュニティ | Aileen's Secret</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --header-height: 80px;
+    }
+    body { 
+      font-family: 'Poppins', sans-serif; 
+      background: #f6f6f6; 
+      color: #222; 
+      margin: 0; 
+      padding-top: 0;
+    }
+    header {
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      padding: 1.2rem 2rem 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #222;
+    }
+    nav {
+      display: flex;
+      gap: 1.2rem;
+      margin-right: 75px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.2s;
+      writing-mode: horizontal-tb; /* 横書きを明示的に指定 */
+    }
+    nav a:hover {
+      color: #FF8C00;
+    }
+    .cart-icon {
+      font-size: 1.2rem;
+      transition: transform 0.2s;
+    }
+    .cart-icon:hover {
+      transform: scale(1.1);
+    }
+    .container {
+      max-width: 900px;
+      margin: 120px auto 0 auto;
+      padding: 0 1rem 2rem 1rem;
+    }
+    .page-title {
+      font-size: 2.5rem;
+      color: #222;
+      font-weight: bold;
+      text-align: center;
+      margin: 3.5rem 0 1.5rem 0;
+    }
+    .catch {
+      font-size: 1.3rem;
+      color: #222;
+      text-align: center;
+      margin-bottom: 2.2rem;
+      font-weight: 600;
+    }
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      padding: 1.5rem 1.2rem;
+      margin-bottom: 2rem;
+    }
+    h2 { font-size: 1.3rem; color: #222; margin-bottom: 1rem; text-align: center; }
+    .gallery, .calendar, .community-photos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      justify-content: center;
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .gallery img, .community-photos img, .calendar img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid #e67e22;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    .flow-steps, .specials, .community-features, .stylist-benefits {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .flow-step, .special, .community-feature, .stylist-benefit {
+      background: #f9f9f9;
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      min-width: 160px;
+      text-align: center;
+    }
+    .voice {
+      background: #fffbe8;
+      color: #222;
+      font-weight: 500;
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      font-size: 1.05rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .btn-section {
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+    .btn-start {
+      background: #222;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-start:hover { background: #e67e22; }
+    .site-footer {
+      background: #ececec;
+      padding: 2.5rem 0 1.5rem 0;
+      margin-top: 0 !important;
+      position: relative;
+      z-index: 1;
+    }
+    .footer-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .footer-title {
+      font-size: 1.5rem;
+      color: #888;
+      font-weight: bold;
+      margin-bottom: 1.2rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      font-size: 1rem;
+      color: #444;
+      align-items: flex-start;
+    }
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-links > div:nth-child(1),
+    .footer-links > div:nth-child(2),
+    .footer-links > div:nth-child(3) {
+      height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .footer-links li {
+      margin-bottom: 0.3rem;
+    }
+    .footer-links a {
+      color: #444;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: #FF8C00;
+      text-decoration: underline;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.7rem;
+      flex-direction: column;
+      align-items: center;
+    }
+    .newsletter-form input[type="email"] {
+      border: 1.5px solid #bbb;
+      border-radius: 24px;
+      padding: 0.5rem 1.2rem;
+      font-size: 1rem;
+      font-family: inherit;
+      background: #fff;
+      outline: none;
+      transition: border 0.2s;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    .newsletter-form input[type="email"]:focus {
+      border: 1.5px solid #e67e22;
+    }
+    .newsletter-form button {
+      background: #6d625c;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 0.5rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      width: 66.67%;
+      box-sizing: border-box;
+      align-self: center;
+    }
+    .newsletter-form button:hover {
+      background: #FF8C00;
+    }
+    @media (max-width: 900px) {
+      :root {
+        --header-height: 90px;
+      }
+      header {
+        padding: 1rem 1.5rem;
+      }
+      .container { 
+        margin-top: 120px; 
+        padding: 0 1.5rem;
+      }
+      .gallery img { width: 120px; height: 120px; }
+      .footer-links { 
+        flex-direction: column; 
+        gap: 1.5rem; 
+      }
+      .footer-links > div:nth-child(1),
+      .footer-links > div:nth-child(2),
+      .footer-links > div:nth-child(3) {
+        height: auto;
+        min-height: 120px;
+      }
+    }
+    @media (max-width: 600px) {
+      :root {
+        --header-height: 100px;
+      }
+      header {
+        padding: 0.8rem 1rem;
+        flex-direction: column;
+        gap: 0.3rem;
+        align-items: flex-start;
+      }
+      .logo {
+        font-size: 1.3rem;
+        margin-bottom: 0.2rem;
+      }
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 1.5rem;
+        margin-left: 0;
+        margin-right: 0;
+        flex-wrap: wrap;
+      }
+      nav a:not(.cart-icon) {
+        font-size: 0.85rem;
+        padding: 0.1rem 0;
+        writing-mode: horizontal-tb;
+      }
+      .cart-icon {
+        margin-left: auto;
+        font-size: 1.1rem;
+      }
+      .container { 
+        margin-top: 100px; 
+        padding: 0 1rem;
+      }
+      .gallery img { width: 90px; height: 90px; }
+      .footer-links > div:nth-child(1),
+      .footer-links > div:nth-child(2),
+      .footer-links > div:nth-child(3) {
+        height: auto;
+        min-height: 100px;
+      }
+    }
+    @media (max-width: 480px) {
+      :root {
+        --header-height: 90px;
+      }
+      header {
+        padding: 0.6rem 0.8rem;
+        flex-direction: column;
+        gap: 0.2rem;
+        align-items: flex-start;
+      }
+      .logo {
+        font-size: 1.2rem;
+        margin-bottom: 0.1rem;
+      }
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 1.2rem;
+        margin-left: 0;
+        margin-right: 0;
+        flex-wrap: wrap;
+      }
+      nav a:not(.cart-icon) {
+        font-size: 0.8rem;
+        padding: 0.1rem 0;
+        writing-mode: horizontal-tb;
+      }
+      .cart-icon {
+        margin-left: auto;
+        font-size: 1rem;
+      }
+      .container { 
+        margin-top: 90px; 
+        padding: 0 0.8rem;
+      }
+      .footer-title {
+        font-size: 1.3rem;
+      }
+      .footer-links {
+        font-size: 0.9rem;
+      }
+    }
+    @media (max-width: 400px) {
+      :root {
+        --header-height: 85px;
+      }
+      header {
+        padding: 0.5rem 0.6rem;
+        flex-direction: column;
+        gap: 0.15rem;
+        align-items: flex-start;
+      }
+      .logo {
+        font-size: 1.1rem;
+        margin-bottom: 0.1rem;
+      }
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-left: 0;
+        margin-right: 0;
+        flex-wrap: wrap;
+      }
+      nav a:not(.cart-icon) {
+        font-size: 0.75rem;
+        padding: 0.05rem 0;
+        writing-mode: horizontal-tb;
+      }
+      .cart-icon {
+        margin-left: auto;
+        font-size: 0.95rem;
+      }
+      .container { 
+        margin-top: 85px; 
+        padding: 0 0.6rem;
+      }
+      .footer-title {
+        font-size: 1.2rem;
+      }
+      .footer-links {
+        font-size: 0.85rem;
+      }
+    }
+    @media (max-width: 350px) {
+      :root {
+        --header-height: 80px;
+      }
+      header {
+        padding: 0.4rem 0.5rem;
+        flex-direction: column;
+        gap: 0.1rem;
+        align-items: flex-start;
+      }
+      .logo {
+        font-size: 1rem;
+        margin-bottom: 0.05rem;
+      }
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 0.8rem;
+        margin-left: 0;
+        margin-right: 0;
+        flex-wrap: wrap;
+      }
+      nav a:not(.cart-icon) {
+        font-size: 0.7rem;
+        padding: 0.03rem 0;
+        writing-mode: horizontal-tb;
+      }
+      .cart-icon {
+        margin-left: auto;
+        font-size: 0.9rem;
+      }
+      .container { 
+        margin-top: 80px; 
+        padding: 0 0.4rem;
+      }
+      .footer-title {
+        font-size: 1.1rem;
+      }
+      .footer-links {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">Aileen's Secret</a></div>
+    <nav>
+      <a href="shop1.html">ショップ</a>
+      <a href="Service1.html">サービス</a>
+      <a href="faq1.html">FAQ</a>
+      <a href="About1.html">About</a>
+      <a href="contact1.html">お問い合わせ</a>
+      <a href="#" id="login-link">ログイン</a>
+      <a href="Cart3.html" class="cart-icon">
+        <i class="fas fa-shopping-cart"></i>
+      </a>
+    </nav>
+  </header>
+  <div class="container">
+    <div class="page-title">サブスク・コミュニティ</div>
+    <div class="catch">サステナブルでおしゃれな新スタイル。<br>普段は着られないアイテムも気軽にチャレンジ＆イベント体験できちゃう♪</div>
+    <div class="card">
+      <h2>サービスのご紹介</h2>
+      <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty501.png" alt="サービス紹介イメージ" style="display:block;margin:0 auto 1rem auto;width:180px;height:180px;object-fit:cover;border-radius:10px;border:2px solid #e67e22;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.07);cursor:pointer;" onclick="window.location.href='wakuwakushopping3.html'">
+      <p style="text-align:center; font-weight: bold;">毎月のアイテム＋体験イベント優待のワクワク感をお届け!</p>
+    </div>
+    <div class="card">
+      <h2>サービスの流れ</h2>
+      <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty353.png" alt="サービスの流れイメージ" style="display:block;margin:0 auto 1rem auto;width:180px;height:180px;object-fit:cover;border-radius:10px;border:2px solid #e67e22;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
+      <div class="flow-steps">
+        <div class="flow-step">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty386.png" alt="サブスク登録" style="display:block;margin:0 auto 1rem auto;width:180px;height:180px;object-fit:cover;border-radius:10px;border:2px solid #e67e22;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
+          <span style="font-weight: bold;">サブスク登録</span>
+        </div>
+        <div class="flow-step">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty364.png" alt="アイテム＆イベント案内" style="display:block;margin:0 auto 1rem auto;width:180px;height:180px;object-fit:cover;border-radius:10px;border:2px solid #e67e22;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
+          <span style="font-weight: bold;">アイテム＆イベント案内</span>
+        </div>
+        <div class="flow-step">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty341.png" alt="体験" style="display:block;margin:0 auto 1rem auto;width:180px;height:180px;object-fit:cover;border-radius:10px;border:2px solid #e67e22;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
+          <span style="font-weight: bold;">体験</span>
+        </div>
+        <div class="flow-step">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty340.png" alt="コミュニティ参加" style="display:block;margin:0 auto 1rem auto;width:180px;height:180px;object-fit:cover;border-radius:10px;border:2px solid #e67e22;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
+          <span style="font-weight: bold;">コミュニティ参加</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>コミュニティ体験談</h2>
+      <div class="gallery community-photos">
+        <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty497.png" alt="体験談1">
+        <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty210.png" alt="体験談2">
+      </div>
+      <div class="voice">「コミュニティで友達ができて、毎月のイベントが楽しみ！」（渋谷区在住 20代）</div>
+      <div class="voice">「みんなのコーデ写真を見るのが刺激になります！」（港区在住 20代）</div>
+    </div>
+    <div class="card">
+      <h2>スペシャル特典</h2>
+      <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty486.png" alt="スペシャル特典イメージ" style="display:block;margin:0 auto 1rem auto;width:180px;height:180px;object-fit:cover;border-radius:10px;border:2px solid #e67e22;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
+      <div class="specials">
+        <div class="special">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty347.png" alt="限定イベント招待" style="display:block;margin:0 auto 1rem auto;width:180px;height:180px;object-fit:cover;border-radius:10px;border:2px solid #e67e22;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
+          <span style="font-weight: bold;">限定イベント招待</span>
+        </div>
+        <div class="special">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty350.png" alt="スタイリスト相談" style="display:block;margin:0 auto 1rem auto;width:180px;height:180px;object-fit:cover;border-radius:10px;border:2px solid #e67e22;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
+          <span style="font-weight: bold;">スタイリスト相談</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>イベントのご紹介</h2>
+      <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty348.png" alt="イベントカレンダーイメージ" style="display:block;margin:0 auto 1rem auto;width:180px;height:180px;object-fit:cover;border-radius:10px;border:2px solid #e67e22;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
+      <div class="calendar">
+        <div class="flow-step">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty346.png" alt="ヨガ" style="display:block;margin:0 auto 1rem auto;width:180px;height:180px;object-fit:cover;border-radius:10px;border:2px solid #e67e22;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
+          <span style="font-weight: bold;">ヨガ</span>
+        </div>
+        <div class="flow-step">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty332.png" alt="サップ" style="display:block;margin:0 auto 1rem auto;width:180px;height:180px;object-fit:cover;border-radius:10px;border:2px solid #e67e22;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
+          <span style="font-weight: bold;">サップ</span>
+        </div>
+        <div class="flow-step">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty330.png" alt="エステ" style="display:block;margin:0 auto 1rem auto;width:180px;height:180px;object-fit:cover;border-radius:10px;border:2px solid #e67e22;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
+          <span style="font-weight: bold;">エステ</span>
+        </div>
+        <div class="flow-step">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty333.png" alt="今月の優待イベント" style="display:block;margin:0 auto 1rem auto;width:180px;height:180px;object-fit:cover;border-radius:10px;border:2px solid #e67e22;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
+          <span style="font-weight: bold;">今月の優待イベント</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>コミュニティ紹介</h2>
+      <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty406.png" alt="コミュニティ紹介イメージ" style="display:block;margin:0 auto 1rem auto;width:180px;height:180px;object-fit:cover;border-radius:10px;border:2px solid #e67e22;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
+      <div class="community-features">
+        <div class="community-feature">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty415.png" alt="コーデ写真シェア" style="display:block;margin:0 auto 1rem auto;width:180px;height:180px;object-fit:cover;border-radius:10px;border:2px solid #e67e22;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
+          <span style="font-weight: bold;">コーデ写真シェア</span>
+        </div>
+        <div class="community-feature">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty492.png" alt="参加者同士の交流機能" style="display:block;margin:0 auto 1rem auto;width:180px;height:180px;object-fit:cover;border-radius:10px;border:2px solid #e67e22;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
+          <span style="font-weight: bold;">参加者同士の交流機能</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>スタイリスト相談特典</h2>
+      <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty354.png" alt="スタイリスト相談特典イメージ" style="display:block;margin:0 auto 1rem auto;width:180px;height:180px;object-fit:cover;border-radius:10px;border:2px solid #e67e22;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.07);">
+      <div class="stylist-benefits">
+        <div class="stylist-benefit"><span style="font-weight: bold;">プロによるコーデアドバイスも受けられる</span></div>
+      </div>
+    </div>
+    <div class="btn-section">
+      <button class="btn-start" onclick="window.location.href='signIn.html'">ファッションも体験も、全部楽しもう！</button>
+    </div>
+  </div>
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-title">Aileen's Secret</div>
+      <div class="footer-links">
+        <div>
+          <ul>
+            <li><a href="About1.html">会社情報</a></li>
             <li><a href="new site project11.html#contact">お問い合わせ</a></li>
             <li><a href="shop1.html">ショップ</a></li>
             <li><a href="Service1.html">サービス</a></li>
