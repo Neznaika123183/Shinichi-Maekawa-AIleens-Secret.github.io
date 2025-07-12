@@ -191,24 +191,7 @@
     .btn-cart:hover {
       background: #e67e22;
     }
-    .notification {
-      display: none;
-      position: fixed;
-      top: 1.5rem;
-      right: 1.5rem;
-      background: #e67e22;
-      color: #fff;
-      padding: 1rem 2rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.13);
-      font-size: 1rem;
-      z-index: 100;
-      animation: fadein 0.3s;
-    }
-    @keyframes fadein {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+
     .site-footer {
       background: #ececec;
       padding: 2.5rem 0 1.5rem 0;
@@ -447,7 +430,7 @@
       <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty81.png" class="back" alt="style back" style="position:absolute; top:0; left:0; opacity:0;">
       <div class="info">
         <h2>ピンク・コレクション</h2>
-        <p>鮮やかなピンクトーンで纏めた全身コーデ</p>
+        <p>あざやかなピンクトーンでまとめた全身コーデ</p>
         <div class="item-price">¥6,980</div>
         <button class="btn-cart" onclick="addToCart('ピンク・コレクション', '¥6,980', 'https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty71.png')">カートに追加</button>
         <div class="share-buttons">
@@ -461,7 +444,7 @@
   </div>
 </div>
 
-<div class="notification" id="notification">カートに追加しました！</div>
+
 
 <footer class="site-footer">
   <div class="footer-container">
@@ -470,7 +453,7 @@
       <div>
         <ul>
           <li><a href="About1.html">会社情報</a></li>
-          <li><a href="new site project11.html#contact">お問い合わせ</a></li>
+                      <li><a href="contact1.html">お問い合わせ</a></li>
                       <li><a href="shop1.html">ショップ</a></li>
           <li><a href="Service1.html">サービス</a></li>
         </ul>
@@ -532,42 +515,17 @@
   
   // カートに商品を追加する関数
   function addToCart(name, price, img) {
-    let cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
-    
-    // 既に同じ商品がカートにあるかチェック
-    const existingItemIndex = cartItems.findIndex(cartItem => cartItem.name === name);
-    
-    if (existingItemIndex !== -1) {
-      // 既に存在する場合は数量を増やす
-      cartItems[existingItemIndex].quantity = (cartItems[existingItemIndex].quantity || 1) + 1;
-    } else {
-      // 新しい商品の場合は追加
-      cartItems.push({
-        name: name,
-        price: price,
-        img: img,
-        quantity: 1
-      });
-    }
-    
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
-    
-    // 通知を表示
-    showNotification();
-    
-    // Cart3.htmlに遷移
-    setTimeout(() => {
-      window.location.href = 'Cart3.html';
-    }, 1000);
+    let cart = JSON.parse(localStorage.getItem('cartItems') || '[]');
+    cart.push({
+      name: name,
+      price: price,
+      img: img
+    });
+    localStorage.setItem('cartItems', JSON.stringify(cart));
+    window.location.href = 'Cart3.html';
   }
 
-  function showNotification() {
-    const notification = document.getElementById('notification');
-    notification.style.display = 'block';
-    setTimeout(() => {
-      notification.style.display = 'none';
-    }, 1600);
-  }
+
 </script>
 
 </body>
