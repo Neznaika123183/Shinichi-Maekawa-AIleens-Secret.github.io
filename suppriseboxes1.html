@@ -100,6 +100,16 @@
       padding: 1.5rem;
       border-radius: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      text-align: center;
+    }
+    #message img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin: 1rem auto;
+      display: block;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(10px); }
@@ -465,11 +475,26 @@
 
 <script>
   const messages = [
-    "🌴 限定ビーチタオルが当たった！",
-    "👙 ピンクの新作ビキニゲット！",
-    "🕶 おしゃれサングラス登場！",
-    "💄 夏映えリップが入ってた！",
-    "👜 トートバッグがかわいすぎる♡"
+    {
+      text: "🌴 エステ・チケットが当たった！",
+      image: "https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty327.png"
+    },
+    {
+      text: "👙 ピンクの新作ビキニゲット！",
+      image: "https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty157.png"
+    },
+    {
+      text: "🕶 おしゃれサングラス登場！",
+      image: "https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty130.png"
+    },
+    {
+      text: "💄 夏映えリップが入ってた！",
+      image: "https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty79.png"
+    },
+    {
+      text: "👒 麦わら帽子がかわいすぎる♡",
+      image: "https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty119.png"
+    }
   ];
 
   let opened = false;
@@ -486,7 +511,10 @@
 
     setTimeout(() => {
       const random = messages[Math.floor(Math.random() * messages.length)];
-      message.textContent = random;
+      message.innerHTML = `
+        <div>${random.text}</div>
+        <img src="${random.image}" alt="サプライズアイテム">
+      `;
       message.style.display = "block";
       share.style.display = "block";
     }, 1000);
