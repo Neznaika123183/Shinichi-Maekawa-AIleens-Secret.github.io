@@ -369,24 +369,7 @@
         font-size: 1rem;
       }
     }
-    .notification {
-      display: none;
-      position: fixed;
-      top: 1.5rem;
-      right: 1.5rem;
-      background: #e67e22;
-      color: #fff;
-      padding: 1rem 2rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.13);
-      font-size: 1rem;
-      z-index: 100;
-      animation: fadein 0.3s;
-    }
-    @keyframes fadein {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+
   </style>
 </head>
 <body>
@@ -463,7 +446,7 @@
   </div>
 </div>
 
-<div class="notification" id="notification">カートに追加しました！</div>
+
 
 <script>
   // 商品データ
@@ -519,39 +502,19 @@
     `;
     card.querySelector('.btn-cart').addEventListener('click', () => {
       addToCart(item);
-      showNotification();
     });
     itemList.appendChild(card);
   });
 
   // カートに商品を追加する関数
   function addToCart(item) {
-    let cartItems = JSON.parse(localStorage.getItem('cartItems') || '[]');
-    
-    // 既に同じ商品がカートにあるかチェック
-    const existingItemIndex = cartItems.findIndex(cartItem => cartItem.name === item.name);
-    
-    if (existingItemIndex !== -1) {
-      // 既に存在する場合は数量を増やす
-      cartItems[existingItemIndex].quantity = (cartItems[existingItemIndex].quantity || 1) + 1;
-    } else {
-      // 新しい商品の場合は追加
-      cartItems.push({
-        ...item,
-        quantity: 1
-      });
-    }
-    
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    let cart = JSON.parse(localStorage.getItem('cartItems') || '[]');
+    cart.push(item);
+    localStorage.setItem('cartItems', JSON.stringify(cart));
+    window.location.href = 'Cart3.html';
   }
 
-  function showNotification() {
-    const notification = document.getElementById('notification');
-    notification.style.display = 'block';
-    setTimeout(() => {
-      notification.style.display = 'none';
-    }, 1600);
-  }
+
 
   // カートリンク
   document.querySelectorAll('nav a').forEach(a => {
