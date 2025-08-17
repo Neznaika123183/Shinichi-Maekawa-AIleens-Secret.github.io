@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aileen's Secret | About</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --header-height: 80px;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f6f6f6;
+      color: #222;
+      margin: 0;
+      padding-top: 0;
+    }
+    header {
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      padding: 1.2rem 2rem 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #222;
+    }
+    nav {
+      display: flex;
+      gap: 1.2rem;
+      margin-right: 75px;
+    }
+    .nav-left, .nav-right {
+      display: flex;
+      gap: 1.2rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.2s;
+      writing-mode: horizontal-tb; /* 横書きを明示的に指定 */
+    }
+    nav a:hover {
+      color: #FF8C00;
+    }
+    .cart-icon {
+      font-size: 1.2rem;
+      transition: transform 0.2s;
+    }
+    .cart-icon:hover {
+      transform: scale(1.1);
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 0.5rem;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: #222;
+      margin: 3px 0;
+      transition: 0.3s;
+      border-radius: 2px;
+    }
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(-45deg) translate(-5px, 6px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(45deg) translate(-5px, -6px);
+    }
+    .about-container {
+      max-width: 1200px;
+      margin: 100px auto 0 auto;
+      padding: 0 2rem;
+    }
+    .about-section {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+    }
+    .about-title {
+      font-size: 2rem;
+      color: #888;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+    .about-title .brand-name {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #888;
+    }
+    .about-content {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+    }
+    .about-text {
+      flex: 1;
+    }
+    .about-text p {
+      color: #444;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+    .about-image {
+      flex: 1;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .contact-section {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      padding: 2.5rem;
+      margin-top: 3rem;
+    }
+    .contact-title {
+      font-size: 2rem;
+      color: #888;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .form-group label {
+      font-weight: 500;
+      color: #444;
+    }
+    .form-group input,
+    .form-group textarea {
+      padding: 0.8rem;
+      border: 1.5px solid #ddd;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: border 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #e67e22;
+    }
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    .submit-btn {
+      background: #222;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 0.7rem 2.2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      align-self: flex-start;
+    }
+    .submit-btn:hover {
+      background: #FF8C00;
+    }
+    .site-footer {
+      background: #ececec;
+      padding: 2.5rem 0 1.5rem 0;
+      margin-top: 0 !important;
+      position: relative;
+      z-index: 1;
+    }
+    .footer-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .footer-title {
+      font-size: 1.5rem;
+      color: #888;
+      font-weight: bold;
+      margin-bottom: 1.2rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      font-size: 1rem;
+      color: #444;
+      align-items: flex-start;
+    }
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-links > div:nth-child(1),
+    .footer-links > div:nth-child(2),
+    .footer-links > div:nth-child(3) {
+      height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .footer-links li {
+      margin-bottom: 0.3rem;
+    }
+    .footer-links a {
+      color: #444;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: #FF8C00;
+      text-decoration: underline;
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.7rem;
+      flex-direction: column;
+      align-items: center;
+    }
+    .newsletter-form input[type="email"] {
+      border: 1.5px solid #bbb;
+      border-radius: 24px;
+      padding: 0.5rem 1.2rem;
+      font-size: 1rem;
+      font-family: inherit;
+      background: #fff;
+      outline: none;
+      transition: border 0.2s;
+      width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    .newsletter-form input[type="email"]:focus {
+      border: 1.5px solid #e67e22;
+    }
+    .newsletter-form button {
+      background: #6d625c;
+      color: #fff;
+      border: none;
+      border-radius: 24px;
+      padding: 0.5rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+      width: 66.67%;
+      box-sizing: border-box;
+      align-self: center;
+    }
+    .newsletter-form button:hover {
+      background: #FF8C00;
+    }
+    @media (max-width: 900px) {
+      :root {
+        --header-height: 90px;
+      }
+      header {
+        padding: 1rem 1.5rem;
+      }
+      .about-container { padding: 0 1.2rem; }
+      .about-content { flex-direction: column; }
+      .footer-links { flex-direction: column; gap: 1.2rem; }
+    }
+    @media (max-width: 600px) {
+      :root {
+        --header-height: 80px; /* ハンバーガーメニュー時はヘッダー高さを調整 */
+      }
+      header {
+        padding: 0.8rem 1rem;
+        flex-direction: row;
+        gap: 0;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .logo {
+        font-size: 1.3rem;
+        margin-bottom: 0;
+      }
+      .hamburger {
+        display: flex;
+        z-index: 1001;
+      }
+      nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 250px;
+        height: 100vh;
+        background: #fff;
+        box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 80px 2rem 2rem 2rem;
+        gap: 1.5rem;
+        margin: 0;
+        transition: right 0.3s ease;
+        z-index: 1000;
+      }
+      nav.active {
+        right: 0;
+      }
+      nav a {
+        font-size: 1.1rem;
+        padding: 0.5rem 0;
+        width: 100%;
+        border-bottom: 1px solid #eee;
+      }
+      nav a:last-child {
+        border-bottom: none;
+      }
+      .about-container { padding: 0 0.7rem; }
+      .about-section { padding: 1.5rem; }
+    }
+    @media (max-width: 480px) {
+      :root {
+        --header-height: 80px; /* ハンバーガーメニュー時はヘッダー高さを調整 */
+      }
+      header {
+        padding: 0.6rem 0.8rem;
+        flex-direction: row;
+        gap: 0;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .logo {
+        font-size: 1.2rem;
+        margin-bottom: 0;
+      }
+      .hamburger {
+        display: flex;
+        z-index: 1001;
+      }
+      nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 250px;
+        height: 100vh;
+        background: #fff;
+        box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 80px 2rem 2rem 2rem;
+        gap: 1.5rem;
+        margin: 0;
+        transition: right 0.3s ease;
+        z-index: 1000;
+      }
+      nav.active {
+        right: 0;
+      }
+      nav a {
+        font-size: 1.1rem;
+        padding: 0.5rem 0;
+        width: 100%;
+        border-bottom: 1px solid #eee;
+      }
+      nav a:last-child {
+        border-bottom: none;
+      }
+    }
+    @media (max-width: 400px) {
+      :root {
+        --header-height: 80px; /* ハンバーガーメニュー時はヘッダー高さを調整 */
+      }
+      header {
+        padding: 0.5rem 0.6rem;
+        flex-direction: row;
+        gap: 0;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .logo {
+        font-size: 1.1rem;
+        margin-bottom: 0;
+      }
+      .hamburger {
+        display: flex;
+        z-index: 1001;
+      }
+      nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 250px;
+        height: 100vh;
+        background: #fff;
+        box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 80px 2rem 2rem 2rem;
+        gap: 1.5rem;
+        margin: 0;
+        transition: right 0.3s ease;
+        z-index: 1000;
+      }
+      nav.active {
+        right: 0;
+      }
+      nav a {
+        font-size: 1.1rem;
+        padding: 0.5rem 0;
+        width: 100%;
+        border-bottom: 1px solid #eee;
+      }
+      nav a:last-child {
+        border-bottom: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo" onclick="window.location.href='index.html'" style="cursor: pointer;">Aileen's Secret</div>
+    <button class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav id="nav-menu">
+      <a href="shop1.html">ショップ</a>
+      <a href="Service1.html">サービス</a>
+      <a href="faq1.html">FAQ</a>
+      <a href="About1.html">About</a>
+      <a href="contact1.html">お問い合わせ</a>
+      <a href="#" id="login-link">ログイン</a>
+      <a href="Cart3.html" class="cart-icon">
+        <i class="fas fa-shopping-cart"></i>
+      </a>
+    </nav>
+  </header>
+  <div class="about-container">
+    <div class="about-section">
+      <h2 class="about-title">About <span class="brand-name">Aileen's Secret</span></h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p><span style="font-family: 'Poppins', sans-serif; font-weight: bold;">Aileen's Secret</span>は、女性の美しさと自信を引き出すための総合的なサービスを提供しています。私たちは、美容、ファッション、ライフスタイルの分野で、最新のトレンドと伝統的な価値を組み合わせた独自のアプローチを目指しています。</p>
+          <p>創業以来、私たちは常に「美しさは内側から」という理念を大切にしてきました。それは単なる外見の美しさだけでなく、心の健康と幸福を追求することでもあります。</p>
+          <p>私たちのサービスは、個々のニーズに合わせてカスタマイズされており、お客様一人一人の目標達成をサポートします。経験豊富な専門家チームが、常に最新の技術と知識を提供し、最高のサービスを提供することをお約束します。</p>
+        </div>
+        <div class="about-image">
+          <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty75.png" alt="About Aileen's Secret">
+        </div>
+      </div>
+    </div>
+    <div class="contact-section">
+      <h2 class="contact-title">お問い合わせ</h2>
+      <form class="contact-form">
+        <div class="form-group">
+          <label for="name">お名前</label>
+          <input type="text" id="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">メールアドレス</label>
+          <input type="email" id="email" required>
+        </div>
+        <div class="form-group">
+          <label for="message">メッセージ</label>
+          <textarea id="message" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">送信する</button>
+      </form>
+    </div>
+  </div>
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-title">Aileen's Secret</div>
+      <div class="footer-links">
+        <div>
+          <ul>
+            <li><a href="About1.html">会社情報</a></li>
+            <li><a href="new site project11.html#contact">お問い合わせ</a></li>
+            <li><a href="shop1.html">ショップ</a></li>
+            <li><a href="Service1.html">サービス</a></li>
+          </ul>
+        </div>
+        <div>SNSでフォロー
+          <div class="sns-icons">
+            <a href="https://www.facebook.com" target="_blank">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://x.com" target="_blank">
+              <i class="fab fa-x-twitter"></i>
+            </a>
+          </div>
+        </div>
+        <div>ニュースや最新情報を受け取るには<br>メールアドレスでサインアップしてください。
+          <form class="newsletter-form">
+            <button type="submit" onclick="window.location.href='signIn.html'; return false;">サインアップ</button>
+          </form>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #ddd; color: #666; font-size: 0.9rem;">
+        &copy; 2025 Aileen's Secret. All rights reserved.
+      </div>
+    </div>
+  </footer>
+  <!-- サインインモーダル -->
+  <div id="signin-modal" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.35);align-items:center;justify-content:center;">
+    <div style="background:#fff;border-radius:10px;box-shadow:0 2px 16px rgba(0,0,0,0.18);padding:0;max-width:420px;width:90vw;max-height:95vh;display:flex;flex-direction:column;position:relative;">
+      <button id="close-signin-modal" style="position:absolute;top:8px;right:12px;font-size:1.5rem;background:none;border:none;cursor:pointer;color:#888;">&times;</button>
+      <iframe src="signIn.html" style="border:none;width:100%;height:480px;border-radius:10px;"></iframe>
+    </div>
+  </div>
+  <script>
+    // フォーム送信時の処理
+    document.querySelector('.contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('お問い合わせありがとうございます。\n内容を確認次第、ご連絡させていただきます。');
+      this.reset();
+    });
+    // サインインモーダル表示
+    const loginLink = document.getElementById('login-link');
+    const signinModal = document.getElementById('signin-modal');
+    const closeSigninModal = document.getElementById('close-signin-modal');
+    if(loginLink && signinModal && closeSigninModal){
+      loginLink.addEventListener('click', function(e){
+        e.preventDefault();
+        signinModal.style.display = 'flex';
+      });
+      closeSigninModal.addEventListener('click', function(){
+        signinModal.style.display = 'none';
+      });
+      // モーダル外クリックで閉じる
+      signinModal.addEventListener('click', function(e){
+        if(e.target === signinModal){
+          signinModal.style.display = 'none';
+        }
+      });
+    }
+    
+    // ハンバーガーメニューの制御
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    
+    if (hamburger && navMenu) {
+      hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+      });
+      
+      // メニューリンクをクリックしたときにメニューを閉じる
+      const navLinks = navMenu.querySelectorAll('a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          hamburger.classList.remove('active');
+          navMenu.classList.remove('active');
+        });
+      });
+      
+      // メニュー外をクリックしたときにメニューを閉じる
+      document.addEventListener('click', function(e) {
+        if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+          hamburger.classList.remove('active');
+          navMenu.classList.remove('active');
+        }
+      });
+    }
+  </script>
+</body>
+</html> 
