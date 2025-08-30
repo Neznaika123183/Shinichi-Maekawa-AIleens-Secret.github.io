@@ -85,7 +85,7 @@
       padding: 1.5rem 1.2rem;
       margin-bottom: 2rem;
     }
-    h2 { font-size: 1.3rem; color: #222; margin-bottom: 1rem; text-align: center; }
+    h2 { font-size: 1.3rem; color: #222; margin-bottom: 1rem; text-align: center; pointer-events: none; user-select: none; }
     .gallery, .calendar, .community-photos {
       display: flex;
       flex-wrap: wrap;
@@ -458,7 +458,7 @@
     <div class="catch">サステナブルな新おしゃれスタイル♡<br>普段は着られないアイテムも気軽にチャレンジ＆イベント体験できちゃう♪</div>
     <div class="card">
       <h2>サービスのご紹介</h2>
-      <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty501.png" alt="サービス紹介イメージ" style="display:block;margin:0 auto 1rem auto;width:180px;height:180px;object-fit:cover;border-radius:10px;border:2px solid #e67e22;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.07);cursor:pointer;" onclick="window.location.href='wakuwakushopping3.html'">
+      <img src="https://raw.githubusercontent.com/Neznaika123183/Shinichi-Maekawa-AIleens-Secret.github.io/main/AIBeauty501.png" alt="サービス紹介イメージ" style="display:block;margin:0 auto 1rem auto;width:180px;height:180px;object-fit:cover;border-radius:10px;border:2px solid #e67e22;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,0.07);pointer-events:none;">
       <p style="text-align:center; font-weight: bold;">毎月のアイテム＋体験イベント優待のワクワク感をお届け!</p>
     </div>
     <div class="card">
@@ -613,6 +613,18 @@
         }
       });
     }
+    
+    // サービスのご紹介画像のクリックイベントを無効化
+    document.addEventListener('DOMContentLoaded', function() {
+      const serviceIntroImage = document.querySelector('img[alt="サービス紹介イメージ"]');
+      if (serviceIntroImage) {
+        serviceIntroImage.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
+        });
+      }
+    });
   </script>
 </body>
 </html> 
